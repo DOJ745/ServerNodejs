@@ -1,6 +1,7 @@
 1) Restify (для работы с REST API)
  - https://github.com/restify/node-restify
  - npm install restify
+ - его использовать не буду, не так удобно, как с express
 
 2) Pino (логирование)
  - https://habr.com/ru/company/funcorp/blog/461881/
