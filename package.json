@@ -15,9 +15,11 @@
     "express-pino-logger": "^6.0.0",
     "mongoose": "^5.12.3",
     "pino": "^6.11.2",
-    "restify": "^8.5.1"
+    "restify": "^8.5.1",
+    "validator": "^13.5.2"
   },
   "devDependencies": {
+    "bcrypt": "^5.0.1",
     "http-errors": "^1.7.2",
     "mongodb": "^3.6.6",
     "pino-pretty": "^4.7.1"

@@ -63,6 +63,7 @@ app.use("/register_user", signUp);
 app.use(body_parser.urlencoded({ extended: false }));
 app.use(body_parser.json());
 
+/*
 // ----- Handle CORS requests -----
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -82,7 +83,7 @@ app.use((err, req, res, next) => {
     res.status(err.status).json({
         message: err.message
     });
-});
+});*/
 
 app.get("/", function(request, response){
     response.send("<h1>About site</h1>");
