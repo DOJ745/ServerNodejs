@@ -1,0 +1,11 @@
+1) Restify (для работы с REST API)
+ - https://github.com/restify/node-restify
+ - npm install restify
+
+2) Pino (логирование)
+ - https://habr.com/ru/company/funcorp/blog/461881/
+ - npm install pino express-pino-logger
+
+3) Pino pretty (чтобы привести логи в читаемый вид)
+ - https://habr.com/ru/company/funcorp/blog/461881/
+ - npm install --save-dev pino-pretty
