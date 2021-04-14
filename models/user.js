@@ -34,7 +34,7 @@ const User = new Schema({
         type: String,
         require: true
     }
-    
+
     __v: {
         type: Number,
         select: false
