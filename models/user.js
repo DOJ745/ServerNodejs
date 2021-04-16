@@ -14,12 +14,6 @@ const User = new Schema({
         unique: true,
         required: true
     },
-    email: {
-        type: String,
-        lowercase: true,
-        unique: true,
-        required: true
-    },
     password: {
         type: String,
         required: true
@@ -39,20 +33,6 @@ const User = new Schema({
         type: Number,
         select: false
     }*/
-});
-
-User.path('email').validate((email) => {
-    if (validator.isLength(email, { min: 6, max: 100 })) {
-        if (validator.isEmail(email)) {
-            return true;
-        }
-        else {
-            throw new Error('Email is incorrect');
-        }
-    }
-    else {
-        throw new Error('Entity of EMAIL(length) too large (> 100) or too small (< 6)');
-    }
 });
 
 User.path('login').validate((login) => {
