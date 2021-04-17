@@ -56,6 +56,8 @@ const testRouterPost = require('./routes/test_route_post');
 const signUp = require('./routes/sign_up');
 
 app.use(expressLogger);
+
+// ----- URL of controllers -----
 app.use("/test_route_get", testRouterGet);
 app.use("/test_route_post", testRouterPost);
 app.use("/register_user", signUp);
