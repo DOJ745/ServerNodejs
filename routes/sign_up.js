@@ -30,7 +30,7 @@ router.post('/', jsonParser, function(req, res, next) {
 
     mongoClient.connect(function(err, client){
 
-        const db = client.db("usersdb");
+        const db = client.db("know_your_game_db");
         const collection = db.collection("users");
 
         if(err) return console.log(err);

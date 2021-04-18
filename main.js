@@ -32,13 +32,14 @@ const logger = pino({
 const expressLogger = expressPino({logger});
 
 // Set up MongoDB
+/*
 mongoose.connect(
-    config.db('localhost', 27017, 'usersdb'),
+    config.db('localhost', 27017, 'know_your_game_db'),
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
     }
-);
+); */
 
 mongoose.connection.on("open", () => {
     logger.debug("Connected to mongo server.");
@@ -61,6 +62,8 @@ app.use(expressLogger);
 app.use("/test_route_get", testRouterGet);
 app.use("/test_route_post", testRouterPost);
 app.use("/register_user", signUp);
+
+app.use(express.static(__dirname + "/pages"));
 
 app.use(body_parser.urlencoded({ extended: false }));
 app.use(body_parser.json());
@@ -87,8 +90,10 @@ app.use((err, req, res, next) => {
     });
 });*/
 
-app.get("/", function(request, response){
-    response.send("<h1>About site</h1>");
+app.get("/", function(request, response) {
+
+    response.sendFile(__dirname + '/pages/index.html');
+
     logger.debug("[Status code : " + request.baseUrl + "] - " + response.statusCode + "\n");
 });
 
