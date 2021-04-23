@@ -91,17 +91,9 @@ app.use((err, req, res, next) => {
 });*/
 
 app.get("/", function(request, response) {
-
     response.sendFile(__dirname + '/pages/index.html');
-
     logger.debug("[Status code : " + request.baseUrl + "] - " + response.statusCode + "\n");
 });
-
-// create application/json parser
-var jsonParser = body_parser.json()
-
-// create application/x-www-form-urlencoded parser
-var urlencodedParser = body_parser.urlencoded({ extended: false })
 
 
 app.listen(config.app.port, function () {
