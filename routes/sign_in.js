@@ -22,14 +22,14 @@ const MongoClient = require("mongodb").MongoClient;
 const url = "mongodb://localhost:27017/";
 const mongoClient = new MongoClient(url, { useUnifiedTopology: true });
 
-router.post('/', jsonParser, function(req, res, next) {
+router.get('/', jsonParser, function(req, res, next) {
 
     let sentUserLogin = req.query.login;
     let sentUserPassword = req.query.password;
 
     logger.debug("Sent info (login + password): " + sentUserLogin + " - " + sentUserPassword);
 
-    mongoClient.connect(function(err, client){
+    /*mongoClient.connect(function(err, client){
 
         const db = client.db("know_your_game_db");
         const collection = db.collection("users");
@@ -48,7 +48,7 @@ router.post('/', jsonParser, function(req, res, next) {
             }
             client.close();
         });
-    });
+    });*/
 });
 
 module.exports = router;

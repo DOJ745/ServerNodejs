@@ -55,13 +55,15 @@ const app = express();
 const testRouterGet = require('./routes/test_route_get');
 const testRouterPost = require('./routes/test_route_post');
 const signUp = require('./routes/sign_up');
+const signIn = require('./routes/sign_in');
 
 app.use(expressLogger);
 
 // ----- URL of controllers -----
 app.use("/test_route_get", testRouterGet);
 app.use("/test_route_post", testRouterPost);
-app.use("/register_user", signUp);
+app.use("/sign_up", signUp);
+app.use("/sign_in", signIn);
 
 app.use(express.static(__dirname + "/pages"));
 
