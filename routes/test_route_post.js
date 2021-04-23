@@ -19,7 +19,7 @@ router.post('/', function(req, res, next) {
     res.send({
             "data": "Hello! It is me, POST response!"
         } );
-    console.log("[Status code : " + req.baseUrl + "] - " + res.statusCode + "\n");
+    logger.info("[Status code : " + req.baseUrl + "] - " + res.statusCode + "\n");
 });
 
 module.exports = router;
