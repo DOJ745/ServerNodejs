@@ -10,7 +10,6 @@ const createError = require('http-errors');
 const path = require('path');
 
     // ----- Folders with classes -----
-const queryProcessing = require('./middlewares/queryProcessing');
 const config = require('./config/config');
 
     // ----- Lib for MongoDB -----

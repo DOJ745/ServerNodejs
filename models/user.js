@@ -1,4 +1,4 @@
-const validator = require('validator');
+//const validator = require('validator');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
@@ -35,6 +35,7 @@ const User = new Schema({
     }*/
 });
 
+/*
 User.path('login').validate((login) => {
     if (validator.isLength(login, { min: 4, max: 100 })) {
         return true;
@@ -51,6 +52,8 @@ User.path('password').validate((password) => {
         throw new Error('Entity of PASSWORD(length) too large (> 100) or too small (< 6)');
     }
 });
+
+*/
 
 // ----- Salting password -----
 User.pre('save', function (next) {
