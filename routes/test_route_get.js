@@ -31,6 +31,7 @@ const router = express.Router();
 
 const testGet = require('../middlewares/test_route_get_service');
 
+
 module.exports.testGET = function testGET(req, res, next) {
     testGet.testGET(req, res);
 }*/
