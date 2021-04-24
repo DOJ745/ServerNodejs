@@ -69,8 +69,9 @@ app.use(express.static(__dirname + "/pages"));
 app.use(body_parser.urlencoded({ extended: false }));
 app.use(body_parser.json());
 
-/*
+
 // ----- Handle CORS requests -----
+/*
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     if (req.method === 'OPTIONS') {
@@ -92,10 +93,9 @@ app.use((err, req, res, next) => {
 });*/
 
 app.get("/", function(request, response) {
-    response.sendFile(__dirname + '/pages/index.html');
-    logger.debug("[Status code : " + request.baseUrl + "] - " + response.statusCode + "\n");
+    response.sendFile(__dirname + '/pages/index.html', createError(404, "Page not found!"));
+    logger.info("[Status code : " + request.baseUrl + "] - " + response.statusCode + "\n");
 });
-
 
 app.listen(config.app.port, function () {
     logger.info('Server listening on port: ' + config.app.port);
