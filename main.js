@@ -31,14 +31,14 @@ const logger = pino({
 const expressLogger = expressPino({logger});
 
 // Set up MongoDB
-/*
+
 mongoose.connect(
     config.db('localhost', 27017, 'know_your_game_db'),
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
     }
-); */
+);
 
 mongoose.connection.on("open", () => {
     logger.debug("Connected to mongo server.");
@@ -53,6 +53,8 @@ const app = express();
 // ----- Routes -----
 const testRouterGet = require('./routes/test_route_get');
 const testRouterPost = require('./routes/test_route_post');
+const testInsertTheme = require('./routes/test_route_db_queries');
+
 const signUp = require('./routes/sign_up');
 const signIn = require('./routes/sign_in');
 
@@ -61,6 +63,8 @@ app.use(expressLogger);
 // ----- URL of controllers -----
 app.use("/test_route_get", testRouterGet);
 app.use("/test_route_post", testRouterPost);
+app.use("/test_insert_theme", testInsertTheme);
+
 app.use("/sign_up", signUp);
 app.use("/sign_in", signIn);
 
