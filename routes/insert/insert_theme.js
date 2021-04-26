@@ -1,9 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-
 const pino = require('pino');
 const expressPino = require('express-pino-logger');
 
@@ -18,19 +15,21 @@ const expressLogger = expressPino({logger});
 const app = express();
 app.use(expressLogger);
 
-const Models = require('../models/theme');
-
-const test_theme = new Models.ThemeModel({name: 'testTheme3'} );
+const Models = require('../../models/theme');
 
 router.post('/', function(req, res, next) {
 
-    test_theme.save(function (err) {
+    if(req.query.name != null) {
+       var theme = new Models.ThemeModel({name: req.query.name});
+    }
+    theme.save(function (err) {
         if(err)
             return console.log(err);
-        else
+        else {
             logger.info("Theme successfully inserted!");
+            //res.write("<h2>Success insert!</h2>");
+        }
     });
-    res.write("<h2>Success!</h2>");
 });
 
 module.exports = router;

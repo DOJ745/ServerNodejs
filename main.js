@@ -16,7 +16,7 @@ const config = require('./config/config');
 const mongoDB = require('mongodb');
 const MongoClient = require("mongodb").MongoClient;
 const mongoose = require('mongoose');
-const autoIncrement = require('mongoose-auto-increment');
+var autoIncrement = require('mongoose-auto-increment');
 
 //const autoIncrement = require('mongoose-auto-increment');
 
@@ -47,32 +47,41 @@ mongoose.connection.on("open", () => {
     logger.debug("Connected to mongo server.");
 });
 
-module.exports.increment = autoIncrement;
-
 mongoose.connection.on("error", (err) => {
     logger.error("Could not connect to mongo server! " + err);
 });
-
-const connection = mongoose.createConnection("mongodb://localhost:27017/know_your_game_db");
-autoIncrement.initialize(connection);
 
 const app = express();
 
 // ----- Routes -----
 const testRouterGet = require('./routes/test_route_get');
 const testRouterPost = require('./routes/test_route_post');
-const testInsertTheme = require('./routes/test_route_db_queries');
 
+// ----- CRUD Routes -----
+
+    // ----- Insert -----
+const InsertTheme = require('./routes/insert/insert_theme');
+const InsertDifficulty = require('./routes/insert/insert_difficulty');
+
+    // ----- Update -----
+
+    // ----- Delete -----
 const signUp = require('./routes/sign_up');
 const signIn = require('./routes/sign_in');
 
 app.use(expressLogger);
 
-// ----- URL of controllers -----
+// ----- URL of routes -----
 app.use("/test_route_get", testRouterGet);
 app.use("/test_route_post", testRouterPost);
-app.use("/test_insert_theme", testInsertTheme);
 
+    // ----- Insert -----
+app.use("/insert_theme", InsertTheme);
+app.use("/insert_difficulty", InsertDifficulty);
+
+    // ----- Update -----
+
+    // ----- Delete -----
 app.use("/sign_up", signUp);
 app.use("/sign_in", signIn);
 
@@ -81,7 +90,7 @@ app.use(express.static(__dirname + "/pages"));
 app.use(body_parser.urlencoded({ extended: false }));
 app.use(body_parser.json());
 
-
+//module.exports.increment = autoIncrement;
 // ----- Handle CORS requests -----
 /*
 app.use((req, res, next) => {
