@@ -27,7 +27,7 @@ router.post('/', function(req, res, next) {
             return console.log(err);
         else {
             logger.info("Theme successfully inserted!");
-            //res.write("<h2>Success insert!</h2>");
+            res.send({success: "yes"});
         }
     });
 });

@@ -66,8 +66,8 @@ const InsertDifficulty = require('./routes/insert/insert_difficulty');
     // ----- Update -----
 
     // ----- Delete -----
-const signUp = require('./routes/sign_up');
-const signIn = require('./routes/sign_in');
+const signUp = require('./routes/auth/sign_up');
+const signIn = require('./routes/auth/sign_in');
 
 app.use(expressLogger);
 
