@@ -78,10 +78,3 @@ User.methods.comparePassword = function (candidatePassword, cb) {
 };
 
 module.exports = mongoose.model('User', User);
-
-/*
- avatarUrl: {
-     type: String,
-     required: true,
-     default: 'http://localhost:8000/images/cat.jpg'
- },*/
