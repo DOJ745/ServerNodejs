@@ -12,7 +12,7 @@ const League = new Schema({
         required: true
     },
     rating: {
-        type: Schema.Types.Number,
+        type: Number,
         required: true
     }
 

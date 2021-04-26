@@ -14,7 +14,7 @@ const Answers = new Schema({
         required: true
     },
     trueness: {
-        type: Schema.Types.Number,
+        type: Number,
         required: true
     }
 
