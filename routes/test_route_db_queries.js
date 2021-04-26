@@ -18,9 +18,9 @@ const expressLogger = expressPino({logger});
 const app = express();
 app.use(expressLogger);
 
-const connection = mongoose.createConnection('mongodb://localhost:27017/know_your_game_db.themes');
-const ThemeModel = connection.model('Theme');
-const test_theme = new ThemeModel({name: 'testTheme'});
+const Models = require('../models/theme');
+
+const test_theme = new Models.ThemeModel({name: 'testTheme3'} );
 
 router.post('/', function(req, res, next) {
 
@@ -30,10 +30,7 @@ router.post('/', function(req, res, next) {
         else
             logger.info("Theme successfully inserted!");
     });
-    //if(res.statusCode === 200)
-    res.send({
-        "id": test_theme._id
-    });
+    res.write("<h2>Success!</h2>");
 });
 
 module.exports = router;

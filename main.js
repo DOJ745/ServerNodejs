@@ -16,6 +16,9 @@ const config = require('./config/config');
 const mongoDB = require('mongodb');
 const MongoClient = require("mongodb").MongoClient;
 const mongoose = require('mongoose');
+const autoIncrement = require('mongoose-auto-increment');
+
+//const autoIncrement = require('mongoose-auto-increment');
 
     // ----- Logger -----
 const pino = require('pino');
@@ -36,7 +39,7 @@ mongoose.connect(
     config.db('localhost', 27017, 'know_your_game_db'),
     {
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
     }
 );
 
@@ -44,9 +47,14 @@ mongoose.connection.on("open", () => {
     logger.debug("Connected to mongo server.");
 });
 
+module.exports.increment = autoIncrement;
+
 mongoose.connection.on("error", (err) => {
     logger.error("Could not connect to mongo server! " + err);
 });
+
+const connection = mongoose.createConnection("mongodb://localhost:27017/know_your_game_db");
+autoIncrement.initialize(connection);
 
 const app = express();
 
@@ -105,6 +113,7 @@ app.listen(config.app.port, function () {
     logger.info('Server listening on port: ' + config.app.port);
 });
 
+//module.exports.increment = autoIncrement;
     /*
     const url = "mongodb://localhost:27017/";
     const mongoClient = new MongoClient(url, { useUnifiedTopology: true });

@@ -1,11 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const Answers = new Schema({
+const Answer = new Schema({
 
-    _id: Schema.Types.ObjectId,
     question_id: {
-        type: Schema.Types.ObjectId,
+        type: Number,
         ref: 'Question',
         required: true
     },
@@ -20,4 +19,4 @@ const Answers = new Schema({
 
 });
 
-module.exports = mongoose.model('Answers', Answers);
+module.exports.AnswerModel = mongoose.model('Answers', Answer);

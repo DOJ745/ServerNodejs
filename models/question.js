@@ -3,14 +3,14 @@ const Schema = mongoose.Schema;
 
 const Question = new Schema({
 
-    _id: Schema.Types.ObjectId,
+    _id: Number,
     theme_id: {
-        type: Schema.Types.ObjectId,
+        type: Number,
         ref: 'Theme',
         required: true
     },
     difficulty_id: {
-        type: Schema.Types.ObjectId,
+        type: Number,
         ref: 'Difficulty',
         required: true
     },
@@ -24,4 +24,4 @@ const Question = new Schema({
     }
 });
 
-module.exports = mongoose.model('Question', Question);
+module.exports.QuestionModel = mongoose.model('Question', Question);

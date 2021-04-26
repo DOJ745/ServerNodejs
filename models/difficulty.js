@@ -1,9 +1,12 @@
 const mongoose = require('mongoose');
+/*const autoIncrement = require('mongoose-auto-increment');
+const connection = mongoose.createConnection("mongodb://localhost:27017/know_your_game_db");
+autoIncrement.initialize(connection);*/
+
 const Schema = mongoose.Schema;
 
 const Difficulty = new Schema({
 
-    _id: Schema.Types.ObjectId,
     name: {
         type: String,
         required: true
@@ -15,4 +18,5 @@ const Difficulty = new Schema({
 
 });
 
-module.exports = mongoose.model('Difficulty', Difficulty);
+Difficulty.plugin(autoIncrement.plugin, 'Theme');
+module.exports.DifficultyModel = mongoose.model('Difficulty', Difficulty);

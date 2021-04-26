@@ -14,8 +14,10 @@
     "express": "^4.17.1",
     "express-pino-logger": "^6.0.0",
     "mongoose": "^5.12.3",
+    "mongoose-auto-increment": "^5.0.1",
     "pino": "^6.11.2",
     "restify": "^8.5.1",
+    "simple-mongoose-autoincrement": "^1.2.1",
     "validator": "^13.5.2"
   },
   "devDependencies": {
