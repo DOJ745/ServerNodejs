@@ -16,9 +16,7 @@ const config = require('./config/config');
 const mongoDB = require('mongodb');
 const MongoClient = require("mongodb").MongoClient;
 const mongoose = require('mongoose');
-var autoIncrement = require('mongoose-auto-increment');
 
-//const autoIncrement = require('mongoose-auto-increment');
 
     // ----- Logger -----
 const pino = require('pino');
@@ -121,8 +119,6 @@ app.get("/", function(request, response) {
 app.listen(config.app.port, function () {
     logger.info('Server listening on port: ' + config.app.port);
 });
-
-//module.exports.increment = autoIncrement;
     /*
     const url = "mongodb://localhost:27017/";
     const mongoClient = new MongoClient(url, { useUnifiedTopology: true });

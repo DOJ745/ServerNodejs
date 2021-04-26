@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 
 const autoIncrement = require('mongoose-auto-increment');
-const connection = mongoose.createConnection("mongodb://localhost:27017/know_your_game_db");
+const config = require('../config/config');
+const connection = mongoose.createConnection(config.db('localhost', 27017, 'know_your_game_db'));
+
 autoIncrement.initialize(connection);
 
 const Schema = mongoose.Schema;
