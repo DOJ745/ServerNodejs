@@ -1,7 +1,4 @@
 const express = require('express');
-
-const body_parser = require('body-parser');
-const jsonParser = body_parser.json();
 const router = express.Router();
 
 const pino = require('pino');
@@ -13,23 +10,36 @@ const logger = pino({
         colorize: true
     }
 } );
+
 const expressLogger = expressPino({logger});
 const app = express();
 app.use(expressLogger);
 
+const Models = require('../../models/user');
 
-const MongoClient = require("mongodb").MongoClient;
-const url = "mongodb://localhost:27017/";
-const mongoClient = new MongoClient(url, { useUnifiedTopology: true });
+router.post('/', function(req, res, next) {
 
-router.post('/', jsonParser, function(req, res, next) {
+    if(req.query.login != null && req.query.password != null) {
 
-    let sentUserLogin = req.query.login;
-    let sentUserPassword = req.query.password;
+        logger.debug("Sent info (login + password): " +
+            req.query.login + " - " + req.query.password);
 
-    logger.debug("Sent info (login + password): " + sentUserLogin + " - " + sentUserPassword);
+        var newUser = new Models.UserModel({
+            login: req.query.login,
+            password: req.query.password
+        });
+    }
 
-    mongoClient.connect(function(err, client){
+    newUser.save(function (err) {
+        if(err)
+            return console.log(err);
+        else {
+            logger.info("User successfully inserted!");
+            res.send( {login: req.query.login, password: req.query.password} );
+        }
+    });
+
+    /*mongoClient.connect(function(err, client){
 
         const db = client.db("know_your_game_db");
         const collection = db.collection("users");
@@ -48,7 +58,7 @@ router.post('/', jsonParser, function(req, res, next) {
             }
             client.close();
         });
-    });
+    });*/
 });
 
 module.exports = router;

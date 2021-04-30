@@ -7,7 +7,7 @@ const SALT_WORK_FACTOR = 10;
 
 const User = new Schema({
 
-    _id: Schema.Types.ObjectId,
+    //_id: Schema.Types.ObjectId,
 
     login: {
         type: String,
