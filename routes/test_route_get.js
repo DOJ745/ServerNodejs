@@ -15,12 +15,21 @@ const expressLogger = expressPino({logger});
 const app = express();
 app.use(expressLogger);
 
+const UserModel = require('../models/user');
+
 router.get('/', function(req, res, next) {
-    res.send({
+    /*res.send({
         "data": "Hello! It is me, GET response!",
         "info": "1234"
-    } );
+    } );*/
     logger.info("[Status code : " + req.baseUrl + "] - " + res.statusCode + "\n");
+
+    UserModel.findOne({login: "test"}, function(err, doc) {
+
+        if(err) return console.log(err);
+
+        res.send(doc)
+    });
 });
 
 module.exports = router;

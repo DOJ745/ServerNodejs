@@ -15,7 +15,7 @@ const expressLogger = expressPino({logger});
 const app = express();
 app.use(expressLogger);
 
-const Models = require('../../models/user');
+const UserModel = require('../../models/user.js');
 
 router.post('/', function(req, res, next) {
 
@@ -24,7 +24,7 @@ router.post('/', function(req, res, next) {
         logger.debug("Sent info (login + password): " +
             req.query.login + " - " + req.query.password);
 
-        var newUser = new Models.UserModel({
+        var newUser = new UserModel({
             login: req.query.login,
             password: req.query.password
         });
@@ -38,6 +38,7 @@ router.post('/', function(req, res, next) {
             res.send( {login: req.query.login, password: req.query.password} );
         }
     });
+
 
     /*mongoClient.connect(function(err, client){
 
