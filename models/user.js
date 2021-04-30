@@ -7,8 +7,6 @@ const SALT_WORK_FACTOR = 10;
 
 const User = new Schema({
 
-    //_id: Schema.Types.ObjectId,
-
     login: {
         type: String,
         unique: true,
@@ -27,33 +25,10 @@ const User = new Schema({
     refreshToken: {
         type: String,
         require: true
-    }
+    } */
 
-    __v: {
-        type: Number,
-        select: false
-    }*/
 });
 
-/*
-User.path('login').validate((login) => {
-    if (validator.isLength(login, { min: 4, max: 100 })) {
-        return true;
-    } else {
-        throw new Error('Entity of LOGIN(length) too large (> 100) or too small (< 4)');
-    }
-});
-
-User.path('password').validate((password) => {
-    if (validator.isLength(password, { min: 6, max: 100 })) {
-        return true;
-    }
-    else {
-        throw new Error('Entity of PASSWORD(length) too large (> 100) or too small (< 6)');
-    }
-});
-
-*/
 
 // ----- Salting password -----
 User.pre('save', function (next) {
