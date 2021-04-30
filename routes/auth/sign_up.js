@@ -15,6 +15,7 @@ const expressLogger = expressPino({logger});
 const app = express();
 app.use(expressLogger);
 
+const mongoose = require('mongoose');
 const UserModel = require('../../models/user.js');
 
 router.post('/', function(req, res, next) {
@@ -35,10 +36,14 @@ router.post('/', function(req, res, next) {
             return console.log(err);
         else {
             logger.info("User successfully inserted!");
-            res.send( {login: req.query.login, password: req.query.password} );
+
+            // Returning User DTO
+            UserModel.findOne({login: req.query.login}, function(err, doc) {
+                if(err) return console.log(err);
+                res.send(doc);
+            });
         }
     });
-
 
     /*mongoClient.connect(function(err, client){
 

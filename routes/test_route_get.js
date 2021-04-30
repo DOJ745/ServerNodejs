@@ -18,10 +18,6 @@ app.use(expressLogger);
 const UserModel = require('../models/user');
 
 router.get('/', function(req, res, next) {
-    /*res.send({
-        "data": "Hello! It is me, GET response!",
-        "info": "1234"
-    } );*/
     logger.info("[Status code : " + req.baseUrl + "] - " + res.statusCode + "\n");
 
     UserModel.findOne({login: "test"}, function(err, doc) {
