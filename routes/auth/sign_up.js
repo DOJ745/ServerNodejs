@@ -15,7 +15,6 @@ const expressLogger = expressPino({logger});
 const app = express();
 app.use(expressLogger);
 
-const mongoose = require('mongoose');
 const UserModel = require('../../models/user.js');
 
 router.post('/', function(req, res, next) {
@@ -44,27 +43,6 @@ router.post('/', function(req, res, next) {
             });
         }
     });
-
-    /*mongoClient.connect(function(err, client){
-
-        const db = client.db("know_your_game_db");
-        const collection = db.collection("users");
-
-        if(err) return console.log(err);
-
-        let user = { login: sentUserLogin, email: sentUserPassword };
-
-        collection.insertOne(user, function(err, result) {
-            if(err) { return console.error("*** Error occurred! ***\n" + err); }
-            else {
-                logger.info("[Status code : " + req.baseUrl + "] - " + res.statusCode + "\n");
-                logger.info("Inserted info: " + result.ops);
-
-                res.send({login: sentUserLogin, password: sentUserPassword});
-            }
-            client.close();
-        });
-    });*/
 });
 
 module.exports = router;
