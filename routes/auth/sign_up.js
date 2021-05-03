@@ -19,17 +19,32 @@ const UserModel = require('../../models/user.js');
 
 router.post('/', function(req, res, next) {
 
+    var isRegistered = 0;
+    var checkUser;
     if(req.query.login != null && req.query.password != null) {
-
-        logger.debug("Sent info (login + password): " +
-            req.query.login + " - " + req.query.password);
 
         var newUser = new UserModel({
             login: req.query.login,
             password: req.query.password
         });
+
+        logger.debug("Sent info (login + password): " +
+            req.query.login + " - " + req.query.password);
+
+        UserModel.findOne({login: req.query.login}, function(err, doc) {
+            if(err) return console.log(err);
+            logger.debug("Found user - " + doc);
+            checkUser = doc;
+            //res.send(checkUser);
+        });
     }
 
+    if(checkUser._id === req.query.login){
+        res.send({"suchUserAlreadyExists": "true"});
+    }
+
+
+/*
     newUser.save(function (err) {
         if(err)
             return console.log(err);
@@ -42,7 +57,7 @@ router.post('/', function(req, res, next) {
                 res.send(doc);
             });
         }
-    });
+    });*/
 });
 
 module.exports = router;
