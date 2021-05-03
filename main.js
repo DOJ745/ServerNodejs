@@ -20,7 +20,7 @@ const mongoose = require('mongoose');
     // ----- Authorization -----
 const passport = require('passport');
 const LocalStrategy  = require('passport-local').Strategy;
-//const expressSession = require('express-session');
+const expressSession = require('express-session');
 
 
     // ----- Logger -----
@@ -95,10 +95,10 @@ app.use(express.static(__dirname + "/pages"));
 app.use(body_parser.urlencoded({ extended: false }));
 app.use(body_parser.json());
 
-/*
+
 app.use(expressSession({secret: 'mySecretKey'}));
 app.use(passport.initialize());
-app.use(passport.session());*/
+app.use(passport.session());
 
 // ----- Handle CORS requests -----
 /*
