@@ -22,7 +22,6 @@ const passport = require('passport');
 const LocalStrategy  = require('passport-local').Strategy;
 const expressSession = require('express-session');
 
-
     // ----- Logger -----
 const pino = require('pino');
 const expressPino = require('express-pino-logger');
@@ -87,6 +86,7 @@ app.use("/insert_difficulty", InsertDifficulty);
     // ----- Delete -----
 
     // ----- Authorization -----
+
 app.use("/sign_up", signUp);
 app.use("/sign_in", signIn);
 

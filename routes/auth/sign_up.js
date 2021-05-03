@@ -11,11 +11,25 @@ const logger = pino({
     }
 } );
 
+const UserModel = require('../../models/user.js');
+const passport = require("passport");
+
 const expressLogger = expressPino({logger});
+
 const app = express();
 app.use(expressLogger);
 
-const UserModel = require('../../models/user.js');
+passport.serializeUser(function(user, done) {
+    done(null, user._id);
+});
+
+passport.deserializeUser(function(id, done) {
+    UserModel.findById(id, function(err, user) {
+        done(err, user);
+    });
+});
+
+
 
 router.post('/', function(req, res, next) {
 
