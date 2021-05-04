@@ -18,12 +18,12 @@ const LocalStrategy  = require('passport-local').Strategy;
 const expressSession = require('express-session');
 
 const expressLogger = expressPino({logger});
-//const flash = require('connect-flash');
+//const flash = require('flash');
 
 const app = express();
 
 app.use(expressLogger);
-//app.use(flash());
+//app.use(flash);
 app.use(expressSession({secret: 'mySecretKey'}));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -39,7 +39,8 @@ passport.deserializeUser(function(login, done) {
 });
 
 passport.use('signup', new LocalStrategy({
-        passReqToCallback : true
+        usernameField: 'login',
+        passwordField: 'password'
     },
     function(req, login, password, done) {
         let findOrCreateUser = function () {
@@ -54,8 +55,7 @@ passport.use('signup', new LocalStrategy({
                 // Пользователь уже существует
                 if (user) {
                     console.log('User already exists!');
-                    return done(null, false,
-                        req.flash('message', 'User Already Exists'));
+                    return done(null, false);
                 } else {
                     // Если пользователя с таким логином
                     // в базе не существует, то создаем нового
@@ -67,10 +67,10 @@ passport.use('signup', new LocalStrategy({
                     // Сохранения пользователя
                     newUser.save(function (err) {
                         if (err) {
-                            console.log('Error in Saving user: ' + err);
+                            logger.error('Error in Saving user: ' + err);
                             throw err;
                         }
-                        console.log('User Registration successful');
+                        logger.info('User Registration successful');
                         return done(null, newUser);
                     });
                 }
@@ -86,8 +86,8 @@ passport.use('signup', new LocalStrategy({
 router.post('/',
     passport.authenticate('signup', {
         successRedirect: '/',
-        failureRedirect: '/',
-        failureFlash : true}));
+        failureRedirect: '/test_route_get',
+        failureFlash : false}));
 
 module.exports = router;
 

@@ -26,6 +26,7 @@
     "bcrypt": "^5.0.1",
     "connect-flash": "^0.1.1",
     "express-session": "^1.17.1",
+    "flash": "^1.1.0",
     "http-errors": "^1.7.2",
     "mongodb": "^3.6.6",
     "pino-pretty": "^4.7.1"

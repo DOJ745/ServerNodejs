@@ -21,12 +21,6 @@ const User = new Schema({
         required: true,
         default: 0.0
     }
-    /*
-    refreshToken: {
-        type: String,
-        require: true
-    } */
-
 });
 
 
