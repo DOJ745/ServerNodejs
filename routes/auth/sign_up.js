@@ -12,107 +12,121 @@ const logger = pino({
 } );
 
 const UserModel = require('../../models/user.js');
+
 const passport = require("passport");
 const LocalStrategy  = require('passport-local').Strategy;
+const expressSession = require('express-session');
 
 const expressLogger = expressPino({logger});
+//const flash = require('connect-flash');
 
 const app = express();
+
 app.use(expressLogger);
+//app.use(flash());
+app.use(expressSession({secret: 'mySecretKey'}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 passport.serializeUser(function(user, done) {
-    done(null, user._id);
+    done(null, user.login);
 });
 
-passport.deserializeUser(function(id, done) {
-    UserModel.findById(id, function(err, user) {
+passport.deserializeUser(function(login, done) {
+    UserModel.findById(login, function(err, user) {
         done(err, user);
     });
 });
 
-router.post('/', function(req, res, next) {
+passport.use('signup', new LocalStrategy({
+        passReqToCallback : true
+    },
+    function(req, login, password, done) {
+        let findOrCreateUser = function () {
 
-    passport.use('signup', new LocalStrategy({
-            passReqToCallback : true
-        },
-        function(req, username, password, done) {
-            findOrCreateUser = function() {
-                // поиск пользователя в Mongo с помощью предоставленного имени пользователя
-                UserModel.findOne({'login':username},function(err, user) {
-                    // В случае любых ошибок - возврат
-                    if (err){
-                        console.log('Error in SignUp: '+err);
-                        return done(err);
-                    }
-                    // Пользователь уже существует
-                    if (user) {
-                        console.log('User already exists!');
-                        return done(null, false,
-                            req.flash('message','User Already Exists'));
-                    } else {
-                        // если пользователя с таким логином
-                        // в базе не существует, то создаем нового
-                        var newUser = new UserModel({
-                            login: req.query.login,
-                            password: req.query.password
-                        });
+            // Поиск пользователя в Mongo с помощью предоставленного имени пользователя
+            UserModel.findOne({'login': login}, function (err, user) {
+                // В случае любых ошибок - возврат
+                if (err) {
+                    console.log('Error in SignUp: ' + err);
+                    return done(err);
+                }
+                // Пользователь уже существует
+                if (user) {
+                    console.log('User already exists!');
+                    return done(null, false,
+                        req.flash('message', 'User Already Exists'));
+                } else {
+                    // Если пользователя с таким логином
+                    // в базе не существует, то создаем нового
+                    var newUser = new UserModel({
+                        login: req.query.login,
+                        password: req.query.password
+                    });
 
-                        // сохранения пользователя
-                        newUser.save(function(err) {
-                            if (err){
-                                console.log('Error in Saving user: '+err);
-                                throw err;
-                            }
-                            console.log('User Registration succesful');
-                            return done(null, newUser);
-                        });
-                    }
-                });
-            };
-
-            // Отложить исполнение findOrCreateUser и выполнить
-            // метод на следующем этапе цикла события
-            process.nextTick(findOrCreateUser);
-        });
-);
-    /*
-    var checkUser;
-    if(req.query.login != null && req.query.password != null) {
-
-        var newUser = new UserModel({
-            login: req.query.login,
-            password: req.query.password
-        });
-
-        logger.debug("Sent info (login + password): " +
-            req.query.login + " - " + req.query.password);
-
-        UserModel.findOne({login: req.query.login}, function(err, doc) {
-            if(err) return console.log(err);
-            logger.debug("Found user - " + doc);
-            checkUser = doc;
-            //res.send(checkUser);
-        });
-    }
-
-    if(checkUser._id === req.query.login){
-        res.send({"suchUserAlreadyExists": "true"});
-    }
-
-
-    newUser.save(function (err) {
-        if(err)
-            return console.log(err);
-        else {
-            logger.info("User successfully inserted!");
-
-            // Returning User DTO
-            UserModel.findOne({login: req.query.login}, function(err, doc) {
-                if(err) return console.log(err);
-                res.send(doc);
+                    // Сохранения пользователя
+                    newUser.save(function (err) {
+                        if (err) {
+                            console.log('Error in Saving user: ' + err);
+                            throw err;
+                        }
+                        console.log('User Registration successful');
+                        return done(null, newUser);
+                    });
+                }
             });
-        }
-    });*/
-});
+        };
+
+        // Отложить исполнение findOrCreateUser и выполнить
+        // метод на следующем этапе цикла события
+        process.nextTick(findOrCreateUser);
+    })
+);
+
+router.post('/',
+    passport.authenticate('signup', {
+        successRedirect: '/',
+        failureRedirect: '/',
+        failureFlash : true}));
 
 module.exports = router;
+
+
+/*
+var checkUser;
+if(req.query.login != null && req.query.password != null) {
+
+    var newUser = new UserModel({
+        login: req.query.login,
+        password: req.query.password
+    });
+
+    logger.debug("Sent info (login + password): " +
+        req.query.login + " - " + req.query.password);
+
+    UserModel.findOne({login: req.query.login}, function(err, doc) {
+        if(err) return console.log(err);
+        logger.debug("Found user - " + doc);
+        checkUser = doc;
+        //res.send(checkUser);
+    });
+}
+
+if(checkUser._id === req.query.login){
+    res.send({"suchUserAlreadyExists": "true"});
+}
+
+
+newUser.save(function (err) {
+    if(err)
+        return console.log(err);
+    else {
+        logger.info("User successfully inserted!");
+
+        // Returning User DTO
+        UserModel.findOne({login: req.query.login}, function(err, doc) {
+            if(err) return console.log(err);
+            res.send(doc);
+        });
+    }
+});*/

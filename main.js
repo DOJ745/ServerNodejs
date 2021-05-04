@@ -18,9 +18,11 @@ const MongoClient = require("mongodb").MongoClient;
 const mongoose = require('mongoose');
 
     // ----- Authorization -----
+
+/*
 const passport = require('passport');
 const LocalStrategy  = require('passport-local').Strategy;
-const expressSession = require('express-session');
+const expressSession = require('express-session');*/
 
     // ----- Logger -----
 const pino = require('pino');
@@ -95,10 +97,12 @@ app.use(express.static(__dirname + "/pages"));
 app.use(body_parser.urlencoded({ extended: false }));
 app.use(body_parser.json());
 
+    // ----- Passport init -----
 
+/*
 app.use(expressSession({secret: 'mySecretKey'}));
 app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.session());*/
 
 // ----- Handle CORS requests -----
 /*
