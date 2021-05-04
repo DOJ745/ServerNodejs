@@ -38,6 +38,8 @@ passport.deserializeUser(function(login, done) {
     });
 });
 
+// https://blog.rukomoynikov.ru/avtorizatsiya-polzovatelej-express-js-mongo/
+
 passport.use('signup', new LocalStrategy({
         usernameField: 'login',
         passwordField: 'password'
