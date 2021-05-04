@@ -18,9 +18,7 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "pino": "^6.11.2",
-    "restify": "^8.5.1",
-    "simple-mongoose-autoincrement": "^1.2.1",
-    "validator": "^13.5.2"
+    "simple-mongoose-autoincrement": "^1.2.1"
   },
   "devDependencies": {
     "bcrypt": "^5.0.1",
