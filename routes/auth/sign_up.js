@@ -42,11 +42,11 @@ passport.use('signup', new LocalStrategy({
         usernameField: 'login',
         passwordField: 'password'
     },
-    function(req, login, password, done) {
+    function(req, username, password, done) {
         let findOrCreateUser = function () {
 
             // Поиск пользователя в Mongo с помощью предоставленного имени пользователя
-            UserModel.findOne({'login': login}, function (err, user) {
+            UserModel.findOne({'login': username}, function (err, user) {
                 // В случае любых ошибок - возврат
                 if (err) {
                     console.log('Error in SignUp: ' + err);
