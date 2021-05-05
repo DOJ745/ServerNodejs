@@ -22,31 +22,4 @@ const User = new Schema({
     }
 });
 
-
-// ----- Salting password -----
-
-/*
-User.pre('save', function (next) {
-    const user = this;
-    if (!user.isModified('password')) return next();
-
-    bcrypt.genSalt(SALT_WORK_FACTOR, function (err, salt) {
-        if (err) return next(err);
-
-        bcrypt.hash(user.password, salt, function (err, hash) {
-            user.password = hash;
-            next();
-        });
-    });
-});*/
-
-// ----- User API -----
-
-User.methods.comparePassword = function (candidatePassword, cb) {
-    bcrypt.compare(candidatePassword, this.password, function (err, res) {
-        if (err) cb(err);
-        cb(null, res);
-    });
-};
-
 module.exports = mongoose.model('User', User);

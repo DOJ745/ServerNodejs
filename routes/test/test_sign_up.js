@@ -1,4 +1,4 @@
-const api = require("../../user_api");
+const api = require("../../api/user_api");
 
 const express = require('express');
 const router = express.Router();
