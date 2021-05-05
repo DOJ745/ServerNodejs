@@ -67,6 +67,8 @@ const InsertDifficulty = require('./routes/insert/insert_difficulty');
     // ----- Update -----
 
     // ----- Delete -----
+
+// ----- Authorization Routes -----
 const signUp = require('./routes/auth/sign_up');
 const signIn = require('./routes/auth/sign_in');
 
@@ -97,7 +99,6 @@ app.use("/insert_difficulty", InsertDifficulty);
     // ----- Delete -----
 
     // ----- Authorization -----
-
 app.use("/sign_up", signUp);
 app.use("/sign_in", signIn);
 
@@ -105,8 +106,6 @@ app.use(express.static(__dirname + "/pages"));
 
 app.use(body_parser.urlencoded({ extended: false }));
 app.use(body_parser.json());
-
-    // ----- Passport init -----
 
 /*
 app.use(expressSession({secret: 'mySecretKey'}));
@@ -145,40 +144,3 @@ app.listen(config.app.port, function () {
 });
 
 module.exports = app;
-    /*
-    const url = "mongodb://localhost:27017/";
-    const mongoClient = new MongoClient(url, { useUnifiedTopology: true });
-
-    mongoClient.connect(function(err, client){
-
-        const db = client.db("usersdb");
-        const collection = db.collection("users");
-
-        if(err) return console.log(err);
-
-        collection.find({age: 23}).
-        toArray(function(err, results){
-            console.log(results);
-            client.close();
-        });
-
-        let user = {name: "Tom", age: 23};
-        let users = [
-            {name: "Bob", age: 25},
-            {name: "Goroh", age: 40},
-            {name: "Blob", age: 13} ];
-
-        collection.insertMany(users, function (err, result){
-            if(err){ return console.log(err); }
-            console.log(result.ops);
-            client.close();
-        } );
-
-
-        collection.insertOne(user, function(err, result){
-
-            if(err){ return console.log(err); }
-            console.log(result.ops);
-            client.close();
-        });
-    });*/
