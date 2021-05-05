@@ -1,4 +1,3 @@
-const config = require("../../config/config");
 const api = require("../../user_api");
 
 const express = require('express');
@@ -15,7 +14,6 @@ const logger = pino({
 } );
 
 const expressLogger = expressPino({logger});
-
 
 const app = express();
 app.use(expressLogger);

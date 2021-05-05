@@ -17,9 +17,10 @@ exports.getUser = function(id) {
 
 exports.checkUser = function(reqLogin, reqPassword) {
     return User
-        .findOne({login: reqLogin})
+        .findOne({login: reqLogin} )
         .then(function(doc) {
-            if ( doc.password === hash(reqPassword) ){
+            console.log("Found user - " + doc);
+            if (doc.password === hash(reqPassword)) {
                 console.log("User password is ok!");
                 return Promise.resolve(doc)
             } else {

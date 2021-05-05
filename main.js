@@ -58,6 +58,7 @@ const app = express();
 const testRouterGet = require('./routes/test/test_route_get');
 const testRouterPost = require('./routes/test/test_route_post');
 const testSignUp = require('./routes/test/test_sign_up');
+const testSignIn = require('./routes/test/test_sign_in');
 
 // ----- CRUD Routes -----
 
@@ -72,6 +73,7 @@ const signUp = require('./routes/auth/sign_up');
 const signIn = require('./routes/auth/sign_in');
 
 app.use(expressLogger);
+
 app.use(session({
     secret: 'this is not these droids',
     resave: false,
@@ -83,9 +85,12 @@ app.use(session({
 }))
 
 // ----- URL of routes -----
+
+    // ----- Test Routes -----
 app.use("/test_route_get", testRouterGet);
 app.use("/test_route_post", testRouterPost);
-app.use("/test_sign_up", testSignUp)
+app.use("/test_sign_up", testSignUp);
+app.use("/test_sign_in", testSignIn);
 
     // ----- Insert -----
 app.use("/insert_theme", InsertTheme);
