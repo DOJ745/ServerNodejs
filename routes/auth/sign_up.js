@@ -22,7 +22,8 @@ router.post('/', function(req, res, next) {
 
     api.createUser(req.query.login, req.query.password)
         .then(function() {
-            logger.debug("User created");
+            logger.debug("User successfully created!");
+            res.status(200).send({"success": "true"});
         })
         .catch(function(err){
             if (err){
