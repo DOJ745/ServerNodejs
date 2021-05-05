@@ -71,6 +71,7 @@ const InsertDifficulty = require('./routes/insert/insert_difficulty');
 // ----- Authorization Routes -----
 const signUp = require('./routes/auth/sign_up');
 const signIn = require('./routes/auth/sign_in');
+const logout = require('./routes/auth/log_out');
 
 app.use(expressLogger);
 
@@ -101,6 +102,7 @@ app.use("/insert_difficulty", InsertDifficulty);
     // ----- Authorization -----
 app.use("/sign_up", signUp);
 app.use("/sign_in", signIn);
+app.use("/logout", logout);
 
 app.use(express.static(__dirname + "/pages"));
 

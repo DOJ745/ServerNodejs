@@ -1,5 +1,3 @@
-const api = require("../../api/user_api");
-
 const express = require('express');
 const router = express.Router();
 
@@ -19,17 +17,11 @@ const app = express();
 app.use(expressLogger);
 
 router.post('/', function(req, res, next) {
-
-    api.createUser(req.query.login, req.query.password)
-        .then(function() {
-            logger.debug("User successfully created!");
-            res.status(200).send({"status": "success"});
-        })
-        .catch(function(err) {
-            if (err) {
-                res.status(500).send({"status": "error - This user already exist"});
-            }
-        })
+    if (req.session.user) {
+        delete req.session.user;
+        logger.debug("User successfully log out!");
+        res.send({"logout": "true"});
+    }
 });
 
 module.exports = router;
