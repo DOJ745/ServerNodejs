@@ -26,13 +26,13 @@ router.post('/', function(req, res, next) {
         .then(function(user) {
             if(user) {
                 req.session.user = {id: user._id, login: user.login}
-                res.redirect('/')
+                res.redirect('/');
             } else {
-                return next() // error
+                return next()
             }
         })
         .catch(function(error){
-            return next(error)
+            return next(error);
         });
 });
 
