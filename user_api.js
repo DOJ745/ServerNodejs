@@ -1,6 +1,4 @@
-const mongoose = require('mongoose')
 const crypto = require('crypto')
-//const db = mongoose.connect("mongodb://user:password@ds027409.mongolab.com:27409/coffeeplaces")
 const User = require('./models/user')
 
 // User API
@@ -22,7 +20,7 @@ exports.checkUser = function(reqLogin, reqPassword) {
         .findOne({login: reqLogin})
         .then(function(doc) {
             if ( doc.password === hash(reqPassword) ){
-                console.log("User password is ok");
+                console.log("User password is ok!");
                 return Promise.resolve(doc)
             } else {
                 return Promise.reject("Error, wrong password!")

@@ -18,7 +18,8 @@ const MongoClient = require("mongodb").MongoClient;
 const mongoose = require('mongoose');
 
     // ----- Authorization -----
-
+const session = require('express-session')
+const MongoStore = require('connect-mongo');
 
     // ----- Logger -----
 const pino = require('pino');
@@ -71,6 +72,15 @@ const signUp = require('./routes/auth/sign_up');
 const signIn = require('./routes/auth/sign_in');
 
 app.use(expressLogger);
+app.use(session({
+    secret: 'this is not these droids',
+    resave: false,
+    saveUninitialized: false,
+    // Место хранения сессии
+    store: MongoStore.create({
+        mongoUrl: config.db('localhost', 27017, 'know_your_game_db'),
+    })
+}))
 
 // ----- URL of routes -----
 app.use("/test_route_get", testRouterGet);

@@ -15,21 +15,10 @@ const logger = pino({
 } );
 
 const expressLogger = expressPino({logger});
-const session = require('express-session')
-const MongoStore = require('connect-mongo');
+
 
 const app = express();
 app.use(expressLogger);
-
-app.use(session({
-    secret: 'this is not these droids',
-    resave: false,
-    saveUninitialized: false,
-    // Место хранения сессии
-    store: MongoStore.create({
-        mongoUrl: config.db('localhost', 27017, 'know_your_game_db'),
-    })
-}))
 
 router.post('/', function(req, res, next) {
 
