@@ -20,7 +20,6 @@ app.use(expressLogger);
 
 router.post('/', function(req, res, next) {
 
-    let loggedUser;
     if (req.session.user) {
         logger.debug("You are still logged in!");
         res.send({"login": 1});
