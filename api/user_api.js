@@ -11,9 +11,12 @@ exports.createUser = function(reqLogin, reqPassword) {
     return new User(user).save();
 }
 
-exports.getUserByLogin = function(reqLogin) {
-    return User.findOne({login: reqLogin}).then(function (doc) {
-        console.log("Found by login user - " + doc);
+exports.getUserByLogin = function(reqLogin, res) {
+    User.findOne({login: reqLogin}, function(err, user) {
+        if (err)
+            console.log("Error with getting user!\n" + err);
+        console.log("Found user BY LOGIN:\n" + user);
+        res.send(user);
     });
 }
 
