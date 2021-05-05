@@ -19,10 +19,6 @@ const mongoose = require('mongoose');
 
     // ----- Authorization -----
 
-/*
-const passport = require('passport');
-const LocalStrategy  = require('passport-local').Strategy;
-const expressSession = require('express-session');*/
 
     // ----- Logger -----
 const pino = require('pino');
@@ -60,6 +56,7 @@ const app = express();
 // ----- Routes -----
 const testRouterGet = require('./routes/test/test_route_get');
 const testRouterPost = require('./routes/test/test_route_post');
+const testSignUp = require('./routes/test/test_sign_up');
 
 // ----- CRUD Routes -----
 
@@ -78,6 +75,7 @@ app.use(expressLogger);
 // ----- URL of routes -----
 app.use("/test_route_get", testRouterGet);
 app.use("/test_route_post", testRouterPost);
+app.use("/test_sign_up", testSignUp)
 
     // ----- Insert -----
 app.use("/insert_theme", InsertTheme);

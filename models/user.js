@@ -1,4 +1,3 @@
-//const validator = require('validator');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
@@ -25,6 +24,8 @@ const User = new Schema({
 
 
 // ----- Salting password -----
+
+/*
 User.pre('save', function (next) {
     const user = this;
     if (!user.isModified('password')) return next();
@@ -37,7 +38,9 @@ User.pre('save', function (next) {
             next();
         });
     });
-});
+});*/
+
+// ----- User API -----
 
 User.methods.comparePassword = function (candidatePassword, cb) {
     bcrypt.compare(candidatePassword, this.password, function (err, res) {
@@ -45,5 +48,35 @@ User.methods.comparePassword = function (candidatePassword, cb) {
         cb(null, res);
     });
 };
+
+User.methods.getUser = function(login) {
+    return User.findOne(login)
+}
+
+User.methods.createUser = function(userData){
+    const user = {
+        login: userData.name,
+        password: hash(userData.password)
+    };
+    return new User(user).save();
+}
+
+User.methods.checkUser = function(userData) {
+    return User
+        .findOne({login: userData.login})
+        .then(function(doc) {
+            if (doc.password === hash(userData.password)) {
+                console.log("User password is ok");
+                return Promise.resolve(doc)
+            } else {
+                return Promise.reject("Error wrong")
+            }
+        })
+}
+
+function hash(text) {
+    return crypto.createHash('sha1')
+        .update(text).digest('base64');
+}
 
 module.exports = mongoose.model('User', User);
