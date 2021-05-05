@@ -20,7 +20,7 @@ router.post('/', function(req, res, next) {
     if (req.session.user) {
         delete req.session.user;
         logger.debug("User successfully log out!");
-        res.send({"logout": "true"});
+        res.send({"logout": 0});
     }
 });
 

@@ -1,11 +1,9 @@
-const mongoose = require("mongoose");
 const crypto = require('crypto');
 const User = require('../models/user');
 
 // User API
 
 exports.createUser = function(reqLogin, reqPassword) {
-
     const user = {
         login: reqLogin,
         password: hash(reqPassword)
@@ -25,7 +23,7 @@ exports.checkUser = function(reqLogin, reqPassword) {
             console.log("Found user - " + doc);
             if (doc.password === hash(reqPassword)) {
                 console.log("User password is ok! You are entered in!");
-                return Promise.resolve(doc);
+                return doc;//Promise.resolve(doc);
             } else {
                 return Promise.reject("Error, wrong password!");
             }
