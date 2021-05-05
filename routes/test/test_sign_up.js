@@ -18,8 +18,6 @@ const expressLogger = expressPino({logger});
 const session = require('express-session')
 const MongoStore = require('connect-mongo');
 
-const UserModel = require('../../models/user.js');
-
 const app = express();
 app.use(expressLogger);
 
@@ -27,16 +25,16 @@ app.use(session({
     secret: 'this is not these droids',
     resave: false,
     saveUninitialized: false,
-    // Место хранения можно выбрать из множества вариантов, это и БД и файлы и Memcached.
+    // Место хранения сессии
     store: MongoStore.create({
-        mongoUrl: 'mongodb://localhost:27017/know_your_game_db',
+        mongoUrl: config.db('localhost', 27017, 'know_your_game_db'),
     })
 }))
 
 router.post('/', function(req, res, next) {
 
     api.createUser(req.query.login, req.query.password)
-        .then(function(result) {
+        .then(function() {
             logger.debug("User created");
         })
         .catch(function(err){
