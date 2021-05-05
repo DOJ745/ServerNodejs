@@ -1,3 +1,5 @@
+const api = require("../../api/user_api");
+
 const express = require('express');
 const router = express.Router();
 
@@ -11,26 +13,22 @@ const logger = pino({
     }
 } );
 
-const UserModel = require('../../models/user.js');
-
-const passport = require("passport");
-const LocalStrategy  = require('passport-local').Strategy;
-const expressSession = require('express-session');
-
 const expressLogger = expressPino({logger});
-//const flash = require('flash');
 
 const app = express();
-
 app.use(expressLogger);
 
-// https://blog.rukomoynikov.ru/avtorizatsiya-polzovatelej-express-js-mongo/
+router.post('/', function(req, res, next) {
 
-
-router.post('/',
-    passport.authenticate('signup', {
-        successRedirect: '/',
-        failureRedirect: '/test_route_get',
-        failureFlash : false}));
+    api.createUser(req.query.login, req.query.password)
+        .then(function() {
+            logger.debug("User created");
+        })
+        .catch(function(err){
+            if (err){
+                res.status(500).send({"error": "This user already exist"});
+            }
+        })
+});
 
 module.exports = router;

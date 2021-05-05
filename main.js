@@ -57,8 +57,6 @@ const app = express();
 // ----- Routes -----
 const testRouterGet = require('./routes/test/test_route_get');
 const testRouterPost = require('./routes/test/test_route_post');
-const testSignUp = require('./routes/test/test_sign_up');
-const testSignIn = require('./routes/test/test_sign_in');
 
 // ----- CRUD Routes -----
 
@@ -89,8 +87,6 @@ app.use(session({
     // ----- Test Routes -----
 app.use("/test_route_get", testRouterGet);
 app.use("/test_route_post", testRouterPost);
-app.use("/test_sign_up", testSignUp);
-app.use("/test_sign_in", testSignIn);
 
     // ----- Insert -----
 app.use("/insert_theme", InsertTheme);

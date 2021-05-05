@@ -16,8 +16,7 @@ exports.getUser = function(id) {
 }
 
 exports.checkUser = function(reqLogin, reqPassword) {
-    return User
-        .findOne({login: reqLogin} )
+    return User.findOne({login: reqLogin} )
         .then(function(doc) {
             console.log("Found user - " + doc);
             if (doc.password === hash(reqPassword)) {

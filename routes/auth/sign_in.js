@@ -1,3 +1,5 @@
+const api = require("../../api/user_api");
+
 const express = require('express');
 const router = express.Router();
 
@@ -12,18 +14,26 @@ const logger = pino({
 } );
 
 const expressLogger = expressPino({logger});
+
 const app = express();
 app.use(expressLogger);
 
-const UserModel = require('../../models/user.js');
+router.post('/', function(req, res, next) {
 
-router.get('/', function(req, res, next) {
+    if (req.session.user) return res.redirect('/')
 
-    let sentUserLogin = req.query.login;
-    let sentUserPassword = req.query.password;
-
-    logger.debug("Sent info (login + password): " + sentUserLogin + " - " + sentUserPassword);
-
+    api.checkUser(req.query.login, req.query.password)
+        .then(function(user) {
+            if(user) {
+                req.session.user = {id: user._id, login: user.login}
+                //res.redirect('/');
+            } else {
+                return next()
+            }
+        })
+        .catch(function(error){
+            return next(error);
+        });
 });
 
 module.exports = router;
