@@ -58,8 +58,8 @@ mongoose.connection.on("error", (err) => {
 const app = express();
 
 // ----- Routes -----
-const testRouterGet = require('./routes/test_route_get');
-const testRouterPost = require('./routes/test_route_post');
+const testRouterGet = require('./routes/test/test_route_get');
+const testRouterPost = require('./routes/test/test_route_post');
 
 // ----- CRUD Routes -----
 

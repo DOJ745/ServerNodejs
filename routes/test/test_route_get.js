@@ -15,7 +15,7 @@ const expressLogger = expressPino({logger});
 const app = express();
 app.use(expressLogger);
 
-const UserModel = require('../models/user');
+const UserModel = require('../../models/user');
 
 router.get('/', function(req, res, next) {
     logger.info("[Status code : " + req.baseUrl + "] - " + res.statusCode + "\n");
