@@ -22,7 +22,7 @@ router.post('/', function(req, res, next) {
 
     if (req.session.user) {
         logger.debug("You are still logged in!");
-        res.send({"login": 1});
+        res.send({"login": 1} );
     }
 
     api.checkUser(req.query.login, req.query.password)

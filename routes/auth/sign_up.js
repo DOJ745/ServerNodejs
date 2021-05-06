@@ -23,11 +23,11 @@ router.post('/', function(req, res, next) {
     api.createUser(req.query.login, req.query.password)
         .then(function() {
             logger.debug("User successfully created!");
-            res.status(200).send({"status": "success"});
+            res.status(200).send({"status": "Success registration"});
         })
         .catch(function(err) {
             if (err) {
-                res.status(500).send({"status": "error - This user already exist"});
+                res.send({"status": "Error - This user already exist"});
             }
         })
 });
