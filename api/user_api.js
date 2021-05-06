@@ -3,6 +3,7 @@ const User = require('../models/user');
 
 // User API
 
+
 exports.createUser = function(reqLogin, reqPassword) {
     const user = {
         login: reqLogin,
@@ -20,6 +21,8 @@ exports.getUserByLogin = function(reqLogin, res) {
     });
 }
 
+let errorUser = {login: "error", password: "error"};
+/*
 exports.checkUser = function(reqLogin, reqPassword) {
     return User.findOne({login: reqLogin} )
         .then(function(doc) {
@@ -31,6 +34,23 @@ exports.checkUser = function(reqLogin, reqPassword) {
                 return Promise.reject("Error, wrong password!");
             }
         })
+}*/
+
+exports.checkUser = function(reqLogin, reqPassword, req, res) {
+    User.findOne({login: reqLogin}, function (err, user) {
+
+        if(err) { console.log("Error with getting user!\n" + err); }
+        if(user.password === hash(reqPassword)) {
+            req.session.user = {id: user._id, login: user.login}
+            console.log("\n*** User password is ok! You are entered in! ***\n");
+            res.send(user);
+        }
+        else{ res.send(errorUser);}
+    })
+}
+
+exports.logoutUser = function (req, res) {
+
 }
 
 function hash(text) {

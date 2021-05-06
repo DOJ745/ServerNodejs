@@ -21,10 +21,11 @@ app.use(expressLogger);
 router.post('/', function(req, res, next) {
 
     if (req.session.user) {
-        logger.debug("You are still logged in!");
+        logger.debug("\n*** You are still logged in! ***\n");
         res.send({"login": 1} );
     }
 
+    /*
     api.checkUser(req.query.login, req.query.password)
         .then(function(user) {
             if(user) {
@@ -37,7 +38,9 @@ router.post('/', function(req, res, next) {
         .catch(function(error) {
             logger.error("Error occurred!\n" + error);
             return next(error);
-        });
+        });*/
+
+    api.checkUser(req.query.login, req.query.password, req, res);
 });
 
 module.exports = router;
