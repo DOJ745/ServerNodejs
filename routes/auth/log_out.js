@@ -1,3 +1,5 @@
+const api = require("../../api/user_api");
+
 const express = require('express');
 const router = express.Router();
 
@@ -18,6 +20,7 @@ app.use(expressLogger);
 
 router.post('/', function(req, res, next) {
     if (req.session.user) {
+        api.logoutUser(req.sessionID);
         delete req.session.user;
         logger.debug("User successfully log out!");
         res.send({"logout": 0});

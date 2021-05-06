@@ -1,8 +1,14 @@
 const crypto = require('crypto');
 const User = require('../models/user');
 
-// User API
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
+// User API
+const sessionScheme = new Schema({
+    _id: String
+});
+const Session = mongoose.model('Session', sessionScheme);
 
 exports.createUser = function(reqLogin, reqPassword) {
     const user = {
@@ -22,19 +28,6 @@ exports.getUserByLogin = function(reqLogin, res) {
 }
 
 let errorUser = {login: "error", password: "error"};
-/*
-exports.checkUser = function(reqLogin, reqPassword) {
-    return User.findOne({login: reqLogin} )
-        .then(function(doc) {
-            console.log("Found user - " + doc);
-            if (doc.password === hash(reqPassword)) {
-                console.log("User password is ok! You are entered in!");
-                return doc;//Promise.resolve(doc);
-            } else {
-                return Promise.reject("Error, wrong password!");
-            }
-        })
-}*/
 
 exports.checkUser = function(reqLogin, reqPassword, req, res) {
     User.findOne({login: reqLogin}, function (err, user) {
@@ -49,8 +42,12 @@ exports.checkUser = function(reqLogin, reqPassword, req, res) {
     })
 }
 
-exports.logoutUser = function (req, res) {
+exports.logoutUser = function (id) {
+    Session.findByIdAndDelete({_id: id}, function(err, session) {
 
+        if(err) { console.log("\n*** Error with finding session!\n" + err); }
+        console.log("\n*** Session has been deleted ***: " + session);
+    })
 }
 
 function hash(text) {

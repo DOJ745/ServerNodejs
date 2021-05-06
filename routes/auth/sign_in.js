@@ -25,21 +25,6 @@ router.post('/', function(req, res, next) {
         res.send({"login": 1} );
     }
 
-    /*
-    api.checkUser(req.query.login, req.query.password)
-        .then(function(user) {
-            if(user) {
-                req.session.user = {id: user._id, login: user.login}
-                api.getUserByLogin(req.query.login, res);
-            } else {
-                return next();
-            }
-        })
-        .catch(function(error) {
-            logger.error("Error occurred!\n" + error);
-            return next(error);
-        });*/
-
     api.checkUser(req.query.login, req.query.password, req, res);
 });
 
