@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const Theme = require('../../models/user');
+const Theme = require('../../models/theme');
 const Answers = require('../../models/answers');
 const Question = require('../../models/question');
 const Difficulty = require('../../models/difficulty');
@@ -22,10 +22,18 @@ const expressLogger = expressPino({logger});
 const app = express();
 app.use(expressLogger);
 
-
-
 router.get('/', function(req, res, next) {
-    res.send({"developing?": "yes"});
+
+    var db_doc = {};
+    Theme.find({}, function (err, themes){
+        if(err){
+            logger.error("Error with finding themes!" + err);
+            res.send({"error": err});
+        }
+        logger.info(themes);
+        db_doc.themes = themes;
+        //res.send(db_doc);
+    });
 });
 
 module.exports = router;

@@ -55,10 +55,15 @@ mongoose.connection.on("error", (err) => {
 const app = express();
 
 // ----- Routes -----
+
+    // ----- Test routes -----
 const testRouterGet = require('./routes/test/test_route_get');
 const testRouterPost = require('./routes/test/test_route_post');
 
 // ----- CRUD Routes -----
+
+    // Info route
+const GetDb = require('./routes/db/get_db');
 
     // ----- Insert -----
 const InsertTheme = require('./routes/db/insert/insert_theme');
@@ -69,9 +74,9 @@ const InsertDifficulty = require('./routes/db/insert/insert_difficulty');
     // ----- Delete -----
 
 // ----- Authorization Routes -----
-const signUp = require('./routes/auth/sign_up');
-const signIn = require('./routes/auth/sign_in');
-const logout = require('./routes/auth/log_out');
+const SignUp = require('./routes/auth/sign_up');
+const SignIn = require('./routes/auth/sign_in');
+const Logout = require('./routes/auth/log_out');
 
 app.use(expressLogger);
 
@@ -100,9 +105,11 @@ app.use("/insert_difficulty", InsertDifficulty);
     // ----- Delete -----
 
     // ----- Authorization -----
-app.use("/sign_up", signUp);
-app.use("/sign_in", signIn);
-app.use("/logout", logout);
+app.use("/sign_up", SignUp);
+app.use("/sign_in", SignIn);
+app.use("/logout", Logout);
+
+app.use("/get_db", GetDb);
 
 app.use(express.static(__dirname + "/pages"));
 
