@@ -63,7 +63,7 @@ const testRouterPost = require('./routes/test/test_route_post');
 // ----- CRUD Routes -----
 
     // Info route
-const GetDb = require('./routes/db/get_db');
+const DB_ROUTES = require('./routes/db/get_db');
 
     // ----- Insert -----
 const InsertTheme = require('./routes/db/insert/insert_theme');
@@ -109,7 +109,7 @@ app.use("/sign_up", SignUp);
 app.use("/sign_in", SignIn);
 app.use("/logout", Logout);
 
-app.use("/get_db", GetDb);
+app.use("/db", DB_ROUTES);
 
 app.use(express.static(__dirname + "/pages"));
 

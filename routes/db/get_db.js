@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.Router();
+const DB_Router = express.Router();
 
 const Theme = require('../../models/theme');
 const Answers = require('../../models/answers');
@@ -22,7 +22,7 @@ const expressLogger = expressPino({logger});
 const app = express();
 app.use(expressLogger);
 
-router.get('/', function(req, res, next) {
+DB_Router.get("/data", function(req, res, next) {
 
     var db_doc = {};
     Theme.find({}, function (err, themes){
@@ -32,8 +32,8 @@ router.get('/', function(req, res, next) {
         }
         logger.info(themes);
         db_doc.themes = themes;
-        //res.send(db_doc);
+        res.send(db_doc);
     });
 });
 
-module.exports = router;
+module.exports = DB_Router;
