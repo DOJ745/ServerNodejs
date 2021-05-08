@@ -36,4 +36,19 @@ DB_Router.get("/data", function(req, res, next) {
     });
 });
 
+DB_Router.post('/theme:name', function(req, res, next) {
+
+    if(req.query.name != null) {
+        var theme = {name: req.query.name};
+    }
+    Theme(theme).save(function (err) {
+        if(err)
+            return console.log(err);
+        else {
+            logger.info("Theme successfully inserted!");
+            res.send({success: "yes"});
+        }
+    });
+});
+
 module.exports = DB_Router;

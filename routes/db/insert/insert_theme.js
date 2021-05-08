@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.Router();
+const db_insert_router = require('../get_db');
 
 const pino = require('pino');
 const expressPino = require('express-pino-logger');
@@ -17,7 +17,7 @@ app.use(expressLogger);
 
 const Theme = require('../../../models/theme');
 
-router.post('/', function(req, res, next) {
+db_insert_router.post('/theme:name', function(req, res, next) {
 
     if(req.query.name != null) {
        var theme = {name: req.query.name};
@@ -32,4 +32,4 @@ router.post('/', function(req, res, next) {
     });
 });
 
-module.exports = router;
+//module.exports = router;

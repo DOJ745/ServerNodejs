@@ -66,7 +66,7 @@ const testRouterPost = require('./routes/test/test_route_post');
 const DB_ROUTES = require('./routes/db/get_db');
 
     // ----- Insert -----
-const InsertTheme = require('./routes/db/insert/insert_theme');
+//const InsertTheme = require('./routes/db/insert/insert_theme');
 const InsertDifficulty = require('./routes/db/insert/insert_difficulty');
 
     // ----- Update -----
@@ -97,7 +97,7 @@ app.use("/test_route_get", testRouterGet);
 app.use("/test_route_post", testRouterPost);
 
     // ----- Insert -----
-app.use("/insert_theme", InsertTheme);
+//app.use("/insert_theme", InsertTheme);
 app.use("/insert_difficulty", InsertDifficulty);
 
     // ----- Update -----
