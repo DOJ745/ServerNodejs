@@ -36,7 +36,7 @@ DB_Router.get("/data", function(req, res, next) {
     });
 });
 
-DB_Router.post('/theme:name', function(req, res, next) {
+DB_Router.post("/theme", function(req, res, next) {
 
     if(req.query.name != null) {
         var theme = {name: req.query.name};
