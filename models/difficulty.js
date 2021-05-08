@@ -22,4 +22,4 @@ const Difficulty = new Schema({
 });
 
 Difficulty.plugin(autoIncrement.plugin, 'Difficulty');
-module.exports.DifficultyModel = mongoose.model('Difficulty', Difficulty);
+module.exports = mongoose.model('Difficulty', Difficulty);

@@ -17,4 +17,4 @@ const Theme = new Schema({
 });
 
 Theme.plugin(autoIncrement.plugin, 'Theme');
-module.exports.ThemeModel = mongoose.model('Theme', Theme);
+module.exports = mongoose.model('Theme', Theme);

@@ -5,9 +5,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // User API
-const sessionScheme = new Schema({
-    _id: String
-});
+const sessionScheme = new Schema({ _id: String});
+
 const Session = mongoose.model('Session', sessionScheme);
 
 exports.createUser = function(reqLogin, reqPassword) {
