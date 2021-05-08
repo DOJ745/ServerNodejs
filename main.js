@@ -61,8 +61,8 @@ const testRouterPost = require('./routes/test/test_route_post');
 // ----- CRUD Routes -----
 
     // ----- Insert -----
-const InsertTheme = require('./routes/insert/insert_theme');
-const InsertDifficulty = require('./routes/insert/insert_difficulty');
+const InsertTheme = require('./routes/db/insert/insert_theme');
+const InsertDifficulty = require('./routes/db/insert/insert_difficulty');
 
     // ----- Update -----
 

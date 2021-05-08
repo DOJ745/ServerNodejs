@@ -15,7 +15,7 @@ const expressLogger = expressPino({logger});
 const app = express();
 app.use(expressLogger);
 
-const Models = require('../../models/theme');
+const Models = require('../../../models/theme');
 
 router.post('/', function(req, res, next) {
 
