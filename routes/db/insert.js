@@ -25,17 +25,19 @@ exports.insertTheme = function(req, res) {
         var theme = {name: req.query.name};
     }
     Theme(theme).save(function (err) {
-        if(err)
+        if(err){
+            res.send({isInserted: 1});
             return console.log(err);
+        }
         else {
             logger.info("Theme successfully inserted!");
-            res.send({success: "yes"});
+            res.send({isInserted: 0});
         }
     });
 }
 
 exports.insertDifficulty = function(req, res) {
-    if(req.query.name != null && req.query.multiplier) {
+    if(req.query.name != null && req.query.multiplier != null) {
         var difficulty =
             {
                 name: req.query.name,
@@ -43,47 +45,60 @@ exports.insertDifficulty = function(req, res) {
             };
     }
     Difficulty(difficulty).save(function (err) {
-        if(err)
+        if(err){
+            res.send({isInserted: 1});
             return console.log(err);
+        }
         else {
             logger.info("Difficulty successfully inserted!");
-            res.send({success: "yes"});
+            res.send({isInserted: 0});
         }
     });
 }
 
 exports.insertLeague = function(req, res) {
-    if (req.query.name != null && req.query.multiplier) {
+    if (req.query.name != null && req.query.image != null && req.query.rating != null) {
         var league =
             {
                 name: req.query.name,
-                multiplier: req.query.multiplier
+                image: req.query.image,
+                rating: req.query.rating
             };
     }
     League(league).save(function (err) {
-        if (err)
+        if(err){
+            res.send({isInserted: 1});
             return console.log(err);
+        }
         else {
             logger.info("League successfully inserted!");
-            res.send({success: "yes"});
+            res.send({isInserted: 0});
         }
     });
 }
 
 exports.insertQuestion = function (req, res) {
-    if(req.query.difficulty_id != null && req.query.text != null && req.query.image != null ){
+    if(
+        req.query.theme_id != null &&
+        req.query.difficulty_id != null &&
+        req.query.text != null &&
+        req.query.image != null ){
+
         var question = {
+            theme_id: req.query.theme_id,
             difficulty_id: req.query.difficulty_id,
             text: req.query.text,
             image: req.query.image
         };
     }
     Question(question).save(function(err){
-        if (err)
+        if(err){
+            res.send({isInserted: 1});
             return console.log(err);
+        }
         else {
             logger.info("Question successfully inserted!");
-            res.send({success: "yes"});
+            res.send({isInserted: 0});
         }
     });
 }
@@ -97,11 +112,13 @@ exports.insertAnswer = function (req, res) {
         };
     }
     Answers(answer).save(function(err){
-        if (err)
+        if(err){
+            res.send({isInserted: 1});
             return console.log(err);
+        }
         else {
             logger.info("Answer successfully inserted!");
-            res.send({success: "yes"});
+            res.send({isInserted: 0});
         }
     });
 }
