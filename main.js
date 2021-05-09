@@ -62,18 +62,10 @@ const testRouterPost = require('./routes/test/test_route_post');
 
 // ----- CRUD Routes -----
 
-    // Info route
+    // ----- DB Routes -----
 const DB_ROUTES = require('./routes/db/get_db');
 
-    // ----- Insert -----
-//const InsertTheme = require('./routes/db/insert/insert_theme');
-const InsertDifficulty = require('./routes/db/insert/insert_difficulty');
-
-    // ----- Update -----
-
-    // ----- Delete -----
-
-// ----- Authorization Routes -----
+    // ----- Authorization Routes -----
 const SignUp = require('./routes/auth/sign_up');
 const SignIn = require('./routes/auth/sign_in');
 const Logout = require('./routes/auth/log_out');
@@ -95,14 +87,6 @@ app.use(session({
     // ----- Test Routes -----
 app.use("/test_route_get", testRouterGet);
 app.use("/test_route_post", testRouterPost);
-
-    // ----- Insert -----
-//app.use("/insert_theme", InsertTheme);
-app.use("/insert_difficulty", InsertDifficulty);
-
-    // ----- Update -----
-
-    // ----- Delete -----
 
     // ----- Authorization -----
 app.use("/sign_up", SignUp);

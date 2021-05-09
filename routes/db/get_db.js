@@ -7,7 +7,7 @@ const Question = require('../../models/question');
 const Difficulty = require('../../models/difficulty');
 const League = require('../../models/league');
 
-const insertModels = require('./insert/insert_theme');
+const insertModels = require('./insert');
 
 const pino = require('pino');
 const expressPino = require('express-pino-logger');
@@ -42,20 +42,8 @@ DB_Router.post("/theme", function (req, res, next) {
     insertModels.insertTheme(req, res);
 });
 
-/*
-DB_Router.post("/theme/:name", function(req, res, next) {
-
-    if(req.params.name != null) {
-        var theme = {name: req.params.name};
-    }
-    Theme(theme).save(function (err) {
-        if(err)
-            return console.log(err);
-        else {
-            logger.info("Theme successfully inserted!");
-            res.send({success: "yes"});
-        }
-    });
-});*/
+DB_Router.post("/difficulty", function (req, res, next) {
+    insertModels.insertDifficulty(req, res);
+});
 
 module.exports = DB_Router;

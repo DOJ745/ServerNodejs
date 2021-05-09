@@ -15,10 +15,12 @@ app.use(expressLogger);
 
 
 const Theme = require('../../models/theme');
+const Answers = require('../../models/answers');
+const Question = require('../../models/question');
 const Difficulty = require('../../models/difficulty');
+const League = require('../../models/league');
 
 exports.insertTheme = function(req, res) {
-
     if(req.query.name != null) {
         var theme = {name: req.query.name};
     }
@@ -33,7 +35,6 @@ exports.insertTheme = function(req, res) {
 }
 
 exports.insertDifficulty = function(req, res) {
-
     if(req.query.name != null && req.query.multiplier) {
         var difficulty =
             {
@@ -49,5 +50,23 @@ exports.insertDifficulty = function(req, res) {
             res.send({success: "yes"});
         }
     });
-
 }
+
+exports.insertLeague = function(req, res) {
+    if (req.query.name != null && req.query.multiplier) {
+        var league =
+            {
+                name: req.query.name,
+                multiplier: req.query.multiplier
+            };
+    }
+    League(league).save(function (err) {
+        if (err)
+            return console.log(err);
+        else {
+            logger.info("Difficulty successfully inserted!");
+            res.send({success: "yes"});
+        }
+    });
+}
+

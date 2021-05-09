@@ -20,12 +20,13 @@ const UserModel = require('../../models/user');
 router.get('/', function(req, res, next) {
     logger.info("[Status code : " + req.baseUrl + "] - " + res.statusCode + "\n");
 
-    UserModel.findOne({login: "test"}, function(err, doc) {
+    /*UserModel.findOne({login: "test"}, function(err, doc) {
 
         if(err) return console.log(err);
 
         res.send(doc)
-    });
+    });*/
+    res.send(req.query.url);
 });
 
 module.exports = router;
