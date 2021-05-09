@@ -34,12 +34,40 @@ DB_Router.get("/data", function(req, res, next) {
         }
         logger.info(themes);
         db_doc.themes = themes;
-        //res.send(db_doc);
     });
-    Difficulty.find();
-    Question.find();
-    Answers.find();
-    League.find();
+    Difficulty.find({}, function (err, difficulties){
+        if(err){
+            logger.error("Error with finding difficulties!" + err);
+            res.send({"error": err});
+        }
+        logger.info(difficulties);
+        db_doc.difficulties = difficulties;
+    });
+    Question.find({}, function (err, questions){
+        if(err){
+            logger.error("Error with finding questions!" + err);
+            res.send({"error": err});
+        }
+        logger.info(questions);
+        db_doc.questions = questions;
+    });
+    Answers.find({}, function (err, answers){
+        if(err){
+            logger.error("Error with finding answers!" + err);
+            res.send({"error": err});
+        }
+        logger.info(answers);
+        db_doc.answers = answers;
+    });
+    League.find({}, function (err, leagues){
+        if(err){
+            logger.error("Error with finding leagues!" + err);
+            res.send({"error": err});
+        }
+        logger.info(leagues);
+        db_doc.leagues = leagues;
+    });
+    res.send(db_doc);
 });
 
 DB_Router.post("/add/theme", function (req, res, next) {
