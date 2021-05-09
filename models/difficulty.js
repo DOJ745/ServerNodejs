@@ -15,7 +15,7 @@ const Difficulty = new Schema({
         required: true
     },
     multiplier: {
-        type: String,
+        type: Number,
         required: true
     }
 

@@ -10,7 +10,6 @@ const Schema = mongoose.Schema;
 
 const Question = new Schema({
 
-    _id: Number,
     theme_id: {
         type: Number,
         ref: 'Theme',
