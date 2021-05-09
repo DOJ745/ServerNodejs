@@ -14,11 +14,11 @@ const app = express();
 app.use(expressLogger);
 
 
-const Theme = require('../../models/theme');
-const Answers = require('../../models/answers');
-const Question = require('../../models/question');
-const Difficulty = require('../../models/difficulty');
-const League = require('../../models/league');
+const Theme = require('../../../models/theme');
+const Answers = require('../../../models/answers');
+const Question = require('../../../models/question');
+const Difficulty = require('../../../models/difficulty');
+const League = require('../../../models/league');
 
 exports.insertTheme = function(req, res) {
     if(req.query.name != null) {

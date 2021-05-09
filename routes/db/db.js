@@ -7,7 +7,7 @@ const Question = require('../../models/question');
 const Difficulty = require('../../models/difficulty');
 const League = require('../../models/league');
 
-const insertModels = require('./insert');
+const insertModels = require('./crud/insert');
 
 const pino = require('pino');
 const expressPino = require('express-pino-logger');

@@ -63,7 +63,7 @@ const testRouterPost = require('./routes/test/test_route_post');
 // ----- CRUD Routes -----
 
     // ----- DB Routes -----
-const DB_ROUTES = require('./routes/db/get_db');
+const DB_ROUTES = require('./routes/db/db');
 
     // ----- Authorization Routes -----
 const SignUp = require('./routes/auth/sign_up');
