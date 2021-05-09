@@ -66,8 +66,8 @@ DB_Router.get("/data", function(req, res, next) {
         }
         logger.info(leagues);
         db_doc.leagues = leagues;
+        res.send(db_doc);
     });
-    res.send(db_doc);
 });
 
 DB_Router.post("/add/theme", function (req, res, next) {
