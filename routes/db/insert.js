@@ -64,7 +64,43 @@ exports.insertLeague = function(req, res) {
         if (err)
             return console.log(err);
         else {
-            logger.info("Difficulty successfully inserted!");
+            logger.info("League successfully inserted!");
+            res.send({success: "yes"});
+        }
+    });
+}
+
+exports.insertQuestion = function (req, res) {
+    if(req.query.difficulty_id != null && req.query.text != null && req.query.image != null ){
+        var question = {
+            difficulty_id: req.query.difficulty_id,
+            text: req.query.text,
+            image: req.query.image
+        };
+    }
+    Question(question).save(function(err){
+        if (err)
+            return console.log(err);
+        else {
+            logger.info("Question successfully inserted!");
+            res.send({success: "yes"});
+        }
+    });
+}
+
+exports.insertAnswer = function (req, res) {
+    if(req.query.question_id != null && req.query.text != null && req.query.trueness != null ){
+        var answer = {
+            question_id: req.query.difficulty_id,
+            text: req.query.text,
+            trueness: req.query.trueness
+        };
+    }
+    Answers(answer).save(function(err){
+        if (err)
+            return console.log(err);
+        else {
+            logger.info("Answer successfully inserted!");
             res.send({success: "yes"});
         }
     });

@@ -34,16 +34,32 @@ DB_Router.get("/data", function(req, res, next) {
         }
         logger.info(themes);
         db_doc.themes = themes;
-        res.send(db_doc);
+        //res.send(db_doc);
     });
+    Difficulty.find();
+    Question.find();
+    Answers.find();
+    League.find();
 });
 
-DB_Router.post("/theme", function (req, res, next) {
+DB_Router.post("/add/theme", function (req, res, next) {
     insertModels.insertTheme(req, res);
 });
 
-DB_Router.post("/difficulty", function (req, res, next) {
+DB_Router.post("/add/difficulty", function (req, res, next) {
     insertModels.insertDifficulty(req, res);
+});
+
+DB_Router.post("/add/question", function (req, res, next) {
+    insertModels.insertQuestion(req, res);
+});
+
+DB_Router.post("/add/answer", function (req, res, next) {
+    insertModels.insertAnswer(req, res);
+});
+
+DB_Router.post("/add/league", function (req, res, next) {
+    insertModels.insertLeague(req, res);
 });
 
 module.exports = DB_Router;
