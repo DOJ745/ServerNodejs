@@ -26,12 +26,12 @@ exports.insertTheme = function(req, res) {
     }
     Theme(theme).save(function (err) {
         if(err){
-            res.send({isInserted: 1});
+            res.send({isInserted: 1, error: err});
             return console.log(err);
         }
         else {
             logger.info("Theme successfully inserted!");
-            res.send({isInserted: 0});
+            res.send({isInserted: 0, error: "none"});
         }
     });
 }
@@ -46,12 +46,12 @@ exports.insertDifficulty = function(req, res) {
     }
     Difficulty(difficulty).save(function (err) {
         if(err){
-            res.send({isInserted: 1});
+            res.send({isInserted: 1, error: err});
             return console.log(err);
         }
         else {
             logger.info("Difficulty successfully inserted!");
-            res.send({isInserted: 0});
+            res.send({isInserted: 0, error: "none"});
         }
     });
 }
@@ -67,12 +67,12 @@ exports.insertLeague = function(req, res) {
     }
     League(league).save(function (err) {
         if(err){
-            res.send({isInserted: 1});
+            res.send({isInserted: 1, error: err});
             return console.log(err);
         }
         else {
             logger.info("League successfully inserted!");
-            res.send({isInserted: 0});
+            res.send({isInserted: 0, error: "none"});
         }
     });
 }
@@ -93,12 +93,12 @@ exports.insertQuestion = function (req, res) {
     }
     Question(question).save(function(err){
         if(err){
-            res.send({isInserted: 1});
+            res.send({isInserted: 1, error: err});
             return console.log(err);
         }
         else {
             logger.info("Question successfully inserted!");
-            res.send({isInserted: 0});
+            res.send({isInserted: 0, error: "none"});
         }
     });
 }
@@ -113,12 +113,12 @@ exports.insertAnswer = function (req, res) {
     }
     Answers(answer).save(function(err){
         if(err){
-            res.send({isInserted: 1});
+            res.send({isInserted: 1, error: err});
             return console.log(err);
         }
         else {
             logger.info("Answer successfully inserted!");
-            res.send({isInserted: 0});
+            res.send({isInserted: 0, error: "none"});
         }
     });
 }
