@@ -82,13 +82,15 @@ exports.insertQuestion = function (req, res) {
         req.query.theme_id != null &&
         req.query.difficulty_id != null &&
         req.query.text != null &&
-        req.query.image != null ){
+        req.query.image != null &&
+        req.query.cost != null ){
 
         var question = {
             theme_id: req.query.theme_id,
             difficulty_id: req.query.difficulty_id,
             text: req.query.text,
-            image: req.query.image
+            image: req.query.image,
+            cost: req.query.cost
         };
     }
     Question(question).save(function(err){

@@ -27,6 +27,11 @@ const Question = new Schema({
     image: {
         type: String,
         required: true
+    },
+    cost: {
+        type: Number,
+        required: true,
+        default: 30
     }
 });
 
