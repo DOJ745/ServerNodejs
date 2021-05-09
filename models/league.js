@@ -24,5 +24,5 @@ const League = new Schema({
     }
 
 });
-League.plugin(autoIncrement.plugin, 'Difficulty');
+League.plugin(autoIncrement.plugin, 'League');
 module.exports = mongoose.model('League', League);
