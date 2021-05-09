@@ -30,4 +30,5 @@ const Question = new Schema({
     }
 });
 
+Question.plugin(autoIncrement.plugin, 'Question');
 module.exports = mongoose.model('Question', Question);

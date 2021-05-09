@@ -26,4 +26,5 @@ const Answer = new Schema({
 
 });
 
+Answer.plugin(autoIncrement.plugin, 'Answers');
 module.exports = mongoose.model('Answers', Answer);
