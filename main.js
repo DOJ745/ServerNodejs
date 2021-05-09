@@ -99,12 +99,6 @@ app.use(express.static(__dirname + "/pages"));
 
 app.use(body_parser.urlencoded({ extended: false }));
 app.use(body_parser.json());
-
-/*
-app.use(expressSession({secret: 'mySecretKey'}));
-app.use(passport.initialize());
-app.use(passport.session());*/
-
 // ----- Handle CORS requests -----
 /*
 app.use((req, res, next) => {
