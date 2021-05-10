@@ -72,45 +72,111 @@ DB_Router.get("/data", function(req, res, next) {
     });
 });
 
-DB_Router.post("/add/theme", function (req, res, next) {
+DB_Router.post("/add/theme", function (
+    req,
+    res,
+    next) {
     insertMethods.insertTheme(req, res);
 });
 
-DB_Router.post("/add/difficulty", function (req, res, next) {
+DB_Router.post("/add/difficulty", function (
+    req,
+    res,
+    next) {
     insertMethods.insertDifficulty(req, res);
 });
 
-DB_Router.post("/add/question", function (req, res, next) {
+DB_Router.post("/add/question", function (
+    req,
+    res,
+    next) {
     insertMethods.insertQuestion(req, res);
 });
 
-DB_Router.post("/add/answer", function (req, res, next) {
+DB_Router.post("/add/answer", function (
+    req,
+    res,
+    next) {
     insertMethods.insertAnswer(req, res);
 });
 
-DB_Router.post("/add/league", function (req, res, next) {
+DB_Router.post("/add/league", function (
+    req,
+    res,
+    next) {
     insertMethods.insertLeague(req, res);
 });
 
 
-DB_Router.post("/delete/theme", function (req, res, next) {
+DB_Router.post("/delete/theme", function (
+    req,
+    res,
+    next) {
     deleteMethods.deleteTheme(req, res);
 });
 
-DB_Router.post("/delete/question", function (req, res, next) {
+DB_Router.post("/delete/question", function (
+    req,
+    res,
+    next) {
     deleteMethods.deleteQuestion(req, res);
 });
 
-DB_Router.post("/delete/answer", function (req, res, next) {
+DB_Router.post("/delete/answer", function (
+    req,
+    res,
+    next) {
     deleteMethods.deleteAnswer(req, res);
 });
 
-DB_Router.post("/delete/difficulty", function (req, res, next) {
+DB_Router.post("/delete/difficulty", function (
+    req,
+    res,
+    next) {
     deleteMethods.deleteDifficulty(req, res);
 });
 
-DB_Router.post("/delete/league", function (req, res, next) {
+DB_Router.post("/delete/league", function (
+    req,
+    res,
+    next) {
     deleteMethods.deleteLeague(req, res);
+});
+
+
+DB_Router.post("/update/theme", function (
+    req,
+    res,
+    next) {
+    updateMethods.updateTheme(req, res);
+});
+
+DB_Router.post("/update/question", function (
+    req,
+    res,
+    next) {
+    updateMethods.updateQuestion(req, res);
+});
+
+DB_Router.post("/update/answer", function (
+    req,
+    res,
+    next) {
+    updateMethods.updateAnswer(req, res);
+});
+
+DB_Router.post("/update/difficulty", function (
+    req,
+    res,
+    next) {
+    updateMethods.updateDifficulty(req, res);
+});
+
+DB_Router.post("/update/league", function (
+    req,
+    res,
+    next) {
+    updateMethods.updateLeague(req, res);
 });
 
 
