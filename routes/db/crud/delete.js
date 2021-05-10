@@ -31,6 +31,12 @@ exports.deleteTheme = function(req, res) {
         }
         else {
             logger.info("Theme successfully deleted!");
+            Question.deleteMany({theme_id: id}, function (err) {
+                if(err){ return console.log(err); }
+                else {
+                    logger.info("Cascade deleted questions with same theme id");
+                }
+            });
             res.send({isDeleted: 0, error: "none", object: delObj});
         }
     });
@@ -63,7 +69,7 @@ exports.deleteLeague = function(req, res) {
         }
         else {
             logger.info("League successfully deleted!");
-            res.send({isInserted: 0, error: "none", object: delObj});
+            res.send({isDeleted: 0, error: "none", object: delObj});
         }
     });
 }
@@ -79,6 +85,12 @@ exports.deleteQuestion = function (req, res) {
         }
         else {
             logger.info("Question successfully deleted!");
+            Answers.deleteMany({question_id: id}, function (err) {
+                if(err){ return console.log(err); }
+                else {
+                    logger.info("Cascade deleted answers with same question id");
+                }
+            });
             res.send({isDeleted: 0, error: "none", object: delObj});
         }
     });
