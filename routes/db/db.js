@@ -10,6 +10,7 @@ const League = require('../../models/league');
 const insertMethods = require('./crud/insert');
 const deleteMethods = require('./crud/delete');
 const updateMethods = require('./crud/update');
+const userApi = require('../../api/user_api');
 
 const pino = require('pino');
 const expressPino = require('express-pino-logger');
@@ -143,6 +144,13 @@ DB_Router.post("/delete/league", function (
     deleteMethods.deleteLeague(req, res);
 });
 
+DB_Router.post("/delete/user", function (
+    req,
+    res,
+    next) {
+    userApi.deleteUser(req.query.login, res);
+});
+
 
 DB_Router.post("/update/theme", function (
     req,
@@ -177,6 +185,13 @@ DB_Router.post("/update/league", function (
     res,
     next) {
     updateMethods.updateLeague(req, res);
+});
+
+DB_Router.post("/update/user", function (
+    req,
+    res,
+    next) {
+    userApi.updateUser(req.query.login, req.query.score, res);
 });
 
 
