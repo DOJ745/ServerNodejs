@@ -13,8 +13,6 @@ const path = require('path');
 const config = require('./config/config');
 
     // ----- Lib for MongoDB -----
-const mongoDB = require('mongodb');
-const MongoClient = require("mongodb").MongoClient;
 const mongoose = require('mongoose');
 
     // ----- Authorization -----
@@ -99,27 +97,6 @@ app.use(express.static(__dirname + "/pages"));
 
 app.use(body_parser.urlencoded({ extended: false }));
 app.use(body_parser.json());
-// ----- Handle CORS requests -----
-/*
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    if (req.method === 'OPTIONS') {
-        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-        res.header('Access-Control-Request-Method', 'GET, POST, PUT, DELETE');
-    }
-    next();
-});
-
-// ----- Error handling -----
-app.use((req, res, next) => {
-    next(createError(404));
-});
-
-app.use((err, req, res, next) => {
-    res.status(err.status).json({
-        message: err.message
-    });
-});*/
 
 app.get("/", function(request, response) {
     response.sendFile(__dirname + '/pages/index.html', createError(404, "Page not found!"));

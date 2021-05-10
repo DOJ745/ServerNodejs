@@ -7,7 +7,9 @@ const Question = require('../../models/question');
 const Difficulty = require('../../models/difficulty');
 const League = require('../../models/league');
 
-const insertModels = require('./crud/insert');
+const insertMethods = require('./crud/insert');
+const deleteMethods = require('./crud/delete');
+const updateMethods = require('./crud/update');
 
 const pino = require('pino');
 const expressPino = require('express-pino-logger');
@@ -71,23 +73,44 @@ DB_Router.get("/data", function(req, res, next) {
 });
 
 DB_Router.post("/add/theme", function (req, res, next) {
-    insertModels.insertTheme(req, res);
+    insertMethods.insertTheme(req, res);
 });
 
 DB_Router.post("/add/difficulty", function (req, res, next) {
-    insertModels.insertDifficulty(req, res);
+    insertMethods.insertDifficulty(req, res);
 });
 
 DB_Router.post("/add/question", function (req, res, next) {
-    insertModels.insertQuestion(req, res);
+    insertMethods.insertQuestion(req, res);
 });
 
 DB_Router.post("/add/answer", function (req, res, next) {
-    insertModels.insertAnswer(req, res);
+    insertMethods.insertAnswer(req, res);
 });
 
 DB_Router.post("/add/league", function (req, res, next) {
-    insertModels.insertLeague(req, res);
+    insertMethods.insertLeague(req, res);
+});
+
+
+DB_Router.post("/delete/theme", function (req, res, next) {
+    deleteMethods.deleteTheme(req, res);
+});
+
+DB_Router.post("/delete/question", function (req, res, next) {
+    deleteMethods.deleteQuestion(req, res);
+});
+
+DB_Router.post("/delete/answer", function (req, res, next) {
+    deleteMethods.deleteAnswer(req, res);
+});
+
+DB_Router.post("/delete/difficulty", function (req, res, next) {
+    deleteMethods.deleteDifficulty(req, res);
+});
+
+DB_Router.post("/delete/league", function (req, res, next) {
+    deleteMethods.deleteLeague(req, res);
 });
 
 module.exports = DB_Router;
