@@ -106,7 +106,10 @@ exports.insertQuestion = function (req, res) {
 }
 
 exports.insertAnswer = function (req, res) {
-    if(req.query.question_id != null && req.query.text != null && req.query.trueness != null ){
+    if(
+        req.query.question_id != null &&
+        req.query.text != null &&
+        req.query.trueness != null ) {
         var answer = {
             question_id: req.query.question_id,
             text: req.query.text,

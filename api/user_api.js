@@ -48,6 +48,9 @@ exports.logoutUser = function (id) {
     })
 }
 
+//exports.deleteUser
+//exports.updateUser
+
 function hash(text) {
     return crypto.createHash('sha1').update(text).digest('base64');
 }
