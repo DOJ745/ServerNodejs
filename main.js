@@ -110,21 +110,6 @@ app.use("/contactTest", function(request, response) {
     });
 });*/
 
-app.use("/template", function(request, response) {
-
-    /*response.render("contact", {
-        title: "Мои контакты",
-        emailsVisible: true,
-        emails: ["gavgav@mycorp.com", "mioaw@mycorp.com"],
-        phone: "+1234567890"
-    });*/
-    response.render("template",
-        {
-            title: "TEST PUG",
-
-        });
-});
-
 app.get("/", function(request, response) {
     response.sendFile(__dirname + '/pages/index.html', createError(404, "Page not found!"));
     logger.info("[Status code : " + request.baseUrl + "] - " + response.statusCode + "\n");

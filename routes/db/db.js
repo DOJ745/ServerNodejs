@@ -10,6 +10,7 @@ const League = require('../../models/league');
 const insertMethods = require('./crud/insert');
 const deleteMethods = require('./crud/delete');
 const updateMethods = require('./crud/update');
+const getMethods = require('./crud/get');
 const userApi = require('../../api/user_api');
 
 const pino = require('pino');
@@ -30,6 +31,7 @@ app.use(expressLogger);
 DB_Router.get("/data", function(req, res, next) {
 
     var db_doc = {};
+
     Theme.find({}, function (err, themes){
         if(err){
             logger.error("Error with finding themes!" + err);
@@ -194,6 +196,11 @@ DB_Router.post("/update/user", function (
     userApi.updateUser(req.query.login, req.query.score, res);
 });
 
-
+DB_Router.get("/get/themes", function (
+    req,
+    res,
+    next) {
+    getMethods.getThemes(req, res);
+})
 
 module.exports = DB_Router;

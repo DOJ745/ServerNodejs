@@ -20,16 +20,15 @@ const Question = require('../../../models/question');
 const Difficulty = require('../../../models/difficulty');
 const League = require('../../../models/league');
 
-exports.getThemes = function() {
-    var themeList = {}
-    Theme.find({},function (err, doc) {
-        if(err) {
-            return console.log(err);
+
+exports.getThemes = function(req, res) {
+    Theme.find({}, function(err, employeeResult) {
+        if (err) { res.send(err); }
+        else if (employeeResult.length) {
+            res.render('template', {
+                'list': employeeResult,
+            });
         }
-        else {
-            logger.info("Theme list:\n" + doc);
-            themeList.themes = doc;
-        }
+        else { res.send('No documents found'); }
     });
-    return themeList;
 }

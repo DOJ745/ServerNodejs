@@ -8,4 +8,6 @@ nav.menu
             li
                 a(href= "/" + value + ".html")= index
 
-p
+ul
+    each elem in list
+        li= elem.name + " - " + elem._id
