@@ -215,6 +215,58 @@ DB_Router.get("/themes", function (
 
     res.render("themes", {title: "Themes"});
 
-})
+});
+
+DB_Router.get("/difficulties", function (
+    req,
+    res) {
+
+    res.render("themes", {title: "Themes"});
+
+});
+
+
+DB_Router.get("/questions", function (
+    req,
+    res) {
+
+    res.render("themes", {title: "Themes"});
+
+});
+
+
+DB_Router.get("/answers", function (
+    req,
+    res) {
+
+    res.render("themes", {title: "Themes"});
+
+});
+
+
+DB_Router.get("/leagues", function (
+    req,
+    res) {
+
+    res.render("themes", {title: "Themes"});
+
+});
+
+DB_Router.get("/logs", function (
+    req,
+    res) {
+
+    res.render("themes", {title: "Themes"});
+
+});
+
+DB_Router.get("/users", function (
+    req,
+    res) {
+
+    res.render("themes", {title: "Themes"});
+
+});
+
 
 module.exports = DB_Router;
