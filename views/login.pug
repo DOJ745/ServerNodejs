@@ -1,22 +1,33 @@
 extends basic_layout
 
 block content
+
+    div.container.listing-reg
     h2 Admin, please, introduce yourself
-    form(action="./testPOST" method="POST")
+
+    -data = data || {}
+
+      form(action="./db" method="GET" class="form-registration")
         label(for="login") Login:
         input(
-            type="text"
-            id="login"
-            name="login"
+          type="text"
+          id="login"
+          name="login"
+          class="form-control"
+          value=data.login
         )
-        br
-        br
+
         label(for="password") Password:
         input(
-            type="password"
-            id="password"
-            name="password"
+          type="password"
+          id="password"
+          name="password"
+          class="form-control"
+          value=data.password
         )
-        br
-        br
-        input(type="submit" value="Let me in")
+
+        input(
+          type="submit"
+          value="Let me in"
+          class="btn btn-lg btn-primary btn-block"
+        )
