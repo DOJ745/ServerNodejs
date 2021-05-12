@@ -96,22 +96,22 @@ app.use("/db", DB_ROUTES);
 
 app.use(express.static(__dirname + "/pages"));
 
-app.use(body_parser.urlencoded({ extended: false })); // was true
+app.use(body_parser.urlencoded({ extended: true })); // was false
 app.use(body_parser.json());
 
 
-app.get("/", function(
+app.get("/info", function(
     request,
     response) {
     response.sendFile(__dirname + '/pages/index.html', createError(404, "Page not found!"));
     logger.info("[Status code : " + request.baseUrl + "] - " + response.statusCode + "\n");
 });
 
-app.get("/index", function (
+app.get("/login", function (
     req,
     res) {
 
-    res.render("index", {title: "Test Register form"});
+    res.render("login", {title: "Test Register form"});
 });
 
 app.post("/testPOST",function (
@@ -119,14 +119,22 @@ app.post("/testPOST",function (
     res) {
 
     logger.info("*** FROM DATA: " + req.body);
-    logger.info("*** FROM DATA: " + req.body.name + " --- " + req.body.email);
-    res.send({
-        "test": "ok",
-    });
+    logger.info("*** FROM DATA: " + req.body.login + " --- " + req.body.password);
+
+    if(req.body.login === "admin" && req.body.password === "thebest"){
+        req.session.user = {id: 42, login: req.body.login}
+        logger.debug("*** Welcome, admin! ***");
+    }
+    else {
+        res.render("non_authorized", {title: "NOPE"});
+    }
+
+    //res.send({"test": "ok"});
 });
 
 app.listen(config.app.port, function () {
-    logger.info('Server listening on port: ' + config.app.port);
+    logger.info('Server listening on port: ' + config.app.port +
+        "\nAddress: http://localhost:8000/");
 });
 
 module.exports = app;

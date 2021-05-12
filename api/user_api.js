@@ -1,12 +1,8 @@
 const crypto = require('crypto');
 const User = require('../models/user');
-
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-
 // User API
-const sessionScheme = new Schema({_id: String});
-const Session = mongoose.model('Session', sessionScheme);
+
+const Session = require('../models/session');
 
 exports.createUser = function(reqLogin, reqPassword) {
     const user = {
