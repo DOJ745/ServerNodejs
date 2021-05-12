@@ -193,22 +193,19 @@ DB_Router.get("/get/difficulties", function (
 
 DB_Router.get("/get/leagues", function (
     req,
-    res,
-    next) {
+    res) {
     getMethods.getLeagues(req, res);
 });
 
 DB_Router.get("/get/questions", function (
     req,
-    res,
-    next) {
+    res) {
     getMethods.getQuestions(req, res);
 });
 
 DB_Router.get("/get/answers", function (
     req,
-    res,
-    next) {
+    res) {
     getMethods.getAnswers(req, res);
 });
 
