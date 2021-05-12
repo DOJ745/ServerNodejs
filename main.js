@@ -95,6 +95,7 @@ app.use("/logout", Logout);
 app.use("/db", DB_ROUTES);
 
 app.use(express.static(__dirname + "/pages"));
+app.use(express.static(__dirname + "/public")); // was 'public'
 
 app.use(body_parser.urlencoded({ extended: true })); // was false
 app.use(body_parser.json());
@@ -114,7 +115,7 @@ app.get("/login", function (
     res.render("login", {title: "Test Register form"});
 });
 
-app.post("/testPOST",function (
+app.get("/db",function (
     req,
     res) {
 
@@ -124,6 +125,7 @@ app.post("/testPOST",function (
     if(req.body.login === "admin" && req.body.password === "thebest"){
         req.session.user = {id: 42, login: req.body.login}
         logger.debug("*** Welcome, admin! ***");
+        res.render()
     }
     else {
         res.render("non_authorized", {title: "NOPE"});
