@@ -22,13 +22,61 @@ const League = require('../../../models/league');
 
 
 exports.getThemes = function(req, res) {
-    Theme.find({}, function(err, employeeResult) {
+    Theme.find({}, function(err, doc) {
         if (err) { res.send(err); }
-        else if (employeeResult.length) {
+        else if (doc.length) {
             res.render('template', {
-                'list': employeeResult,
+                'list': doc,
             });
         }
-        else { res.send('No documents found'); }
+        else { res.send('No themes found'); }
+    });
+}
+
+exports.getDifficulties = function(req, res) {
+    Difficulty.find({}, function(err, doc) {
+        if (err) { res.send(err); }
+        else if (doc.length) {
+            res.render('template', {
+                'list': doc,
+            });
+        }
+        else { res.send('No difficulties found'); }
+    });
+}
+
+exports.getLeagues = function(req, res) {
+    League.find({}, function(err, doc) {
+        if (err) { res.send(err); }
+        else if (doc.length) {
+            res.render('template', {
+                'list': doc,
+            });
+        }
+        else { res.send('No leagues found'); }
+    });
+}
+
+exports.getQuestions = function(req, res) {
+    Question.find({}, function(err, doc) {
+        if (err) { res.send(err); }
+        else if (doc.length) {
+            res.render('template', {
+                'list': doc,
+            });
+        }
+        else { res.send('No questions found'); }
+    });
+}
+
+exports.getAnswers = function(req, res) {
+    Answers.find({}, function(err, doc) {
+        if (err) { res.send(err); }
+        else if (doc.length) {
+            res.render('template', {
+                'list': doc,
+            });
+        }
+        else { res.send('No answers found'); }
     });
 }

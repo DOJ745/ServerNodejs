@@ -77,130 +77,139 @@ DB_Router.get("/data", function(req, res, next) {
 
 DB_Router.post("/add/theme", function (
     req,
-    res,
-    next) {
+    res) {
     insertMethods.insertTheme(req, res);
 });
 
 DB_Router.post("/add/difficulty", function (
     req,
-    res,
-    next) {
+    res) {
     insertMethods.insertDifficulty(req, res);
 });
 
 DB_Router.post("/add/question", function (
     req,
-    res,
-    next) {
+    res) {
     insertMethods.insertQuestion(req, res);
 });
 
 DB_Router.post("/add/answer", function (
     req,
-    res,
-    next) {
+    res) {
     insertMethods.insertAnswer(req, res);
 });
 
 DB_Router.post("/add/league", function (
     req,
-    res,
-    next) {
+    res) {
     insertMethods.insertLeague(req, res);
 });
 
 
 DB_Router.post("/delete/theme", function (
     req,
-    res,
-    next) {
+    res) {
     deleteMethods.deleteTheme(req, res);
 });
 
 DB_Router.post("/delete/question", function (
     req,
-    res,
-    next) {
+    res) {
     deleteMethods.deleteQuestion(req, res);
 });
 
 DB_Router.post("/delete/answer", function (
     req,
-    res,
-    next) {
+    res) {
     deleteMethods.deleteAnswer(req, res);
 });
 
 DB_Router.post("/delete/difficulty", function (
     req,
-    res,
-    next) {
+    res) {
     deleteMethods.deleteDifficulty(req, res);
 });
 
 DB_Router.post("/delete/league", function (
     req,
-    res,
-    next) {
+    res) {
     deleteMethods.deleteLeague(req, res);
 });
 
 DB_Router.post("/delete/user", function (
     req,
-    res,
-    next) {
+    res) {
     userApi.deleteUser(req.query.login, res);
 });
 
 
 DB_Router.post("/update/theme", function (
     req,
-    res,
-    next) {
+    res) {
     updateMethods.updateTheme(req, res);
 });
 
 DB_Router.post("/update/question", function (
     req,
-    res,
-    next) {
+    res) {
     updateMethods.updateQuestion(req, res);
 });
 
 DB_Router.post("/update/answer", function (
     req,
-    res,
-    next) {
+    res) {
     updateMethods.updateAnswer(req, res);
 });
 
 DB_Router.post("/update/difficulty", function (
     req,
-    res,
-    next) {
+    res) {
     updateMethods.updateDifficulty(req, res);
 });
 
 DB_Router.post("/update/league", function (
     req,
-    res,
-    next) {
+    res) {
     updateMethods.updateLeague(req, res);
 });
 
 DB_Router.post("/update/user", function (
     req,
-    res,
-    next) {
+    res) {
     userApi.updateUser(req.query.login, req.query.score, res);
 });
 
 DB_Router.get("/get/themes", function (
     req,
+    res) {
+    getMethods.getThemes(req, res);
+});
+
+DB_Router.get("/get/difficulties", function (
+    req,
+    res) {
+    getMethods.getDifficulties(req, res);
+});
+
+DB_Router.get("/get/leagues", function (
+    req,
     res,
     next) {
-    getMethods.getThemes(req, res);
-})
+    getMethods.getLeagues(req, res);
+});
+
+DB_Router.get("/get/questions", function (
+    req,
+    res,
+    next) {
+    getMethods.getQuestions(req, res);
+});
+
+DB_Router.get("/get/answers", function (
+    req,
+    res,
+    next) {
+    getMethods.getAnswers(req, res);
+});
 
 module.exports = DB_Router;
