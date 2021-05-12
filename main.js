@@ -99,16 +99,6 @@ app.use(express.static(__dirname + "/pages"));
 app.use(body_parser.urlencoded({ extended: false }));
 app.use(body_parser.json());
 
-/*
-app.use("/contactTest", function(request, response) {
-
-    response.render("contact", {
-        title: "Мои контакты",
-        emailsVisible: true,
-        emails: ["gavgav@mycorp.com", "mioaw@mycorp.com"],
-        phone: "+1234567890"
-    });
-});*/
 
 app.get("/", function(request, response) {
     response.sendFile(__dirname + '/pages/index.html', createError(404, "Page not found!"));

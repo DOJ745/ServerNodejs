@@ -1,10 +1,10 @@
 doctype html
-title #{title}
+title TestPage
 head
     meta(charset="UTF-8")
 nav.menu
     ul.menu__list
-        each value, index in {'Главная' : 'home', 'О компании' : 'about', 'Услуги' : 'services', 'Каталог' : 'catalog', 'Контакты' : 'contact'}
+        each value, index in {'Insert' : 'home', 'Update' : 'about', 'Delete' : 'services'}
             li
                 a(href= "/" + value + ".html")= index
 
