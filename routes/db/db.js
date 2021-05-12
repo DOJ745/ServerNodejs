@@ -209,4 +209,12 @@ DB_Router.get("/get/answers", function (
     getMethods.getAnswers(req, res);
 });
 
+DB_Router.get("/themes", function (
+    req,
+    res) {
+
+    res.render("themes", {title: "Themes"});
+
+})
+
 module.exports = DB_Router;

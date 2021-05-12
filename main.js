@@ -108,6 +108,13 @@ app.get("/info", function(
     logger.info("[Status code : " + request.baseUrl + "] - " + response.statusCode + "\n");
 });
 
+app.get("/test_themes", function (
+    req,
+    res) {
+
+    res.render("themes", {title: "Test themes"});
+});
+
 app.get("/login", function (
     req,
     res) {
@@ -115,11 +122,17 @@ app.get("/login", function (
     res.render("login", {title: "Login"});
 });
 
-app.post("/db",function (
+app.get("/db",function (
     req,
     res) {
 
-    logger.info("*** FROM DATA: " + req.body.login + " --- " + req.body.password);
+    res.render("db",
+        {
+            title: "MainPage",
+            adminLogin: "test",
+            adminPassword: "test"
+        });
+    /*logger.info("*** FROM DATA: " + req.body.login + " --- " + req.body.password);
 
     if(req.body.login === "admin" && req.body.password === "thebest"){
         req.session.user = {id: 42, login: req.body.login}
@@ -133,7 +146,7 @@ app.post("/db",function (
     }
     else {
         res.render("non_authorized", {title: "NOPE"});
-    }
+    }*/
 });
 
 app.listen(config.app.port, function () {
