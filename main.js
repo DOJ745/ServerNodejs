@@ -112,26 +112,28 @@ app.get("/login", function (
     req,
     res) {
 
-    res.render("login", {title: "Test Register form"});
+    res.render("login", {title: "Login"});
 });
 
-app.get("/db",function (
+app.post("/db",function (
     req,
     res) {
 
-    logger.info("*** FROM DATA: " + req.body);
     logger.info("*** FROM DATA: " + req.body.login + " --- " + req.body.password);
 
     if(req.body.login === "admin" && req.body.password === "thebest"){
         req.session.user = {id: 42, login: req.body.login}
         logger.debug("*** Welcome, admin! ***");
-        res.render()
+        res.render("db",
+            {
+                title: "MainPage",
+                adminLogin: req.body.login,
+                adminPassword: req.body.password
+            });
     }
     else {
         res.render("non_authorized", {title: "NOPE"});
     }
-
-    //res.send({"test": "ok"});
 });
 
 app.listen(config.app.port, function () {

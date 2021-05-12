@@ -5,16 +5,15 @@ block content
     div.container.listing-reg
     h2 Admin, please, introduce yourself
 
-    -data = data || {}
+    <!-- -data = data || {} -->
 
-      form(action="./db" method="GET" class="form-registration")
+      form(action="./db" method="POST" class="form-registration")
         label(for="login") Login:
         input(
           type="text"
           id="login"
           name="login"
           class="form-control"
-          value=data.login
         )
 
         label(for="password") Password:
@@ -23,7 +22,6 @@ block content
           id="password"
           name="password"
           class="form-control"
-          value=data.password
         )
 
         input(
