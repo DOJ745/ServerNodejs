@@ -1,4 +1,50 @@
-doctype html
-title Questions page
-head
-    meta(charset="UTF-8")
+extends basic_layout
+
+block content
+
+    .card-deck
+        each _question in list
+            .card
+                img.card-img-top(src= _question.image alt='IMG')
+                .card-body
+                    h5.card-title Question params
+                    p.card-text= "ID: " + _question._id
+                    p.card-text= "Theme ID: " + _question.theme_id
+                    p.card-text= "Difficulty ID: " + _question.difficulty_id
+                    p.card-text= "Text: " + _question.text
+                    p.card-text= "Cost: " + _question.cost
+                    a.btn.btn-primary(href='/db/update/question') Update
+                    a.btn.btn-danger(href='/db/delete/question') Delete
+
+
+
+        .card
+            img.card-img-top(src='http://localhost:8000/images/cat.jpg' alt='IMG')
+            .card-body
+                h5.card-title Card title
+                p.card-text
+                    | This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.
+                p.card-text
+                    small.text-muted Last updated 3 mins ago
+                a.btn.btn-primary(href='#') Go somewhere
+
+        .card
+            img.card-img-top(src='http://localhost:8000/images/cat.jpg' alt='IMG')
+            .card-body
+                h5.card-title Card title
+                p.card-text
+                    | This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.
+                p.card-text
+                    small.text-muted Last updated 3 mins ago
+                a.btn.btn-primary(href='#') Update
+                a.btn.btn-danger(href='#') Delete
+
+        .card
+            img.card-img-top(src='http://localhost:8000/images/cat.jpg' alt='IMG')
+            .card-body
+                h5.card-title Card title
+                p.card-text
+                    | This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.
+                p.card-text
+                    small.text-muted Last updated 3 mins ago
+                a.btn.btn-primary(href='#') Go somewhere

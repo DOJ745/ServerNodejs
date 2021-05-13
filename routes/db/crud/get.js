@@ -13,7 +13,7 @@ const expressLogger = expressPino({logger});
 const app = express();
 app.use(expressLogger);
 
-
+const User = require('../../../models/user');
 const Theme = require('../../../models/theme');
 const Answers = require('../../../models/answers');
 const Question = require('../../../models/question');
@@ -25,9 +25,7 @@ exports.getThemes = function(req, res) {
     Theme.find({}, function(err, doc) {
         if (err) { res.send(err); }
         else if (doc.length) {
-            res.render('template', {
-                'list': doc,
-            });
+            res.render( 'themes', {list: doc} );
         }
         else { res.send('No themes found'); }
     });
@@ -37,9 +35,7 @@ exports.getDifficulties = function(req, res) {
     Difficulty.find({}, function(err, doc) {
         if (err) { res.send(err); }
         else if (doc.length) {
-            res.render('template', {
-                'list': doc,
-            });
+            res.render( 'difficulties', {list: doc} );
         }
         else { res.send('No difficulties found'); }
     });
@@ -49,9 +45,7 @@ exports.getLeagues = function(req, res) {
     League.find({}, function(err, doc) {
         if (err) { res.send(err); }
         else if (doc.length) {
-            res.render('template', {
-                'list': doc,
-            });
+            res.render( 'leagues', {list: doc} );
         }
         else { res.send('No leagues found'); }
     });
@@ -61,9 +55,7 @@ exports.getQuestions = function(req, res) {
     Question.find({}, function(err, doc) {
         if (err) { res.send(err); }
         else if (doc.length) {
-            res.render('template', {
-                'list': doc,
-            });
+            res.render( 'questions', {list: doc} );
         }
         else { res.send('No questions found'); }
     });
@@ -73,10 +65,18 @@ exports.getAnswers = function(req, res) {
     Answers.find({}, function(err, doc) {
         if (err) { res.send(err); }
         else if (doc.length) {
-            res.render('template', {
-                'list': doc,
-            });
+            res.render( 'answers', {list: doc} );
         }
         else { res.send('No answers found'); }
+    });
+}
+
+exports.getUsers = function(req, res){
+    User.find({}, function(err, doc) {
+        if (err) { res.send(err); }
+        else if (doc.length) {
+            res.render( 'users', {list: doc} );
+        }
+        else { res.send('No users found'); }
     });
 }

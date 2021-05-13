@@ -1,56 +1,14 @@
 extends basic_layout
 
 block content
-    ul
-        each _theme in themeList
-            li= _theme.name
-
 
     .card-deck
-        each _theme in themeList
+        each _theme in list
             .card
-                img.card-img-top(src='http://localhost:8000/images/cat.jpg' alt='IMG')
-                div.card-body
-                    h5.card-title Card title
-                    p.card-text= _theme.name
-                    p.card-text
-                        small.text-muted Last updated 3 mins ago
+                .card-body
+                    h5.card-title Theme params
+                    p.card-text= "ID: " + _theme.id
+                    p.card-text= "Name: " + _theme.name
+                    a.btn.btn-primary(href='/db/update/theme') Update
+                    a.btn.btn-danger(href='/db/delete/theme') Delete
 
-
-        .card
-            img.card-img-top(src='http://localhost:8000/images/cat.jpg' alt='IMG')
-            .card-body
-                h5.card-title Card title
-                p.card-text This card has supporting text below as a natural lead-in to additional content.
-                p.card-text
-                    small.text-muted Last updated 3 mins ago
-        .card
-            img.card-img-top(src='http://localhost:8000/images/cat.jpg' alt='IMG')
-            .card-body
-                h5.card-title Card title
-                p.card-text
-                    | This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.
-                p.card-text
-                    small.text-muted Last updated 3 mins ago
-                a.btn.btn-primary(href='#') Go somewhere
-
-        .card
-            img.card-img-top(src='http://localhost:8000/images/cat.jpg' alt='IMG')
-            .card-body
-                h5.card-title Card title
-                p.card-text
-                    | This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.
-                p.card-text
-                    small.text-muted Last updated 3 mins ago
-                a.btn.btn-primary(href='#') Update
-                a.btn.btn-danger(href='#') Delete
-
-        .card
-            img.card-img-top(src='http://localhost:8000/images/cat.jpg' alt='IMG')
-            .card-body
-                h5.card-title Card title
-                p.card-text
-                    | This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.
-                p.card-text
-                    small.text-muted Last updated 3 mins ago
-                a.btn.btn-primary(href='#') Go somewhere

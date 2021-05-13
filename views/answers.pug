@@ -1,4 +1,15 @@
-doctype html
-title Answers page
-head
-    meta(charset="UTF-8")
+extends basic_layout
+
+block content
+
+    .card-deck
+        each _answer in list
+            .card
+                .card-body
+                    h5.card-title Answer params
+                    p.card-text= "ID: " + _answer.id
+                    p.card-text= "Question ID: " + _answer.question_id
+                    p.card-text= "Text: " + _answer.text
+                    p.card-text= "Trueness: " + _answer.trueness
+                    a.btn.btn-primary(href='/db/update/answer') Update
+                    a.btn.btn-danger(href='/db/delete/answer') Delete

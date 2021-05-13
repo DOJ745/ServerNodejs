@@ -1,4 +1,15 @@
-doctype html
-title Leagues page
-head
-    meta(charset="UTF-8")
+extends basic_layout
+
+block content
+
+    .card-deck
+        each _league in list
+            .card
+                img.card-img-top(src= _league.image alt='IMG')
+                .card-body
+                    h5.card-title League params
+                    p.card-text= "ID: " + _league._id
+                    p.card-text= "Name: " + _league.name
+                    p.card-text= "Rating: " + _league.rating
+                    a.btn.btn-primary(href='/db/update/league') Update
+                    a.btn.btn-danger(href='/db/delete/league') Delete

@@ -1,4 +1,14 @@
-doctype html
-title Difficulties page
-head
-    meta(charset="UTF-8")
+extends basic_layout
+
+block content
+
+    .card-deck
+        each _difficulty in list
+            .card
+                .card-body
+                    h5.card-title Difficulty params
+                    p.card-text= "ID: " + _difficulty._id
+                    p.card-text= "Name: " + _difficulty.name
+                    p.card-text= "Multiplier: " + _difficulty.multiplier
+                    a.btn.btn-primary(href='/db/update/difficulty') Update
+                    a.btn.btn-danger(href='/db/delete/difficulty') Delete

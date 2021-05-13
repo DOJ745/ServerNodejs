@@ -179,47 +179,11 @@ DB_Router.post("/update/user", function (
     userApi.updateUser(req.query.login, req.query.score, res);
 });
 
-DB_Router.get("/get/themes", function (
-    req,
-    res) {
-    getMethods.getThemes(req, res);
-});
-
-DB_Router.get("/get/difficulties", function (
-    req,
-    res) {
-    getMethods.getDifficulties(req, res);
-});
-
-DB_Router.get("/get/leagues", function (
-    req,
-    res) {
-    getMethods.getLeagues(req, res);
-});
-
-DB_Router.get("/get/questions", function (
-    req,
-    res) {
-    getMethods.getQuestions(req, res);
-});
-
-DB_Router.get("/get/answers", function (
-    req,
-    res) {
-    getMethods.getAnswers(req, res);
-});
-
 DB_Router.get("/themes", function (
     req,
     res) {
 
-    res.render("themes", {
-        title: "Themes",
-        themeList: [
-            {name : 1},
-            {name: 2},
-            {name: 3}
-        ]});
+    getMethods.getThemes(req, res);
 
 });
 
@@ -227,7 +191,7 @@ DB_Router.get("/difficulties", function (
     req,
     res) {
 
-    res.render("themes", {title: "Themes"});
+    getMethods.getDifficulties(req, res);
 
 });
 
@@ -236,7 +200,7 @@ DB_Router.get("/questions", function (
     req,
     res) {
 
-    res.render("themes", {title: "Themes"});
+    getMethods.getQuestions(req, res);
 
 });
 
@@ -245,7 +209,7 @@ DB_Router.get("/answers", function (
     req,
     res) {
 
-    res.render("themes", {title: "Themes"});
+    getMethods.getAnswers(req, res);
 
 });
 
@@ -254,7 +218,7 @@ DB_Router.get("/leagues", function (
     req,
     res) {
 
-    res.render("themes", {title: "Themes"});
+    getMethods.getLeagues(req, res);
 
 });
 
