@@ -1,0 +1,15 @@
+extends ../basic_layout
+
+block content
+
+    .card-deck
+        each _user in list
+            .card.text-white.bg-info.mb-3
+                .card-body
+                    h5.card-title User params
+                    p.card-text= "ID: " + _user.id
+                    p.card-text= "Login: " +_user.login
+                    p.card-text= "Password(SHA1): " + _user.password
+                    p.card-text= "Score: " + _user.score
+                    a.btn.btn-primary(href='/db/update/theme') Update
+                    a.btn.btn-danger(href='/db/delete/theme') Delete

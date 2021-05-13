@@ -234,7 +234,7 @@ DB_Router.get("/users", function (
     req,
     res) {
 
-    res.render("themes", {title: "Themes"});
+    getMethods.getUsers(req, res);
 
 });
 

@@ -75,7 +75,7 @@ exports.getUsers = function(req, res){
     User.find({}, function(err, doc) {
         if (err) { res.send(err); }
         else if (doc.length) {
-            res.render( 'users', {list: doc} );
+            res.render( 'auth/users', {list: doc} );
         }
         else { res.send('No users found'); }
     });
