@@ -106,7 +106,7 @@ DB_Router.post("/add/league", function (
 });
 
 
-DB_Router.post("/delete/theme", function (
+DB_Router.get("/delete/theme", function (
     req,
     res) {
     deleteMethods.deleteTheme(req, res);

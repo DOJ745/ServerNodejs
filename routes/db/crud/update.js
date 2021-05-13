@@ -36,7 +36,13 @@ exports.updateTheme = function(req, res) {
         }
         else {
             logger.info("Theme successfully updated!");
-            res.send({isUpdated: 0, error: "none", object: updObj});
+
+            res.render('crud_info', {
+                title: "Theme update status",
+                upd: updObj,
+                backTo: "themes",
+                crud_type: "Update"
+            });
         }
     });
 }
@@ -61,7 +67,13 @@ exports.updateDifficulty = function(req, res) {
         }
         else {
             logger.info("Difficulty successfully updated!");
-            res.send({isUpdated: 0, error: "none", object: updObj});
+
+            res.render('crud_info', {
+                title: "Difficulty update status",
+                upd: updObj,
+                backTo: "difficulties",
+                crud_type: "Update"
+            });
         }
     });
 }
@@ -87,7 +99,13 @@ exports.updateLeague = function(req, res) {
         }
         else {
             logger.info("League successfully updated!");
-            res.send({isUpdated: 0, error: "none", object: updObj});
+
+            res.render('crud_info', {
+                title: "League update status",
+                upd: updObj,
+                backTo: "leagues",
+                crud_type: "Update"
+            });
         }
     });
 }
@@ -125,7 +143,13 @@ exports.updateQuestion = function (req, res) {
         }
         else {
             logger.info("Question successfully updated!");
-            res.send({isUpdated: 0, error: "none", object: updObj});
+
+            res.render('crud_info', {
+                title: "Question update status",
+                upd: updObj,
+                backTo: "questions",
+                crud_type: "Update"
+            });
         }
     });
 }
@@ -157,7 +181,13 @@ exports.updateAnswer = function (req, res) {
         }
         else {
             logger.info("Answer successfully updated!");
-            res.send({isDeleted: 0, error: "none", object: updObj});
+
+            res.render('crud_info', {
+                title: "Answer update status",
+                upd: updObj,
+                backTo: "answers",
+                crud_type: "Update"
+            });
         }
     });
 }

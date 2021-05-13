@@ -1,0 +1,8 @@
+extends basic_layout
+
+block content
+    h2.align-self-center= crud_type + " Object: " + upd
+    a.btn.btn-primary(href='/db/' + backTo)= "Back to " + backTo
+    br
+    br
+    a.btn.btn-primary(href='/db') Back to main page

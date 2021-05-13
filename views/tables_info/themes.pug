@@ -2,6 +2,7 @@ extends ../basic_layout
 
 block content
 
+    a.btn.btn-primary(href='/db') Back to main page
     h1 Themes
     .card-deck
         each _theme in list
@@ -52,7 +53,7 @@ block content
                             button.close(type='button' data-dismiss='modal' aria-label='Close')
                                 span(aria-hidden='true') &times;
                         .modal-body
-                            form(action="/db/delete/theme" method="POST")
+                            form(action="/db/delete/theme" method="GET")
                                 label.col-form-label= "Theme ID: " + _theme.id
                                 br
                                 label.col-form-label Input theme id to delete:
