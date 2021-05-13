@@ -58,7 +58,12 @@ exports.deleteDifficulty = function(req, res) {
         }
         else {
             logger.info("Difficulty successfully deleted!");
-            res.send({isDeleted: 0, error: "none", object: delObj});
+            res.render('crud_info', {
+                title: "Difficulty delete status",
+                upd: delObj,
+                backTo: "difficulties",
+                crud_type: "Delete"
+            });
         }
     });
 }
@@ -74,7 +79,12 @@ exports.deleteLeague = function(req, res) {
         }
         else {
             logger.info("League successfully deleted!");
-            res.send({isDeleted: 0, error: "none", object: delObj});
+            res.render('crud_info', {
+                title: "League delete status",
+                upd: delObj,
+                backTo: "leagues",
+                crud_type: "Delete"
+            });
         }
     });
 }
@@ -96,7 +106,12 @@ exports.deleteQuestion = function (req, res) {
                     logger.info("Cascade deleted answers with same question id");
                 }
             });
-            res.send({isDeleted: 0, error: "none", object: delObj});
+            res.render('crud_info', {
+                title: "Question delete status",
+                upd: delObj,
+                backTo: "questions",
+                crud_type: "Delete"
+            });
         }
     });
 }
@@ -112,7 +127,12 @@ exports.deleteAnswer = function (req, res) {
         }
         else {
             logger.info("Answer successfully deleted!");
-            res.send({isDeleted: 0, error: "none", object: delObj});
+            res.render('crud_info', {
+                title: "Answer delete status",
+                upd: delObj,
+                backTo: "answers",
+                crud_type: "Delete"
+            });
         }
     });
 }

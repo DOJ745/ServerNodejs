@@ -56,7 +56,12 @@ exports.insertDifficulty = function(req, res) {
         }
         else {
             logger.info("Difficulty successfully inserted!");
-            res.send({isInserted: 0, error: "none"});
+            res.render('crud_info', {
+                title: "Difficulty insert status",
+                upd: 0,
+                backTo: "difficulties",
+                crud_type: "Insert"
+            });
         }
     });
 }
@@ -77,7 +82,12 @@ exports.insertLeague = function(req, res) {
         }
         else {
             logger.info("League successfully inserted!");
-            res.send({isInserted: 0, error: "none"});
+            res.render('crud_info', {
+                title: "League insert status",
+                upd: 0,
+                backTo: "leagues",
+                crud_type: "Insert"
+            });
         }
     });
 }
@@ -105,7 +115,12 @@ exports.insertQuestion = function (req, res) {
         }
         else {
             logger.info("Question successfully inserted!");
-            res.send({isInserted: 0, error: "none"});
+            res.render('crud_info', {
+                title: "Question insert status",
+                upd: 0,
+                backTo: "questions",
+                crud_type: "Insert"
+            });
         }
     });
 }
@@ -128,7 +143,12 @@ exports.insertAnswer = function (req, res) {
         }
         else {
             logger.info("Answer successfully inserted!");
-            res.send({isInserted: 0, error: "none"});
+            res.render('crud_info', {
+                title: "Answer insert status",
+                upd: 0,
+                backTo: "answers",
+                crud_type: "Insert"
+            });
         }
     });
 }
