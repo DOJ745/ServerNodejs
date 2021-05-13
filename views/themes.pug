@@ -1,15 +1,22 @@
 extends basic_layout
 
 block content
+    ul
+        each _theme in themeList
+            li= _theme.name
+
+
     .card-deck
-        .card
-            img.card-img-top(src='http://localhost:8000/images/cat.jpg' alt='IMG')
-            .card-body
-                h5.card-title Card title
-                p.card-text
-                    | This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                p.card-text
-                    small.text-muted Last updated 3 mins ago
+        each _theme in themeList
+            .card
+                img.card-img-top(src='http://localhost:8000/images/cat.jpg' alt='IMG')
+                div.card-body
+                    h5.card-title Card title
+                    p.card-text= _theme.name
+                    p.card-text
+                        small.text-muted Last updated 3 mins ago
+
+
         .card
             img.card-img-top(src='http://localhost:8000/images/cat.jpg' alt='IMG')
             .card-body

@@ -213,7 +213,13 @@ DB_Router.get("/themes", function (
     req,
     res) {
 
-    res.render("themes", {title: "Themes"});
+    res.render("themes", {
+        title: "Themes",
+        themeList: [
+            {name : 1},
+            {name: 2},
+            {name: 3}
+        ]});
 
 });
 
