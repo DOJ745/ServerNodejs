@@ -81,25 +81,25 @@ DB_Router.get("/add/theme", function (
     insertMethods.insertTheme(req, res);
 });
 
-DB_Router.post("/add/difficulty", function (
+DB_Router.get("/add/difficulty", function (
     req,
     res) {
     insertMethods.insertDifficulty(req, res);
 });
 
-DB_Router.post("/add/question", function (
+DB_Router.get("/add/question", function (
     req,
     res) {
     insertMethods.insertQuestion(req, res);
 });
 
-DB_Router.post("/add/answer", function (
+DB_Router.get("/add/answer", function (
     req,
     res) {
     insertMethods.insertAnswer(req, res);
 });
 
-DB_Router.post("/add/league", function (
+DB_Router.get("/add/league", function (
     req,
     res) {
     insertMethods.insertLeague(req, res);
@@ -112,31 +112,31 @@ DB_Router.get("/delete/theme", function (
     deleteMethods.deleteTheme(req, res);
 });
 
-DB_Router.post("/delete/question", function (
+DB_Router.get("/delete/question", function (
     req,
     res) {
     deleteMethods.deleteQuestion(req, res);
 });
 
-DB_Router.post("/delete/answer", function (
+DB_Router.get("/delete/answer", function (
     req,
     res) {
     deleteMethods.deleteAnswer(req, res);
 });
 
-DB_Router.post("/delete/difficulty", function (
+DB_Router.get("/delete/difficulty", function (
     req,
     res) {
     deleteMethods.deleteDifficulty(req, res);
 });
 
-DB_Router.post("/delete/league", function (
+DB_Router.get("/delete/league", function (
     req,
     res) {
     deleteMethods.deleteLeague(req, res);
 });
 
-DB_Router.post("/delete/user", function (
+DB_Router.get("/delete/user", function (
     req,
     res) {
     userApi.deleteUser(req.query.login, res);
