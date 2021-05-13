@@ -15,25 +15,25 @@ block content
     br
     include ../modal/modal-insert
     .card-deck
-        each _theme in list
+        each elem in list
             .card.text-white.bg-secondary.mb-3
                 .card-body
                     h5.card-title Theme params
-                    p.card-text= "ID: " + _theme.id
-                    p.card-text= "Name: " + _theme.name
+                    p.card-text= "ID: " + elem.id
+                    p.card-text= "Name: " + elem.name
                     button.btn.btn-primary(
                         type='button'
                         data-toggle='modal'
-                        data-target='#updateModal' + _theme.id) Update
+                        data-target='#updateModal' + elem.id) Update
                     button.btn.btn-danger(
                         type='button'
                         data-toggle='modal'
-                        data-target='#deleteModal' + _theme.id) Delete
+                        data-target='#deleteModal' + elem.id) Delete
             div.modal.fade(
                 tabindex='-1'
                 role='dialog'
                 aria-hidden='true'
-                id='updateModal' + _theme.id)
+                id='updateModal' + elem.id)
                 .modal-dialog(role='document')
                     .modal-content
                         .modal-header
@@ -43,7 +43,7 @@ block content
                         .modal-body
                             form(action="/db/update/theme" method="GET")
                                 label.col-form-label= "Theme ID: "
-                                input.form-control-plaintext(type='text' readonly='' value= _theme.id name="id")
+                                input.form-control-plaintext(type='text' readonly='' value= elem.id name="id")
                                 label.col-form-label Input new name:
                                 input.form-control(type='text' value= "New name" name="name")
                                 .modal-footer
@@ -53,7 +53,7 @@ block content
                 tabindex='-1'
                 role='dialog'
                 aria-hidden='true'
-                id='deleteModal' + _theme.id)
+                id='deleteModal' + elem.id)
                 .modal-dialog(role='document')
                     .modal-content
                         .modal-header
@@ -62,7 +62,7 @@ block content
                                 span(aria-hidden='true') &times;
                         .modal-body
                             form(action="/db/delete/theme" method="GET")
-                                label.col-form-label= "Theme ID: " + _theme.id
+                                label.col-form-label= "Theme ID: " + elem.id
                                 br
                                 label.col-form-label Input theme id to delete:
                                 p.alert-warning You will delete all questions related to this theme!

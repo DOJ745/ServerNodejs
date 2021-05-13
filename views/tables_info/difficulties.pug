@@ -2,14 +2,81 @@ extends ../basic_layout
 
 block content
 
-    h1 Difficulties
+    a.btn.btn-primary(href='/db') Back to main page
+    div.d-flex.justify-content-center
+        div.row-cols-1
+            div.col-4
+                h1 Difficulties
+            div.col-4
+                button.btn.btn-success(
+                    type='button'
+                    data-toggle='modal'
+                    data-target='#addModal') Insert
+    br
+    include ../modal/modal-insert
     .card-deck
-        each _difficulty in list
+        each elem in list
             .card.text-white.bg-secondary.mb-3
                 .card-body
                     h5.card-title Difficulty params
-                    p.card-text= "ID: " + _difficulty._id
-                    p.card-text= "Name: " + _difficulty.name
-                    p.card-text= "Multiplier: " + _difficulty.multiplier
-                    a.btn.btn-primary(href='/db/update/difficulty') Update
-                    a.btn.btn-danger(href='/db/delete/difficulty') Delete
+                    p.card-text= "ID: " + elem.id
+                    p.card-text= "Name: " + elem.name
+                    button.btn.btn-primary(
+                        type='button'
+                        data-toggle='modal'
+                        data-target='#updateModal' + elem.id) Update
+                    button.btn.btn-danger(
+                        type='button'
+                        data-toggle='modal'
+                        data-target='#deleteModal' + elem.id) Delete
+            div.modal.fade(
+                tabindex='-1'
+                role='dialog'
+                aria-hidden='true'
+                id='updateModal' + elem.id)
+                .modal-dialog(role='document')
+                    .modal-content
+                        .modal-header
+                            h5.modal-title Menu
+                            button.close(type='button' data-dismiss='modal' aria-label='Close')
+                                span(aria-hidden='true') &times;
+                        .modal-body
+                            form(action="/db/update/difficulty" method="GET")
+                                label.col-form-label= "Difficulty ID: "
+                                input.form-control-plaintext(type='text' readonly='' value= elem.id name="id")
+                                label.col-form-label Input new difficulty name:
+                                input.form-control(type='text' value= "New name" name="name")
+                                label.col-form-label Input new difficulty multiplier:
+                                input.form-control(
+                                        type='number'
+                                        value= "1.25"
+                                        name="multiplier"
+                                        placeholder="1.25"
+                                        step="0.15" min="1.00" max="3.00")
+                                .modal-footer
+                                    button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+                                    input(type="submit" value="Update" class="btn btn-primary")
+            div.modal.fade(
+                tabindex='-1'
+                role='dialog'
+                aria-hidden='true'
+                id='deleteModal' + elem.id)
+                .modal-dialog(role='document')
+                    .modal-content
+                        .modal-header
+                            h5.modal-title Menu
+                            button.close(type='button' data-dismiss='modal' aria-label='Close')
+                                span(aria-hidden='true') &times;
+                        .modal-body
+                            form(action="/db/delete/difficulty" method="GET")
+                                label.col-form-label= "Difficulty ID: " + elem.id
+                                br
+                                label.col-form-label Input difficulty id to delete:
+                                input.form-control(type='text' name="id")
+                                .modal-footer
+                                    button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+                                    input.btn.btn-danger(type="submit" value="Delete")
+
+
+
+
