@@ -1,0 +1,84 @@
+div.modal.fade(
+    tabindex='-1'
+    role='dialog'
+    aria-hidden='true'
+    id='addModal')
+    .modal-dialog(role='document')
+        .modal-content
+            .modal-header
+                h5.modal-title Menu
+                button.close(type='button' data-dismiss='modal' aria-label='Close')
+                    span(aria-hidden='true') &times;
+            .modal-body
+                if insertTable === "theme"
+                    form(action="/db/add/" + insertTable method="GET")
+                        p.alert-success ID is autoincrement
+                        label.col-form-label Input theme name:
+                        input.form-control(type='text' value= "New name" name="name")
+                        .modal-footer
+                            button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+                            input.btn.btn-success(type="submit" value="Add")
+
+                if insertTable === "difficulty"
+                    form(action="/db/add/" + insertTable method="GET")
+                        p.alert-success ID is autoincrement
+                        label.col-form-label Input difficulty name:
+                        input.form-control(type='text' value= "New name" name="name")
+                        label.col-form-label Input difficulty multiplier:
+                        input.form-control(
+                            type='number'
+                            value= "1.25"
+                            name="multiplier"
+                            placeholder="1.25"
+                            step="0.15" min="1.00" max="3.00")
+                        .modal-footer
+                            button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+                            input.btn.btn-success(type="submit" value="Add")
+
+                if insertTable === "league"
+                    form(action="/db/add/" + insertTable method="GET")
+                        p.alert-success ID is autoincrement
+                        label.col-form-label Input league name:
+                        input.form-control(type='text' value= "New name" name="name")
+                        label.col-form-label Input league image (url):
+                        input.form-control(type='text' value= "http://localhost:8000/images/" name="image")
+                        label.col-form-label Input league score:
+                        input.form-control(type='number' value= "100" name="score")
+                        .modal-footer
+                            button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+                            input.btn.btn-success(type="submit" value="Add")
+
+                if insertTable === "question"
+                    form(action="/db/add/" + insertTable method="GET")
+                        p.alert-success ID is autoincrement
+                        label.col-form-label Input theme ID:
+                        input.form-control(type='number' value= "1" name="theme_id")
+                        label.col-form-label Input difficulty ID:
+                        input.form-control(type='number' value= "1" name="difficulty_id")
+                        label.col-form-label Input text:
+                        input.form-control(type='text' value= "some text" name="text")
+                        label.col-form-label Input question image (url):
+                        input.form-control(type='text' value= "http://localhost:8000/images/" name="image")
+                        label.col-form-label Input cost:
+                        input.form-control(type='number' value= "1" name="cost")
+                        .modal-footer
+                            button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+                            input.btn.btn-success(type="submit" value="Add")
+
+                if insertTable === "answer"
+                    form(action="/db/add/" + insertTable method="GET")
+                        p.alert-success ID is autoincrement
+                        label.col-form-label Input question ID:
+                        input.form-control(type='number' value= "1" name="question_id")
+                        label.col-form-label Input text:
+                        input.form-control(type='text' value= "some text" name="text")
+                        label.col-form-label Input trueness:
+                        input.form-control(
+                            type='number'
+                            value= "1"
+                            placeholder="1"
+                            step="1" min="0" max="1"
+                            name="trueness")
+                        .modal-footer
+                            button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+                            input.btn.btn-success(type="submit" value="Add")

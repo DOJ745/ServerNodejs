@@ -1,7 +1,11 @@
 extends basic_layout
 
 block content
-    h2.align-self-center= crud_type + " Object: " + upd
+
+    if upd === 0 && crud_type === "Insert"
+        h2.align-self-center= crud_type + " Object: " + upd + " --- Success"
+    else
+        h2.align-self-center= crud_type + " Object: " + upd
     a.btn.btn-primary(href='/db/' + backTo)= "Back to " + backTo
     br
     br

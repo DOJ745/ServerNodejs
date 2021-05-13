@@ -25,7 +25,14 @@ exports.getThemes = function(req, res) {
     Theme.find({}, function(err, doc) {
         if (err) { res.send(err); }
         else if (doc.length) {
-            res.render( 'tables_info/themes', {list: doc} );
+            res.render( 'tables_info/themes',
+                {
+                    list: doc,
+                    insertTable: "theme",
+                    updateTable: "theme",
+                    deleteTable: "theme"
+                }
+            );
         }
         else { res.send('No themes found'); }
     });
@@ -35,7 +42,14 @@ exports.getDifficulties = function(req, res) {
     Difficulty.find({}, function(err, doc) {
         if (err) { res.send(err); }
         else if (doc.length) {
-            res.render( 'tables_info/difficulties', {list: doc} );
+            res.render( 'tables_info/difficulties',
+                {
+                    list: doc,
+                    insertTable: "difficulty",
+                    updateTable: "difficulty",
+                    deleteTable: "difficulty"
+                }
+            );
         }
         else { res.send('No difficulties found'); }
     });
@@ -45,7 +59,7 @@ exports.getLeagues = function(req, res) {
     League.find({}, function(err, doc) {
         if (err) { res.send(err); }
         else if (doc.length) {
-            res.render( 'tables_info/leagues', {list: doc} );
+            res.render( 'tables_info/leagues', {list: doc, insertTable: "league"} );
         }
         else { res.send('No leagues found'); }
     });
@@ -55,7 +69,7 @@ exports.getQuestions = function(req, res) {
     Question.find({}, function(err, doc) {
         if (err) { res.send(err); }
         else if (doc.length) {
-            res.render( 'tables_info/questions', {list: doc} );
+            res.render( 'tables_info/questions', {list: doc, insertTable: "question"} );
         }
         else { res.send('No questions found'); }
     });
@@ -65,7 +79,7 @@ exports.getAnswers = function(req, res) {
     Answers.find({}, function(err, doc) {
         if (err) { res.send(err); }
         else if (doc.length) {
-            res.render( 'tables_info/answers', {list: doc} );
+            res.render( 'tables_info/answers', {list: doc, insertTable: "answer"} );
         }
         else { res.send('No answers found'); }
     });
@@ -75,7 +89,7 @@ exports.getUsers = function(req, res){
     User.find({}, function(err, doc) {
         if (err) { res.send(err); }
         else if (doc.length) {
-            res.render( 'auth/users', {list: doc} );
+            res.render( 'auth/users', {list: doc, insertTable: "user"} );
         }
         else { res.send('No users found'); }
     });

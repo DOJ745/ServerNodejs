@@ -22,7 +22,7 @@ const League = require('../../../models/league');
 
 exports.updateTheme = function(req, res) {
     if(req.query.id != null && req.query.name != null) {
-        var id = parseInt(req.query.id);
+        var id = req.query.id;
         var newName = req.query.name;
     }
     Theme.findByIdAndUpdate(

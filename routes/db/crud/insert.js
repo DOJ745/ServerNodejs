@@ -31,7 +31,12 @@ exports.insertTheme = function(req, res) {
         }
         else {
             logger.info("Theme successfully inserted!");
-            res.send({isInserted: 0, error: "none"});
+            res.render('crud_info', {
+                title: "Theme insert status",
+                upd: 0,
+                backTo: "themes",
+                crud_type: "Insert"
+            });
         }
     });
 }

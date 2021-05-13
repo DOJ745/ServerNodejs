@@ -75,7 +75,7 @@ DB_Router.get("/data", function(req, res, next) {
     });
 });
 
-DB_Router.post("/add/theme", function (
+DB_Router.get("/add/theme", function (
     req,
     res) {
     insertMethods.insertTheme(req, res);
@@ -149,31 +149,31 @@ DB_Router.get("/update/theme", function (
     updateMethods.updateTheme(req, res);
 });
 
-DB_Router.post("/update/question", function (
+DB_Router.get("/update/question", function (
     req,
     res) {
     updateMethods.updateQuestion(req, res);
 });
 
-DB_Router.post("/update/answer", function (
+DB_Router.get("/update/answer", function (
     req,
     res) {
     updateMethods.updateAnswer(req, res);
 });
 
-DB_Router.post("/update/difficulty", function (
+DB_Router.get("/update/difficulty", function (
     req,
     res) {
     updateMethods.updateDifficulty(req, res);
 });
 
-DB_Router.post("/update/league", function (
+DB_Router.get("/update/league", function (
     req,
     res) {
     updateMethods.updateLeague(req, res);
 });
 
-DB_Router.post("/update/user", function (
+DB_Router.get("/update/user", function (
     req,
     res) {
     userApi.updateUser(req.query.login, req.query.score, res);

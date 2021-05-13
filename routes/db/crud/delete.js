@@ -37,7 +37,12 @@ exports.deleteTheme = function(req, res) {
                     logger.info("Cascade deleted questions with same theme id");
                 }
             });
-            res.send({isDeleted: 0, error: "none", object: delObj});
+            res.render('crud_info', {
+                title: "Theme delete status",
+                upd: delObj,
+                backTo: "themes",
+                crud_type: "Delete"
+            });
         }
     });
 }

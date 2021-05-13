@@ -3,7 +3,17 @@ extends ../basic_layout
 block content
 
     a.btn.btn-primary(href='/db') Back to main page
-    h1 Themes
+    div.d-flex.justify-content-center
+        div.row-cols-1
+            div.col-4
+                h1 Themes
+            div.col-4
+                button.btn.btn-success(
+                    type='button'
+                    data-toggle='modal'
+                    data-target='#addModal') Insert
+    br
+    include ../modal/modal-insert
     .card-deck
         each _theme in list
             .card.text-white.bg-secondary.mb-3
@@ -14,33 +24,12 @@ block content
                     button.btn.btn-primary(
                         type='button'
                         data-toggle='modal'
-                        data-target='#updateModal' + _theme.id
-                        data-whatever="test1") Update
+                        data-target='#updateModal' + _theme.id) Update
                     button.btn.btn-danger(
                         type='button'
                         data-toggle='modal'
-                        data-target='#deleteModal' + _theme.id
-                        data-whatever="test2") Delete
-            div.modal.fade(
-                tabindex='-1'
-                role='dialog'
-                aria-hidden='true'
-                id='updateModal' + _theme.id)
-                .modal-dialog(role='document')
-                    .modal-content
-                        .modal-header
-                            h5.modal-title Menu
-                            button.close(type='button' data-dismiss='modal' aria-label='Close')
-                                span(aria-hidden='true') &times;
-                        .modal-body
-                            form(action="/db/update/theme" method="GET")
-                                label.col-form-label= "Theme ID: "
-                                input.form-control-plaintext(type='text' readonly='' value= _theme.id name="id")
-                                label.col-form-label Input new name:
-                                input.form-control(type='text' value= "New name" name="name")
-                                .modal-footer
-                                    button.btn.btn-secondary(type='button' data-dismiss='modal') Close
-                                    input(type="submit" value="Update" class="btn btn-primary")
+                        data-target='#deleteModal' + _theme.id) Delete
+
             div.modal.fade(
                 tabindex='-1'
                 role='dialog'
@@ -61,7 +50,7 @@ block content
                                 input.form-control(type='text' name="id")
                                 .modal-footer
                                     button.btn.btn-secondary(type='button' data-dismiss='modal') Close
-                                    input.btn.btn-danger(type="submit" value="Delete" )
+                                    input.btn.btn-danger(type="submit" value="Delete")
 
 
 
