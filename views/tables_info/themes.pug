@@ -29,7 +29,26 @@ block content
                         type='button'
                         data-toggle='modal'
                         data-target='#deleteModal' + _theme.id) Delete
-
+            div.modal.fade(
+                tabindex='-1'
+                role='dialog'
+                aria-hidden='true'
+                id='updateModal' + _theme.id)
+                .modal-dialog(role='document')
+                    .modal-content
+                        .modal-header
+                            h5.modal-title Menu
+                            button.close(type='button' data-dismiss='modal' aria-label='Close')
+                                span(aria-hidden='true') &times;
+                        .modal-body
+                            form(action="/db/update/theme" method="GET")
+                                label.col-form-label= "Theme ID: "
+                                input.form-control-plaintext(type='text' readonly='' value= _theme.id name="id")
+                                label.col-form-label Input new name:
+                                input.form-control(type='text' value= "New name" name="name")
+                                .modal-footer
+                                    button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+                                    input(type="submit" value="Update" class="btn btn-primary")
             div.modal.fade(
                 tabindex='-1'
                 role='dialog'

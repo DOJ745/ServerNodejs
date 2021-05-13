@@ -28,9 +28,7 @@ exports.getThemes = function(req, res) {
             res.render( 'tables_info/themes',
                 {
                     list: doc,
-                    insertTable: "theme",
-                    updateTable: "theme",
-                    deleteTable: "theme"
+                    insertTable: "theme"
                 }
             );
         }
@@ -45,9 +43,7 @@ exports.getDifficulties = function(req, res) {
             res.render( 'tables_info/difficulties',
                 {
                     list: doc,
-                    insertTable: "difficulty",
-                    updateTable: "difficulty",
-                    deleteTable: "difficulty"
+                    insertTable: "difficulty"
                 }
             );
         }
@@ -59,7 +55,12 @@ exports.getLeagues = function(req, res) {
     League.find({}, function(err, doc) {
         if (err) { res.send(err); }
         else if (doc.length) {
-            res.render( 'tables_info/leagues', {list: doc, insertTable: "league"} );
+            res.render( 'tables_info/leagues',
+                {
+                    list: doc,
+                    insertTable: "league"
+                }
+            );
         }
         else { res.send('No leagues found'); }
     });
@@ -69,7 +70,12 @@ exports.getQuestions = function(req, res) {
     Question.find({}, function(err, doc) {
         if (err) { res.send(err); }
         else if (doc.length) {
-            res.render( 'tables_info/questions', {list: doc, insertTable: "question"} );
+            res.render( 'tables_info/questions',
+                {
+                    list: doc,
+                    insertTable: "question"
+                }
+            );
         }
         else { res.send('No questions found'); }
     });
@@ -79,7 +85,12 @@ exports.getAnswers = function(req, res) {
     Answers.find({}, function(err, doc) {
         if (err) { res.send(err); }
         else if (doc.length) {
-            res.render( 'tables_info/answers', {list: doc, insertTable: "answer"} );
+            res.render( 'tables_info/answers',
+                {
+                    list: doc,
+                    insertTable: "answer"
+                }
+            );
         }
         else { res.send('No answers found'); }
     });
