@@ -1,11 +1,12 @@
-extends basic_layout
+extends ../basic_layout
 
 block content
 
+    h1 Leagues
     .card-deck
         each _league in list
-            .card
-                img.card-img-top(src= _league.image alt='IMG')
+            .card.text-white.bg-secondary.mb-3(style='max-width: 30rem;')
+                img.card-img-top(src= _league.image alt='IMG' width= 100 height= 450)
                 .card-body
                     h5.card-title League params
                     p.card-text= "ID: " + _league._id

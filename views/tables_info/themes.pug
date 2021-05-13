@@ -1,10 +1,11 @@
-extends basic_layout
+extends ../basic_layout
 
 block content
 
+    h1 Themes
     .card-deck
         each _theme in list
-            .card
+            .card.text-white.bg-secondary.mb-3
                 .card-body
                     h5.card-title Theme params
                     p.card-text= "ID: " + _theme.id

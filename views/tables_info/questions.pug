@@ -1,0 +1,18 @@
+extends ../basic_layout
+
+block content
+
+    h1 Questions
+    .card-deck
+        each _question in list
+            .card.text-white.bg-secondary.mb-3(style='max-width: 30rem;')
+                img.card-img-top(src= _question.image alt='IMG')
+                .card-body
+                    h5.card-title Question params
+                    p.card-text= "ID: " + _question._id
+                    p.card-text= "Theme ID: " + _question.theme_id
+                    p.card-text= "Difficulty ID: " + _question.difficulty_id
+                    p.card-text= "Text: " + _question.text
+                    p.card-text= "Cost: " + _question.cost
+                    a.btn.btn-primary(href='/db/update/question') Update
+                    a.btn.btn-danger(href='/db/delete/question') Delete

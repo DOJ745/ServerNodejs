@@ -25,7 +25,7 @@ exports.getThemes = function(req, res) {
     Theme.find({}, function(err, doc) {
         if (err) { res.send(err); }
         else if (doc.length) {
-            res.render( 'themes', {list: doc} );
+            res.render( 'tables_info/themes', {list: doc} );
         }
         else { res.send('No themes found'); }
     });
@@ -35,7 +35,7 @@ exports.getDifficulties = function(req, res) {
     Difficulty.find({}, function(err, doc) {
         if (err) { res.send(err); }
         else if (doc.length) {
-            res.render( 'difficulties', {list: doc} );
+            res.render( 'tables_info/difficulties', {list: doc} );
         }
         else { res.send('No difficulties found'); }
     });
@@ -45,7 +45,7 @@ exports.getLeagues = function(req, res) {
     League.find({}, function(err, doc) {
         if (err) { res.send(err); }
         else if (doc.length) {
-            res.render( 'leagues', {list: doc} );
+            res.render( 'tables_info/leagues', {list: doc} );
         }
         else { res.send('No leagues found'); }
     });
@@ -55,7 +55,7 @@ exports.getQuestions = function(req, res) {
     Question.find({}, function(err, doc) {
         if (err) { res.send(err); }
         else if (doc.length) {
-            res.render( 'questions', {list: doc} );
+            res.render( 'tables_info/questions', {list: doc} );
         }
         else { res.send('No questions found'); }
     });
@@ -65,7 +65,7 @@ exports.getAnswers = function(req, res) {
     Answers.find({}, function(err, doc) {
         if (err) { res.send(err); }
         else if (doc.length) {
-            res.render( 'answers', {list: doc} );
+            res.render( 'tables_info/answers', {list: doc} );
         }
         else { res.send('No answers found'); }
     });
