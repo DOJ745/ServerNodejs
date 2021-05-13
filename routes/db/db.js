@@ -143,7 +143,7 @@ DB_Router.post("/delete/user", function (
 });
 
 
-DB_Router.post("/update/theme", function (
+DB_Router.get("/update/theme", function (
     req,
     res) {
     updateMethods.updateTheme(req, res);

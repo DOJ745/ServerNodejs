@@ -18,12 +18,11 @@ block content
                     button.btn.btn-danger(
                         type='button'
                         data-toggle='modal'
-                        data-target='#deleteModal'
+                        data-target='#deleteModal' + _theme.id
                         data-whatever="test2") Delete
             div.modal.fade(
                 tabindex='-1'
                 role='dialog'
-                aria-labelledby='exampleModalLabel'
                 aria-hidden='true'
                 id='updateModal' + _theme.id)
                 .modal-dialog(role='document')
@@ -33,16 +32,35 @@ block content
                             button.close(type='button' data-dismiss='modal' aria-label='Close')
                                 span(aria-hidden='true') &times;
                         .modal-body
-                            form(action="/db" method="GET")
-                                label.col-form-label= "Theme ID: " + _theme.id
-                                br
+                            form(action="/db/update/theme" method="GET")
+                                label.col-form-label= "Theme ID: "
+                                input.form-control-plaintext(type='text' readonly='' value= _theme.id name="id")
                                 label.col-form-label Input new name:
-                                input.form-control(type='text' value= "New name" name="updTheme")
+                                input.form-control(type='text' value= "New name" name="name")
                                 .modal-footer
                                     button.btn.btn-secondary(type='button' data-dismiss='modal') Close
                                     input(type="submit" value="Update" class="btn btn-primary")
-
-
+            div.modal.fade(
+                tabindex='-1'
+                role='dialog'
+                aria-hidden='true'
+                id='deleteModal' + _theme.id)
+                .modal-dialog(role='document')
+                    .modal-content
+                        .modal-header
+                            h5.modal-title Menu
+                            button.close(type='button' data-dismiss='modal' aria-label='Close')
+                                span(aria-hidden='true') &times;
+                        .modal-body
+                            form(action="/db/delete/theme" method="POST")
+                                label.col-form-label= "Theme ID: " + _theme.id
+                                br
+                                label.col-form-label Input theme id to delete:
+                                p.alert-warning You will delete all questions related to this theme!
+                                input.form-control(type='text' name="id")
+                                .modal-footer
+                                    button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+                                    input.btn.btn-danger(type="submit" value="Delete" )
 
 
 

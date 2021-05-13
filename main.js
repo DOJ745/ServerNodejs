@@ -122,6 +122,13 @@ app.get("/login", function (
     res.render("login", {title: "Login"});
 });
 
+app.post("/forpost", function(
+    req,
+    res){
+    logger.info("*** FORM DATA: " + req.body.id + " --- " + req.body.name);
+    res.send({ID: req.body.id, NAME: req.body.name});
+})
+
 app.get("/db",function (
     req,
     res) {
