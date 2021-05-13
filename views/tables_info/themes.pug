@@ -13,3 +13,36 @@ block content
                     a.btn.btn-primary(href='/db/update/theme') Update
                     a.btn.btn-danger(href='/db/delete/theme') Delete
 
+
+
+
+
+
+
+
+
+    button.btn.btn-primary(type='button' data-toggle='modal' data-target='#exampleModal' data-whatever="@mdo") Open modal for @mdo
+    button.btn.btn-primary(type='button' data-toggle='modal' data-target='#exampleModal' data-whatever="@fat") Open modal for @fat
+    button.btn.btn-primary(type='button' data-toggle='modal' data-target='#exampleModal' data-whatever="@getbootstrap") Open modal for @getbootstrap
+
+    #exampleModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
+        .modal-dialog(role='document')
+            .modal-content
+                .modal-header
+                    h5#exampleModalLabel.modal-title New message
+                    button.close(type='button' data-dismiss='modal' aria-label='Close')
+                        span(aria-hidden='true') &times;
+                .modal-body
+                    form
+                        .form-group
+                            label.col-form-label(for='recipient-name') Recipient:
+                            input#recipient-name.form-control(type='text', value= "temp")
+                        .form-group
+                            label.col-form-label(for='message-text') Message:
+                            textarea#message-text.form-control
+                .modal-footer
+                    button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+                    button.btn.btn-primary(type='button') Send message
+
+
+
