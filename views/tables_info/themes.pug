@@ -41,7 +41,7 @@ block content
                             button.close(type='button' data-dismiss='modal' aria-label='Close')
                                 span(aria-hidden='true') &times;
                         .modal-body
-                            form(action="/db/update/theme" method="GET")
+                            form(action="/db/update/" + insertTable method="GET")
                                 label.col-form-label= "Theme ID: "
                                 input.form-control-plaintext(type='text' readonly='' value= elem.id name="id")
                                 label.col-form-label Input new name:
@@ -61,12 +61,12 @@ block content
                             button.close(type='button' data-dismiss='modal' aria-label='Close')
                                 span(aria-hidden='true') &times;
                         .modal-body
-                            form(action="/db/delete/theme" method="GET")
+                            form(action="/db/delete/" + insertTable method="GET")
                                 label.col-form-label= "Theme ID: " + elem.id
                                 br
                                 label.col-form-label Input theme id to delete:
                                 p.alert-warning You will delete all questions related to this theme!
-                                input.form-control(type='text' name="id")
+                                input.form-control(type='number' name="id")
                                 .modal-footer
                                     button.btn.btn-secondary(type='button' data-dismiss='modal') Close
                                     input.btn.btn-danger(type="submit" value="Delete")

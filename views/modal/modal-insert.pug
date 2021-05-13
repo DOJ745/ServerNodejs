@@ -37,13 +37,19 @@ div.modal.fade(
 
                 if insertTable === "league"
                     form(action="/db/add/" + insertTable method="GET")
-                        p.alert-success ID is autoincrement
+                        p.alert-success Primary key in this table is name of league
                         label.col-form-label Input league name:
                         input.form-control(type='text' value= "New name" name="name")
                         label.col-form-label Input league image (url):
                         input.form-control(type='text' value= "http://localhost:8000/images/" name="image")
-                        label.col-form-label Input league score:
-                        input.form-control(type='number' value= "100" name="score")
+                        label.col-form-label Input league rating:
+                        input.form-control(
+                            type='number'
+                            value= "100"
+                            name="rating"
+                            step="10"
+                            min="100"
+                            max="500")
                         .modal-footer
                             button.btn.btn-secondary(type='button' data-dismiss='modal') Close
                             input.btn.btn-success(type="submit" value="Add")
