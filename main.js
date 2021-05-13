@@ -126,6 +126,10 @@ app.get("/db",function (
     req,
     res) {
 
+    logger.info("*** FORM DATA: " + req.body.login + " --- " +
+        req.body.password + " *** " +
+        req.query.updTheme);
+
     res.render("db",
         {
             title: "MainPage",
