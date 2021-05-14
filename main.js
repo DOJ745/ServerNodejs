@@ -55,10 +55,6 @@ app.set("view engine", "pug");
 
 // ----- Routes -----
 
-    // ----- Test routes -----
-const testRouterGet = require('./routes/test/test_route_get');
-const testRouterPost = require('./routes/test/test_route_post');
-
 // ----- CRUD Routes -----
 
     // ----- DB Routes -----
@@ -75,17 +71,12 @@ app.use(session({
     secret: 'this is not these droids',
     resave: false,
     saveUninitialized: false,
-    // Место хранения сессии
     store: MongoStore.create({
         mongoUrl: config.db('localhost', 27017, 'know_your_game_db'),
     })
 }));
 
 // ----- URL of routes -----
-
-    // ----- Test Routes -----
-app.use("/test_route_get", testRouterGet);
-app.use("/test_route_post", testRouterPost);
 
     // ----- Authorization -----
 app.use("/sign_up", SignUp);
@@ -108,56 +99,30 @@ app.get("/info", function(
     logger.info("[Status code : " + request.baseUrl + "] - " + response.statusCode + "\n");
 });
 
-app.get("/test_themes", function (
-    req,
-    res) {
-
-    res.render("themes", {title: "Test themes"});
-});
-
 app.get("/login", function (
     req,
     res) {
 
-    res.render("login", {title: "Login"});
+    res.render("auth/login", {title: "Login"});
 });
-
-app.post("/forpost", function(
-    req,
-    res){
-    logger.info("*** FORM DATA: " + req.body.id + " --- " + req.body.name);
-    res.send({ID: req.body.id, NAME: req.body.name});
-})
 
 app.get("/db",function (
     req,
     res) {
 
-    logger.info("*** FORM DATA: " + req.body.login + " --- " +
-        req.body.password + " *** " +
-        req.query.updTheme);
-
-    res.render("db",
-        {
-            title: "MainPage",
-            adminLogin: "test",
-            adminPassword: "test"
-        });
-    /*logger.info("*** FROM DATA: " + req.body.login + " --- " + req.body.password);
-
-    if(req.body.login === "admin" && req.body.password === "thebest"){
-        req.session.user = {id: 42, login: req.body.login}
+    if(req.query.login === "admin" && req.query.password === "thebest"){
+        //req.session.user = {id: 42, login: req.body.login}
         logger.debug("*** Welcome, admin! ***");
         res.render("db",
             {
                 title: "MainPage",
-                adminLogin: req.body.login,
-                adminPassword: req.body.password
+                adminLogin: req.query.login,
+                adminPassword: req.query.password
             });
     }
     else {
-        res.render("non_authorized", {title: "NOPE"});
-    }*/
+        res.render("auth/non_authorized", {title: "NOPE"});
+    }
 });
 
 app.listen(config.app.port, function () {
