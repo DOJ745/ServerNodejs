@@ -56,7 +56,7 @@ exports.getDifficulties = function(req, res) {
             );
         }
         else {
-            logger.info("No themes found");
+            logger.info("No difficulties found");
             res.render( 'tables_info/difficulties',
                 {
                     list: doc,
@@ -79,7 +79,7 @@ exports.getLeagues = function(req, res) {
             );
         }
         else {
-            logger.info("No themes found");
+            logger.info("No leagues found");
             res.render( 'tables_info/leagues',
                 {
                     list: doc,
@@ -102,7 +102,7 @@ exports.getQuestions = function(req, res) {
             );
         }
         else {
-            logger.info("No themes found");
+            logger.info("No questions found");
             res.render( 'tables_info/questions',
                 {
                     list: doc,
