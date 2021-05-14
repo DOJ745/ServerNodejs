@@ -14,73 +14,74 @@ block content
                     data-target='#addModal') Insert
     br
     include ../modal/modal-insert
-    .card-deck
+    div.row.row-cols-1.row-cols-md-3.g-4
         each elem in list
-            .card.text-white.bg-secondary.mb-3
-                img.card-img-top(src= elem.image alt='IMG')
-                .card-body
-                    h5.card-title Leagues params
-                    p.card-text= "ID: " + elem.id
-                    p.card-text= "Name: " + elem.name
-                    p.card-text= "Rating: " + elem.rating
-                    button.btn.btn-primary(
-                        type='button'
-                        data-toggle='modal'
-                        data-target='#updateModal' + elem.id) Update
-                    button.btn.btn-danger(
-                        type='button'
-                        data-toggle='modal'
-                        data-target='#deleteModal' + elem.id) Delete
-            div.modal.fade(
-                tabindex='-1'
-                role='dialog'
-                aria-hidden='true'
-                id='updateModal' + elem.id)
-                .modal-dialog(role='document')
-                    .modal-content
-                        .modal-header
-                            h5.modal-title Menu
-                            button.close(type='button' data-dismiss='modal' aria-label='Close')
-                                span(aria-hidden='true') &times;
-                        .modal-body
-                            form(action="/db/update/" + insertTable method="GET")
-                                label.col-form-label= "League ID: "
-                                input.form-control-plaintext(type='text' readonly='' value= elem.id name="id")
-                                label.col-form-label= "Input new league name: "
-                                input.form-control-plaintext(type='text' value= elem.name name="name")
-                                label.col-form-label Input new league image (url):
-                                input.form-control(type='text' value= elem.image name="image")
-                                label.col-form-label Input new league rating:
-                                input.form-control(
-                                    type='number'
-                                    value= elem.rating
-                                    name="rating"
-                                    step="5"
-                                    min="100"
-                                    max="500")
-                                .modal-footer
-                                    button.btn.btn-secondary(type='button' data-dismiss='modal') Close
-                                    input(type="submit" value="Update" class="btn btn-primary")
-            div.modal.fade(
-                tabindex='-1'
-                role='dialog'
-                aria-hidden='true'
-                id='deleteModal' + elem.id)
-                .modal-dialog(role='document')
-                    .modal-content
-                        .modal-header
-                            h5.modal-title Menu
-                            button.close(type='button' data-dismiss='modal' aria-label='Close')
-                                span(aria-hidden='true') &times;
-                        .modal-body
-                            form(action="/db/delete/" + insertTable method="GET")
-                                label.col-form-label= "League ID: " + elem.id
-                                br
-                                label.col-form-label Input league id to delete:
-                                input.form-control(type='number' name="id")
-                                .modal-footer
-                                    button.btn.btn-secondary(type='button' data-dismiss='modal') Close
-                                    input.btn.btn-danger(type="submit" value="Delete")
+            div.col
+                .card.text-white.bg-secondary.mb-3
+                    img.card-img-top(src= elem.image alt='IMG')
+                    .card-body
+                        h5.card-title Leagues params
+                        p.card-text= "ID: " + elem.id
+                        p.card-text= "Name: " + elem.name
+                        p.card-text= "Rating: " + elem.rating
+                        button.btn.btn-primary(
+                            type='button'
+                            data-toggle='modal'
+                            data-target='#updateModal' + elem.id) Update
+                        button.btn.btn-danger(
+                            type='button'
+                            data-toggle='modal'
+                            data-target='#deleteModal' + elem.id) Delete
+                div.modal.fade(
+                    tabindex='-1'
+                    role='dialog'
+                    aria-hidden='true'
+                    id='updateModal' + elem.id)
+                    .modal-dialog(role='document')
+                        .modal-content
+                            .modal-header
+                                h5.modal-title Menu
+                                button.close(type='button' data-dismiss='modal' aria-label='Close')
+                                    span(aria-hidden='true') &times;
+                            .modal-body
+                                form(action="/db/update/" + insertTable method="GET")
+                                    label.col-form-label= "League ID: "
+                                    input.form-control-plaintext(type='text' readonly='' value= elem.id name="id")
+                                    label.col-form-label= "Input new league name: "
+                                    input.form-control-plaintext(type='text' value= elem.name name="name")
+                                    label.col-form-label Input new league image (url):
+                                    input.form-control(type='text' value= elem.image name="image")
+                                    label.col-form-label Input new league rating:
+                                    input.form-control(
+                                        type='number'
+                                        value= elem.rating
+                                        name="rating"
+                                        step="5"
+                                        min="100"
+                                        max="500")
+                                    .modal-footer
+                                        button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+                                        input(type="submit" value="Update" class="btn btn-primary")
+                div.modal.fade(
+                    tabindex='-1'
+                    role='dialog'
+                    aria-hidden='true'
+                    id='deleteModal' + elem.id)
+                    .modal-dialog(role='document')
+                        .modal-content
+                            .modal-header
+                                h5.modal-title Menu
+                                button.close(type='button' data-dismiss='modal' aria-label='Close')
+                                    span(aria-hidden='true') &times;
+                            .modal-body
+                                form(action="/db/delete/" + insertTable method="GET")
+                                    label.col-form-label= "League ID: " + elem.id
+                                    br
+                                    label.col-form-label Input league id to delete:
+                                    input.form-control(type='number' name="id")
+                                    .modal-footer
+                                        button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+                                        input.btn.btn-danger(type="submit" value="Delete")
 
 
 

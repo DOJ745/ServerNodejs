@@ -14,77 +14,78 @@ block content
                     data-target='#addModal') Insert
     br
     include ../modal/modal-insert
-    .card-deck
+    div.row.row-cols-1.row-cols-md-3.g-4
         each elem in list
-            .card.text-white.bg-secondary.mb-3
-                img.card-img-top(src= elem.image alt='IMG')
-                .card-body
-                    h5.card-title Question params
-                    p.card-text= "ID: " + elem.id
-                    p.card-text= "Theme ID: " + elem.theme_id
-                    p.card-text= "Difficulty ID: " + elem.difficulty_id
-                    p.card-text= "Text: " + elem.text
-                    p.card-text= "Cost: " + elem.cost
-                    button.btn.btn-primary(
-                        type='button'
-                        data-toggle='modal'
-                        data-target='#updateModal' + elem.id) Update
-                    button.btn.btn-danger(
-                        type='button'
-                        data-toggle='modal'
-                        data-target='#deleteModal' + elem.id) Delete
-            div.modal.fade(
-                tabindex='-1'
-                role='dialog'
-                aria-hidden='true'
-                id='updateModal' + elem.id)
-                .modal-dialog(role='document')
-                    .modal-content
-                        .modal-header
-                            h5.modal-title Menu
-                            button.close(type='button' data-dismiss='modal' aria-label='Close')
-                                span(aria-hidden='true') &times;
-                        .modal-body
-                            form(action="/db/update/" + insertTable method="GET")
-                                label.col-form-label= "Question ID: "
-                                input.form-control-plaintext(type='text' readonly='' value= elem.id name="id")
-                                label.col-form-label Input new theme ID:
-                                input.form-control(type='number' value= elem.theme_id name="theme_id")
-                                label.col-form-label Input new difficulty ID:
-                                input.form-control(type='number' value= elem.difficulty_id name="difficulty_id")
-                                label.col-form-label Input new text:
-                                input.form-control(type='text' value= elem.text name="text")
-                                label.col-form-label Input new question image:
-                                input.form-control(type='text' value= elem.image name="image")
-                                label.col-form-label Input new question cost:
-                                input.form-control(
-                                    type='number'
-                                    value= elem.cost
-                                    name="cost"
-                                    step="10"
-                                    min="10"
-                                    max="100")
-                                .modal-footer
-                                    button.btn.btn-secondary(type='button' data-dismiss='modal') Close
-                                    input(type="submit" value="Update" class="btn btn-primary")
-            div.modal.fade(
-                tabindex='-1'
-                role='dialog'
-                aria-hidden='true'
-                id='deleteModal' + elem.id)
-                .modal-dialog(role='document')
-                    .modal-content
-                        .modal-header
-                            h5.modal-title Menu
-                            button.close(type='button' data-dismiss='modal' aria-label='Close')
-                                span(aria-hidden='true') &times;
-                        .modal-body
-                            form(action="/db/delete/" + insertTable method="GET")
-                                label.col-form-label= "Question ID: " + elem.id
-                                br
-                                label.col-form-label Input question ID to delete:
-                                p.alert-warning You will delete all answers related to this question!
-                                input.form-control(type='number' name="id")
-                                .modal-footer
-                                    button.btn.btn-secondary(type='button' data-dismiss='modal') Close
-                                    input.btn.btn-danger(type="submit" value="Delete")
+            div.col
+                .card.text-white.bg-secondary.mb-3
+                    img.card-img-top(src= elem.image alt='IMG')
+                    .card-body
+                        h5.card-title Question params
+                        p.card-text= "ID: " + elem.id
+                        p.card-text= "Theme ID: " + elem.theme_id
+                        p.card-text= "Difficulty ID: " + elem.difficulty_id
+                        p.card-text= "Text: " + elem.text
+                        p.card-text= "Cost: " + elem.cost
+                        button.btn.btn-primary(
+                            type='button'
+                            data-toggle='modal'
+                            data-target='#updateModal' + elem.id) Update
+                        button.btn.btn-danger(
+                            type='button'
+                            data-toggle='modal'
+                            data-target='#deleteModal' + elem.id) Delete
+                div.modal.fade(
+                    tabindex='-1'
+                    role='dialog'
+                    aria-hidden='true'
+                    id='updateModal' + elem.id)
+                    .modal-dialog(role='document')
+                        .modal-content
+                            .modal-header
+                                h5.modal-title Menu
+                                button.close(type='button' data-dismiss='modal' aria-label='Close')
+                                    span(aria-hidden='true') &times;
+                            .modal-body
+                                form(action="/db/update/" + insertTable method="GET")
+                                    label.col-form-label= "Question ID: "
+                                    input.form-control-plaintext(type='text' readonly='' value= elem.id name="id")
+                                    label.col-form-label Input new theme ID:
+                                    input.form-control(type='number' value= elem.theme_id name="theme_id")
+                                    label.col-form-label Input new difficulty ID:
+                                    input.form-control(type='number' value= elem.difficulty_id name="difficulty_id")
+                                    label.col-form-label Input new text:
+                                    input.form-control(type='text' value= elem.text name="text")
+                                    label.col-form-label Input new question image:
+                                    input.form-control(type='text' value= elem.image name="image")
+                                    label.col-form-label Input new question cost:
+                                    input.form-control(
+                                        type='number'
+                                        value= elem.cost
+                                        name="cost"
+                                        step="10"
+                                        min="10"
+                                        max="100")
+                                    .modal-footer
+                                        button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+                                        input(type="submit" value="Update" class="btn btn-primary")
+                div.modal.fade(
+                    tabindex='-1'
+                    role='dialog'
+                    aria-hidden='true'
+                    id='deleteModal' + elem.id)
+                    .modal-dialog(role='document')
+                        .modal-content
+                            .modal-header
+                                h5.modal-title Menu
+                                button.close(type='button' data-dismiss='modal' aria-label='Close')
+                                    span(aria-hidden='true') &times;
+                            .modal-body
+                                form(action="/db/delete/" + insertTable method="GET")
+                                    label.col-form-label= "Question ID: " + elem.id
+                                    br
+                                    label.col-form-label Input question ID to delete:
+                                    p.alert-warning You will delete all answers related to this question!
+                                    input.form-control(type='number' name="id")
+                                    .modal-footer
+                                        button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+                                        input.btn.btn-danger(type="submit" value="Delete")

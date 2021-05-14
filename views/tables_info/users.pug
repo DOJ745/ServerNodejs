@@ -8,62 +8,63 @@ block content
             div.col-4
                 h1 Users
     br
-    .card-deck
+    div.row.row-cols-1.row-cols-md-3.g-4
         each elem in list
-            .card.text-white.bg-secondary.mb-3
-                .card-body
-                    h5.card-title User params
-                    p.card-text= "User ID: " + elem.id
-                    p.card-text= "User login: " + elem.login
-                    p.card-text= "User password: " + elem.password
-                    p.card-text= "User score: " + elem.score
-                    button.btn.btn-primary(
-                        type='button'
-                        data-toggle='modal'
-                        data-target='#updateModal' + elem.id) Update
-                    button.btn.btn-danger(
-                        type='button'
-                        data-toggle='modal'
-                        data-target='#deleteModal' + elem.id) Delete
-            div.modal.fade(
-                tabindex='-1'
-                role='dialog'
-                aria-hidden='true'
-                id='updateModal' + elem.id)
-                .modal-dialog(role='document')
-                    .modal-content
-                        .modal-header
-                            h5.modal-title Menu
-                            button.close(type='button' data-dismiss='modal' aria-label='Close')
-                                span(aria-hidden='true') &times;
-                        .modal-body
-                            form(action="/db/update/" + insertTable method="GET")
-                                label.col-form-label= "User ID: " + elem.id
-                                br
-                                label.col-form-label= "User login: "
-                                input.form-control-plaintext(type='text' readonly='' value=elem.login  name="login")
-                                label.col-form-label Input new user score:
-                                input.form-control(type='number' value= elem.score name="score")
-                                .modal-footer
-                                    button.btn.btn-secondary(type='button' data-dismiss='modal') Close
-                                    input(type="submit" value="Update" class="btn btn-primary")
-            div.modal.fade(
-                tabindex='-1'
-                role='dialog'
-                aria-hidden='true'
-                id='deleteModal' + elem.id)
-                .modal-dialog(role='document')
-                    .modal-content
-                        .modal-header
-                            h5.modal-title Menu
-                            button.close(type='button' data-dismiss='modal' aria-label='Close')
-                                span(aria-hidden='true') &times;
-                        .modal-body
-                            form(action="/db/delete/" + insertTable method="GET")
-                                label.col-form-label= "User login: " + elem.login
-                                br
-                                label.col-form-label Input user login to delete:
-                                input.form-control(type='text' name="login")
-                                .modal-footer
-                                    button.btn.btn-secondary(type='button' data-dismiss='modal') Close
-                                    input.btn.btn-danger(type="submit" value="Delete")
+            div.col
+                .card.text-white.bg-secondary.mb-3
+                    .card-body
+                        h5.card-title User params
+                        p.card-text= "User ID: " + elem.id
+                        p.card-text= "User login: " + elem.login
+                        p.card-text= "User password: " + elem.password
+                        p.card-text= "User score: " + elem.score
+                        button.btn.btn-primary(
+                            type='button'
+                            data-toggle='modal'
+                            data-target='#updateModal' + elem.id) Update
+                        button.btn.btn-danger(
+                            type='button'
+                            data-toggle='modal'
+                            data-target='#deleteModal' + elem.id) Delete
+                div.modal.fade(
+                    tabindex='-1'
+                    role='dialog'
+                    aria-hidden='true'
+                    id='updateModal' + elem.id)
+                    .modal-dialog(role='document')
+                        .modal-content
+                            .modal-header
+                                h5.modal-title Menu
+                                button.close(type='button' data-dismiss='modal' aria-label='Close')
+                                    span(aria-hidden='true') &times;
+                            .modal-body
+                                form(action="/db/update/" + insertTable method="GET")
+                                    label.col-form-label= "User ID: " + elem.id
+                                    br
+                                    label.col-form-label= "User login: "
+                                    input.form-control-plaintext(type='text' readonly='' value=elem.login  name="login")
+                                    label.col-form-label Input new user score:
+                                    input.form-control(type='number' value= elem.score name="score")
+                                    .modal-footer
+                                        button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+                                        input(type="submit" value="Update" class="btn btn-primary")
+                div.modal.fade(
+                    tabindex='-1'
+                    role='dialog'
+                    aria-hidden='true'
+                    id='deleteModal' + elem.id)
+                    .modal-dialog(role='document')
+                        .modal-content
+                            .modal-header
+                                h5.modal-title Menu
+                                button.close(type='button' data-dismiss='modal' aria-label='Close')
+                                    span(aria-hidden='true') &times;
+                            .modal-body
+                                form(action="/db/delete/" + insertTable method="GET")
+                                    label.col-form-label= "User login: " + elem.login
+                                    br
+                                    label.col-form-label Input user login to delete:
+                                    input.form-control(type='text' name="login")
+                                    .modal-footer
+                                        button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+                                        input.btn.btn-danger(type="submit" value="Delete")
