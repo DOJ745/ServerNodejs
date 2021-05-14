@@ -226,7 +226,7 @@ DB_Router.get("/logs", function (
     req,
     res) {
 
-    res.render("themes", {title: "Themes"});
+    res.render("tables_info/logs", {title: "Logs"});
 
 });
 

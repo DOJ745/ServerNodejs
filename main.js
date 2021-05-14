@@ -4,11 +4,6 @@
 const express = require('express');
 const body_parser = require('body-parser');
 
-    // ----- Lib for generating errors -----
-const createError = require('http-errors');
-
-const path = require('path');
-
     // ----- Folders with classes -----
 const config = require('./config/config');
 
@@ -106,18 +101,25 @@ app.get("/login", function (
     res.render("auth/login", {title: "Login"});
 });
 
-app.get("/db",function (
+app.get("/db", function (req, res) {
+    res.render("db",
+        {
+            title: "MainPage"
+        });
+});
+
+app.post("/db", function (
     req,
     res) {
 
-    if(req.query.login === "admin" && req.query.password === "thebest"){
+    if(req.body.login === "admin" && req.body.password === "thebest"){
         //req.session.user = {id: 42, login: req.body.login}
         logger.debug("*** Welcome, admin! ***");
         res.render("db",
             {
                 title: "MainPage",
-                adminLogin: req.query.login,
-                adminPassword: req.query.password
+                adminLogin: req.body.login,
+                adminPassword: req.body.password
             });
     }
     else {
