@@ -69,10 +69,10 @@ exports.deleteDifficulty = function(req, res) {
 }
 
 exports.deleteLeague = function(req, res) {
-    if (req.query.name != null ) {
-        var leagueName = req.query.name;
+    if (req.query.id != null ) {
+        var id = req.query.id;
     }
-    League.findOneAndDelete({name: leagueName}, function(err, delObj) {
+    League.findByIdAndDelete(id, function(err, delObj) {
         if(err) {
             res.send({isDeleted: 1, error: err, object: "none"});
             return console.log(err);

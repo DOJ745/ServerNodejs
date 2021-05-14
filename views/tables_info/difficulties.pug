@@ -46,11 +46,11 @@ block content
                                 label.col-form-label= "Difficulty ID: "
                                 input.form-control-plaintext(type='text' readonly='' value= elem.id name="id")
                                 label.col-form-label Input new difficulty name:
-                                input.form-control(type='text' value= "New name" name="name")
+                                input.form-control(type='text' value= elem.name name="name")
                                 label.col-form-label Input new difficulty multiplier:
                                 input.form-control(
                                         type='number'
-                                        value= "1.25"
+                                        value= elem.multiplier
                                         name="multiplier"
                                         placeholder="1.25"
                                         step="0.05" min="1.00" max="3.00")

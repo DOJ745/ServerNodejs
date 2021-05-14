@@ -45,7 +45,7 @@ block content
                                 label.col-form-label= "Theme ID: "
                                 input.form-control-plaintext(type='text' readonly='' value= elem.id name="id")
                                 label.col-form-label Input new name:
-                                input.form-control(type='text' value= "New name" name="name")
+                                input.form-control(type='text' value= elem.name name="name")
                                 .modal-footer
                                     button.btn.btn-secondary(type='button' data-dismiss='modal') Close
                                     input(type="submit" value="Update" class="btn btn-primary")

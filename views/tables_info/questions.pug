@@ -49,18 +49,21 @@ block content
                                 label.col-form-label= "Question ID: "
                                 input.form-control-plaintext(type='text' readonly='' value= elem.id name="name")
                                 label.col-form-label Input new theme ID:
+                                input.form-control(type='number' value= elem.theme_id name="theme_id")
                                 label.col-form-label Input new difficulty ID:
+                                input.form-control(type='number' value= elem.difficulty_id name="difficulty_id")
                                 label.col-form-label Input new text:
-                                label.col-form-label Input new cost:
-                                input.form-control(type='text' value= "http://localhost:8000/images/" name="image")
-                                label.col-form-label Input new league rating:
+                                input.form-control(type='text' value= elem.text name="text")
+                                label.col-form-label Input new question image:
+                                input.form-control(type='text' value= elem.image name="image")
+                                label.col-form-label Input new question cost:
                                 input.form-control(
                                     type='number'
-                                    value= "100"
-                                    name="rating"
+                                    value= elem.cost
+                                    name="cost"
                                     step="10"
-                                    min="100"
-                                    max="500")
+                                    min="10"
+                                    max="100")
                                 .modal-footer
                                     button.btn.btn-secondary(type='button' data-dismiss='modal') Close
                                     input(type="submit" value="Update" class="btn btn-primary")
@@ -77,23 +80,10 @@ block content
                                 span(aria-hidden='true') &times;
                         .modal-body
                             form(action="/db/delete/" + insertTable method="GET")
-                                label.col-form-label= "League name: " + elem.name
+                                label.col-form-label= "Question ID: " + elem.id
                                 br
-                                label.col-form-label Input league name to delete:
-                                input.form-control(type='text' name="name")
+                                label.col-form-label Input question ID to delete:
+                                input.form-control(type='number' name="id")
                                 .modal-footer
                                     button.btn.btn-secondary(type='button' data-dismiss='modal') Close
                                     input.btn.btn-danger(type="submit" value="Delete")
-
-
-
-
-
-                    h5.card-title Question params
-                    p.card-text= "ID: " + _question._id
-                    p.card-text= "Theme ID: " + _question.theme_id
-                    p.card-text= "Difficulty ID: " + _question.difficulty_id
-                    p.card-text= "Text: " + _question.text
-                    p.card-text= "Cost: " + _question.cost
-                    a.btn.btn-primary(href='/db/update/question') Update
-                    a.btn.btn-danger(href='/db/delete/question') Delete

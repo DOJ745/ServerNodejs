@@ -37,7 +37,7 @@ div.modal.fade(
 
                 if insertTable === "league"
                     form(action="/db/add/" + insertTable method="GET")
-                        p.alert-success Primary key in this table is name of league
+                        p.alert-success ID is autoincrement
                         label.col-form-label Input league name:
                         input.form-control(type='text' value= "New name" name="name")
                         label.col-form-label Input league image (url):

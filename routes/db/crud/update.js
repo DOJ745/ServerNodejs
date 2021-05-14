@@ -80,17 +80,18 @@ exports.updateDifficulty = function(req, res) {
 
 exports.updateLeague = function(req, res) {
     if (
+        req.query.id != null &&
         req.query.name != null &&
         req.query.image != null &&
         req.query.rating != null) {
 
-        var leagueName = req.query.name;
+        var id = req.query.id;
+        var newLeagueName = req.query.name;
         var newImage = req.query.image;
         var newRating = req.query.rating;
     }
-    League.findOneAndUpdate(
-        {name: leagueName},
-        {image: newImage, rating: newRating},
+    League.findByIdAndUpdate(id,
+        {name: newLeagueName, image: newImage, rating: newRating},
         {new: true},
         function(err, updObj) {
         if(err) {

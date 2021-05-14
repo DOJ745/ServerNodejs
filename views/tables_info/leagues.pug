@@ -44,16 +44,18 @@ block content
                                 span(aria-hidden='true') &times;
                         .modal-body
                             form(action="/db/update/" + insertTable method="GET")
-                                label.col-form-label= "League name: "
-                                input.form-control-plaintext(type='text' readonly='' value= elem.name name="name")
+                                label.col-form-label= "League ID: "
+                                input.form-control-plaintext(type='text' readonly='' value= elem.id name="id")
+                                label.col-form-label= "Input new league name: "
+                                input.form-control-plaintext(type='text' value= elem.name name="name")
                                 label.col-form-label Input new league image (url):
-                                input.form-control(type='text' value= "http://localhost:8000/images/" name="image")
+                                input.form-control(type='text' value= elem.image name="image")
                                 label.col-form-label Input new league rating:
                                 input.form-control(
                                     type='number'
-                                    value= "100"
+                                    value= elem.rating
                                     name="rating"
-                                    step="10"
+                                    step="5"
                                     min="100"
                                     max="500")
                                 .modal-footer
@@ -72,10 +74,10 @@ block content
                                 span(aria-hidden='true') &times;
                         .modal-body
                             form(action="/db/delete/" + insertTable method="GET")
-                                label.col-form-label= "League name: " + elem.name
+                                label.col-form-label= "League ID: " + elem.id
                                 br
-                                label.col-form-label Input league name to delete:
-                                input.form-control(type='text' name="name")
+                                label.col-form-label Input league id to delete:
+                                input.form-control(type='number' name="id")
                                 .modal-footer
                                     button.btn.btn-secondary(type='button' data-dismiss='modal') Close
                                     input.btn.btn-danger(type="submit" value="Delete")
