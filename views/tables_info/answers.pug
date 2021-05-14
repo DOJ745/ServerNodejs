@@ -2,15 +2,83 @@ extends ../basic_layout
 
 block content
 
-    h1 Answers
+    a.btn.btn-primary(href='/db') Back to main page
+    div.d-flex.justify-content-center
+        div.row-cols-1
+            div.col-4
+                h1 Answers
+            div.col-4
+                button.btn.btn-success(
+                    type='button'
+                    data-toggle='modal'
+                    data-target='#addModal') Insert
+    br
+    include ../modal/modal-insert
     .card-deck
-        each _answer in list
+        each elem in list
             .card.text-white.bg-secondary.mb-3
+                img.card-img-top(src= elem.image alt='IMG')
                 .card-body
                     h5.card-title Answer params
-                    p.card-text= "ID: " + _answer.id
-                    p.card-text= "Question ID: " + _answer.question_id
-                    p.card-text= "Text: " + _answer.text
-                    p.card-text= "Trueness: " + _answer.trueness
-                    a.btn.btn-primary(href='/db/update/answer') Update
-                    a.btn.btn-danger(href='/db/delete/answer') Delete
+                    p.card-text= "ID: " + elem.id
+                    p.card-text= "Question ID: " + elem.question_id
+                    p.card-text= "Text: " + elem.text
+                    p.card-text= "Trueness: " + elem.trueness
+                    button.btn.btn-primary(
+                        type='button'
+                        data-toggle='modal'
+                        data-target='#updateModal' + elem.id) Update
+                    button.btn.btn-danger(
+                        type='button'
+                        data-toggle='modal'
+                        data-target='#deleteModal' + elem.id) Delete
+            div.modal.fade(
+                tabindex='-1'
+                role='dialog'
+                aria-hidden='true'
+                id='updateModal' + elem.id)
+                .modal-dialog(role='document')
+                    .modal-content
+                        .modal-header
+                            h5.modal-title Menu
+                            button.close(type='button' data-dismiss='modal' aria-label='Close')
+                                span(aria-hidden='true') &times;
+                        .modal-body
+                            form(action="/db/update/" + insertTable method="GET")
+                                label.col-form-label= "Answer ID: "
+                                input.form-control-plaintext(type='text' readonly='' value= elem.id name="name")
+                                label.col-form-label Input new question ID:
+                                input.form-control(type='number' value= elem.question_id name="question_id")
+                                label.col-form-label Input new text:
+                                input.form-control(type='text' value= elem.text name="text")
+                                label.col-form-label Input new trueness:
+                                input.form-control(
+                                    type='number'
+                                    value= elem.trueness
+                                    name="trueness"
+                                    step="1"
+                                    min="0"
+                                    max="1")
+                                .modal-footer
+                                    button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+                                    input(type="submit" value="Update" class="btn btn-primary")
+            div.modal.fade(
+                tabindex='-1'
+                role='dialog'
+                aria-hidden='true'
+                id='deleteModal' + elem.id)
+                .modal-dialog(role='document')
+                    .modal-content
+                        .modal-header
+                            h5.modal-title Menu
+                            button.close(type='button' data-dismiss='modal' aria-label='Close')
+                                span(aria-hidden='true') &times;
+                        .modal-body
+                            form(action="/db/delete/" + insertTable method="GET")
+                                label.col-form-label= "Answer ID: " + elem.id
+                                br
+                                label.col-form-label Input answer ID to delete:
+                                input.form-control(type='number' name="id")
+                                .modal-footer
+                                    button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+                                    input.btn.btn-danger(type="submit" value="Delete")

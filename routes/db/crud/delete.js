@@ -26,7 +26,7 @@ exports.deleteTheme = function(req, res) {
     }
     Theme.findByIdAndDelete(id, function(err, delObj) {
         if(err){
-            res.send({isDeleted: 1, error: err, object: "none"});
+            res.render('error_page', {error: err});
             return console.log(err);
         }
         else {
@@ -53,7 +53,7 @@ exports.deleteDifficulty = function(req, res) {
     }
     Difficulty.findByIdAndDelete(id, function(err, delObj) {
         if(err){
-            res.send({isDeleted: 1, error: err, object: "none"});
+            res.render('error_page', {error: err});
             return console.log(err);
         }
         else {
@@ -74,7 +74,7 @@ exports.deleteLeague = function(req, res) {
     }
     League.findByIdAndDelete(id, function(err, delObj) {
         if(err) {
-            res.send({isDeleted: 1, error: err, object: "none"});
+            res.render('error_page', {error: err});
             return console.log(err);
         }
         else {
@@ -95,7 +95,7 @@ exports.deleteQuestion = function (req, res) {
     }
     Question.findByIdAndDelete(id, function(err, delObj) {
         if(err){
-            res.send({isDeleted: 1, error: err, object: "none"});
+            res.render('error_page', {error: err});
             return console.log(err);
         }
         else {
@@ -122,7 +122,7 @@ exports.deleteAnswer = function (req, res) {
     }
     Answers.findByIdAndDelete(id, function(err, delObj) {
         if(err){
-            res.send({isDeleted: 1, error: err, object: "none"});
+            res.render('error_page', {error: err});
             return console.log(err);
         }
         else {

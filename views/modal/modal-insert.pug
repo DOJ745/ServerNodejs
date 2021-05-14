@@ -57,6 +57,7 @@ div.modal.fade(
                 if insertTable === "question"
                     form(action="/db/add/" + insertTable method="GET")
                         p.alert-success ID is autoincrement
+                        p.alert-warning Type existing theme ID and difficulty ID to avoid errors!
                         label.col-form-label Input theme ID:
                         input.form-control(type='number' value= "1" name="theme_id")
                         label.col-form-label Input difficulty ID:
@@ -74,6 +75,7 @@ div.modal.fade(
                 if insertTable === "answer"
                     form(action="/db/add/" + insertTable method="GET")
                         p.alert-success ID is autoincrement
+                        p.alert-warning Type existing question ID to avoid errors!
                         label.col-form-label Input question ID:
                         input.form-control(type='number' value= "1" name="question_id")
                         label.col-form-label Input text:

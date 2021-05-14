@@ -26,7 +26,7 @@ exports.insertTheme = function(req, res) {
     }
     Theme(theme).save(function (err) {
         if(err){
-            res.send({isInserted: 1, error: err});
+            res.render('error_page', {error: err});
             return console.log(err);
         }
         else {
@@ -51,7 +51,7 @@ exports.insertDifficulty = function(req, res) {
     }
     Difficulty(difficulty).save(function (err) {
         if(err){
-            res.send({isInserted: 1, error: err});
+            res.render('error_page', {error: err});
             return console.log(err);
         }
         else {
@@ -77,7 +77,7 @@ exports.insertLeague = function(req, res) {
     }
     League(league).save(function (err) {
         if(err){
-            res.send({isInserted: 1, error: err});
+            res.render('error_page', {error: err});
             return console.log(err);
         }
         else {
@@ -110,7 +110,7 @@ exports.insertQuestion = function (req, res) {
     }
     Question(question).save(function(err){
         if(err){
-            res.send({isInserted: 1, error: err});
+            res.render('error_page', {error: err});
             return console.log(err);
         }
         else {
@@ -138,7 +138,7 @@ exports.insertAnswer = function (req, res) {
     }
     Answers(answer).save(function(err){
         if(err){
-            res.send({isInserted: 1, error: err});
+            res.render('error_page', {error: err});
             return console.log(err);
         }
         else {

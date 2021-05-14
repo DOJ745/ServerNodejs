@@ -31,7 +31,7 @@ exports.updateTheme = function(req, res) {
         {new: true},
         function(err, updObj) {
         if(err){
-            res.send({isUpdated: 1, error: err, object: "none"});
+            res.render('error_page', {error: err});
             return console.log(err);
         }
         else {
@@ -62,7 +62,7 @@ exports.updateDifficulty = function(req, res) {
         {new: true},
         function(err, updObj) {
         if(err){
-            res.send({isUpdated: 1, error: err, object: "none"});
+            res.render('error_page', {error: err});
             return console.log(err);
         }
         else {
@@ -95,7 +95,7 @@ exports.updateLeague = function(req, res) {
         {new: true},
         function(err, updObj) {
         if(err) {
-            res.send({isUpdated: 1, error: err, object: "none"});
+            res.render('error_page', {error: err});
             return console.log(err);
         }
         else {
@@ -139,7 +139,7 @@ exports.updateQuestion = function (req, res) {
         {new: true},
         function(err, updObj) {
         if(err) {
-            res.send({isUpdated: 1, error: err, object: "none"});
+            res.render('error_page', {error: err});
             return console.log(err);
         }
         else {
@@ -177,7 +177,7 @@ exports.updateAnswer = function (req, res) {
         {new: true},
         function(err, updObj) {
         if(err){
-            res.send({isDeleted: 1, error: err, object: "none"});
+            res.render('error_page', {error: err});
             return console.log(err);
         }
         else {

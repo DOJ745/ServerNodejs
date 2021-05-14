@@ -23,7 +23,7 @@ const League = require('../../../models/league');
 
 exports.getThemes = function(req, res) {
     Theme.find({}, function(err, doc) {
-        if (err) { res.send(err); }
+        if (err) { res.render('error_page', {error: err}); }
         else if (doc.length) {
             res.render( 'tables_info/themes',
                 {
@@ -46,7 +46,7 @@ exports.getThemes = function(req, res) {
 
 exports.getDifficulties = function(req, res) {
     Difficulty.find({}, function(err, doc) {
-        if (err) { res.send(err); }
+        if (err) { res.render('error_page', {error: err}); }
         else if (doc.length) {
             res.render( 'tables_info/difficulties',
                 {
@@ -69,7 +69,7 @@ exports.getDifficulties = function(req, res) {
 
 exports.getLeagues = function(req, res) {
     League.find({}, function(err, doc) {
-        if (err) { res.send(err); }
+        if (err) { res.render('error_page', {error: err}); }
         else if (doc.length) {
             res.render( 'tables_info/leagues',
                 {
@@ -92,7 +92,7 @@ exports.getLeagues = function(req, res) {
 
 exports.getQuestions = function(req, res) {
     Question.find({}, function(err, doc) {
-        if (err) { res.send(err); }
+        if (err) { res.render('error_page', {error: err}); }
         else if (doc.length) {
             res.render( 'tables_info/questions',
                 {
@@ -115,7 +115,7 @@ exports.getQuestions = function(req, res) {
 
 exports.getAnswers = function(req, res) {
     Answers.find({}, function(err, doc) {
-        if (err) { res.send(err); }
+        if (err) { res.render('error_page', {error: err}); }
         else if (doc.length) {
             res.render( 'tables_info/answers',
                 {
@@ -138,7 +138,7 @@ exports.getAnswers = function(req, res) {
 
 exports.getUsers = function(req, res){
     User.find({}, function(err, doc) {
-        if (err) { res.send(err); }
+        if (err) { res.render('error_page', {error: err}); }
         else if (doc.length) {
             res.render( 'auth/users', {list: doc, insertTable: "user"} );
         }
