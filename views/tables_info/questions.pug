@@ -47,7 +47,7 @@ block content
                         .modal-body
                             form(action="/db/update/" + insertTable method="GET")
                                 label.col-form-label= "Question ID: "
-                                input.form-control-plaintext(type='text' readonly='' value= elem.id name="name")
+                                input.form-control-plaintext(type='text' readonly='' value= elem.id name="id")
                                 label.col-form-label Input new theme ID:
                                 input.form-control(type='number' value= elem.theme_id name="theme_id")
                                 label.col-form-label Input new difficulty ID:

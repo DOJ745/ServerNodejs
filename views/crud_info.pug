@@ -6,8 +6,10 @@ block content
         h2.align-self-center= crud_type + " Object: " + upd + " --- Success"
     else
         h2.align-self-center= crud_type + " Object: " + upd
+
     if upd === null && crut_type === "Update"
         h2.align-self-center= crud_type + " Object: " + upd + " --- Nothing has been updated"
+
     a.btn.btn-primary(href='/db/' + backTo)= "Back to " + backTo
     br
     br
