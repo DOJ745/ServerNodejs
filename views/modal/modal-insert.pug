@@ -67,7 +67,12 @@ div.modal.fade(
                         label.col-form-label Input question image (url):
                         input.form-control(type='text' value= "http://localhost:8000/images/questions/" name="image")
                         label.col-form-label Input cost:
-                        input.form-control(type='number' value= "1" name="cost")
+                        input.form-control(
+                            type='number'
+                            name="cost"
+                            step="5"
+                            min="10"
+                            max="100")
                         .modal-footer
                             button.btn.btn-secondary(type='button' data-dismiss='modal') Close
                             input.btn.btn-success(type="submit" value="Add")
