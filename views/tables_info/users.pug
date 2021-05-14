@@ -39,6 +39,7 @@ block content
                         .modal-body
                             form(action="/db/update/" + insertTable method="GET")
                                 label.col-form-label= "User ID: " + elem.id
+                                br
                                 label.col-form-label= "User login: "
                                 input.form-control-plaintext(type='text' readonly='' value=elem.login  name="login")
                                 label.col-form-label Input new user score:

@@ -59,12 +59,17 @@ exports.deleteUser = function (reqLogin, res) {
         {login: reqLogin},
         function (err, delObj) {
         if(err) {
-            res.send({isDeleted: 1, error: err, object: "none"});
+            res.render('error_page', {error: err});
             return console.log("\n*** Error with deleting user!\n" + err);
         }
         else {
             console.log("\n*** User successfully deleted!\n");
-            res.send({isDeleted: 0, error: "none", object: delObj});
+            res.render('crud_info', {
+                title: "User delete status",
+                upd: delObj,
+                backTo: "users",
+                crud_type: "Delete"
+            });
         }
     });
 }
@@ -78,12 +83,17 @@ exports.updateUser = function (reqLogin, reqScore, res) {
         function (err, updObj) {
 
             if(err) {
-                res.send({isUpdated: 1, error: err, object: "none"});
+                res.render('error_page', {error: err});
                 return console.log("\n*** Error with updating user!\n" + err);
             }
             else {
                 console.log("\n*** User successfully updated!\n");
-                res.send({isUpdated: 0, error: "none", object: updObj});
+                res.render('crud_info', {
+                    title: "User update status",
+                    upd: updObj,
+                    backTo: "users",
+                    crud_type: "Update"
+                });
             }
     });
 }

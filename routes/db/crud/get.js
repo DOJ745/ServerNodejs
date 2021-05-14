@@ -140,7 +140,7 @@ exports.getUsers = function(req, res) {
     User.find({}, function(err, doc) {
         if (err) { res.render('error_page', {error: err}); }
         else if (doc.length) {
-            res.render( 'auth/users',
+            res.render( 'tables_info/users',
                 {
                     list: doc,
                     insertTable: "user"
