@@ -44,13 +44,12 @@ exports.checkUser = function(reqLogin, reqPassword, req, res) {
 
 exports.logoutUser = function (id) {
 
-    Session.findByIdAndDelete(
-        {_id: id},
-        function(err, session) {
-
-        if(err) { console.log("\n*** Error with finding session!\n" + err); }
-        console.log("\n*** Session has been deleted ***: " + session);
-    })
+    Session.findByIdAndDelete(id, function(err, session) {
+        if(err) {
+            console.log("\n*** Error with finding session!\n" + err);
+        }
+        else{ console.log("\n*** Session has been deleted ***: " + session); }
+    });
 }
 
 exports.deleteUser = function (reqLogin, res) {
