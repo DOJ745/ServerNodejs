@@ -32,7 +32,15 @@ exports.getThemes = function(req, res) {
                 }
             );
         }
-        else { res.send('No themes found'); }
+        else {
+            logger.info("No themes found");
+            res.render( 'tables_info/themes',
+                {
+                    list: doc,
+                    insertTable: "theme"
+                }
+            );
+        }
     });
 }
 
@@ -47,7 +55,15 @@ exports.getDifficulties = function(req, res) {
                 }
             );
         }
-        else { res.send('No difficulties found'); }
+        else {
+            logger.info("No themes found");
+            res.render( 'tables_info/difficulties',
+                {
+                    list: doc,
+                    insertTable: "difficulty"
+                }
+            );
+        }
     });
 }
 
@@ -62,7 +78,15 @@ exports.getLeagues = function(req, res) {
                 }
             );
         }
-        else { res.send('No leagues found'); }
+        else {
+            logger.info("No themes found");
+            res.render( 'tables_info/leagues',
+                {
+                    list: doc,
+                    insertTable: "league"
+                }
+            );
+        }
     });
 }
 
@@ -77,7 +101,15 @@ exports.getQuestions = function(req, res) {
                 }
             );
         }
-        else { res.send('No questions found'); }
+        else {
+            logger.info("No themes found");
+            res.render( 'tables_info/questions',
+                {
+                    list: doc,
+                    insertTable: "question"
+                }
+            );
+        }
     });
 }
 
@@ -92,7 +124,15 @@ exports.getAnswers = function(req, res) {
                 }
             );
         }
-        else { res.send('No answers found'); }
+        else {
+            logger.info("No answers found");
+            res.render( 'tables_info/answers',
+                {
+                    list: doc,
+                    insertTable: "answer"
+                }
+            );
+        }
     });
 }
 
@@ -102,6 +142,14 @@ exports.getUsers = function(req, res){
         else if (doc.length) {
             res.render( 'auth/users', {list: doc, insertTable: "user"} );
         }
-        else { res.send('No users found'); }
+        else {
+            logger.info("No users found");
+            res.render( 'tables_info/users',
+                {
+                    list: doc,
+                    insertTable: "user"
+                }
+            );
+        }
     });
 }
