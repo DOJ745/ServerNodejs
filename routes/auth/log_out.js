@@ -18,7 +18,7 @@ const expressLogger = expressPino({logger});
 const app = express();
 app.use(expressLogger);
 
-router.post('/', function(req, res, next) {
+router.post('/', function(req, res) {
     if (req.session.user) {
         api.logoutUser(req.sessionID);
         delete req.session.user;

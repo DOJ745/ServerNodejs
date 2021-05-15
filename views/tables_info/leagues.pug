@@ -18,7 +18,7 @@ block content
         each elem in list
             div.col
                 .card.text-white.bg-secondary.mb-3
-                    img.card-img-top(src= elem.image alt='IMG')
+                    img.card-img-top(src= "http://localhost:8000/images/league/" + elem.image alt='IMG')
                     .card-body
                         h5.card-title Leagues params
                         p.card-text= "ID: " + elem.id
