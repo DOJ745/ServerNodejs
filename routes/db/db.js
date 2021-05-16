@@ -75,6 +75,12 @@ DB_Router.get("/data", function(req, res, next) {
     });
 });
 
+DB_Router.post("/add/log", function (
+    req,
+    res) {
+    insertMethods.insertLogs(req, res);
+})
+
 DB_Router.get("/add/theme", function (
     req,
     res) {
@@ -176,7 +182,13 @@ DB_Router.get("/update/league", function (
 DB_Router.get("/update/user", function (
     req,
     res) {
-    userApi.updateUser(req.query.login, req.query.score, res);
+    userApi.updateUserGet(req.query.login, req.query.score, res);
+});
+
+DB_Router.post("/update/user", function (
+    req,
+    res) {
+    userApi.updateUserPost(req.query.login, req.query.score, res);
 });
 
 DB_Router.get("/themes", function (
@@ -226,7 +238,8 @@ DB_Router.get("/logs", function (
     req,
     res) {
 
-    res.render("tables_info/logs", {title: "Logs"});
+    //res.render("tables_info/logs", {title: "Logs"});
+    getMethods.getLogs(req, res);
 
 });
 
@@ -237,6 +250,12 @@ DB_Router.get("/users", function (
     getMethods.getUsers(req, res);
 
 });
+
+DB_Router.get("/rating", function (
+    req,
+    res) {
+    getMethods.getRating(req, res);
+})
 
 
 module.exports = DB_Router;

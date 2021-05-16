@@ -13,6 +13,7 @@ const expressLogger = expressPino({logger});
 const app = express();
 app.use(expressLogger);
 
+const Log = require('../../../models/logs');
 const User = require('../../../models/user');
 const Theme = require('../../../models/theme');
 const Answers = require('../../../models/answers');
@@ -153,6 +154,37 @@ exports.getUsers = function(req, res) {
                 {
                     list: doc,
                     insertTable: "user"
+                }
+            );
+        }
+    });
+}
+
+exports.getRating = function (req, res) {
+    User.find({}, function(err, doc) {
+        if (err) { res.render('error_page', {error: err}); }
+        else if (doc.length) {res.send({users: doc});}
+        else {res.send(err);}
+    });
+}
+
+exports.getLogs = function (req, res) {
+    Log.find({}, function(err, doc) {
+        if (err) { res.render('error_page', {error: err}); }
+        else if (doc.length) {
+            res.render( 'tables_info/logs',
+                {
+                    list: doc,
+                    insertTable: "log"
+                }
+            );
+        }
+        else {
+            logger.info("No users found");
+            res.render( 'tables_info/logs',
+                {
+                    list: doc,
+                    insertTable: "log"
                 }
             );
         }

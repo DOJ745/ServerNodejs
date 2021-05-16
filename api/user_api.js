@@ -73,7 +73,7 @@ exports.deleteUser = function (reqLogin, res) {
     });
 }
 
-exports.updateUser = function (reqLogin, reqScore, res) {
+exports.updateUserGet = function (reqLogin, reqScore, res) {
 
     User.findOneAndUpdate(
         {login:reqLogin},
@@ -95,6 +95,25 @@ exports.updateUser = function (reqLogin, reqScore, res) {
                 });
             }
     });
+}
+
+exports.updateUserPost = function (reqLogin, reqScore, res) {
+
+    User.findOneAndUpdate(
+        {login:reqLogin},
+        {score: reqScore},
+        {new: true},
+        function (err, updObj) {
+
+            if(err) {
+                res.render('error_page', {error: err});
+                return console.log("\n*** Error with updating user!\n" + err);
+            }
+            else {
+                console.log("\n*** User successfully updated!\n");
+                res.send(updObj);
+            }
+        });
 }
 
 function hash(text) {

@@ -19,6 +19,7 @@ const Answers = require('../../../models/answers');
 const Question = require('../../../models/question');
 const Difficulty = require('../../../models/difficulty');
 const League = require('../../../models/league');
+const Log = require('../../../models/logs');
 
 exports.insertTheme = function(req, res) {
     if(req.query.name != null) {
@@ -147,6 +148,36 @@ exports.insertAnswer = function (req, res) {
                 title: "Answer insert status",
                 upd: 0,
                 backTo: "answers",
+                crud_type: "Insert"
+            });
+        }
+    });
+}
+
+exports.insertLogs = function(req, res){
+    if(
+        req.query.login != null &&
+        req.query.answerStatus != null &&
+        req.query.points != null &&
+        req.query.date != null){
+        var log = {
+            login: req.query.login,
+            answerStatus: req.query.answerStatus,
+            points: req.query.points,
+            date: req.query.date
+        }
+    }
+    Log(log).save(function (err){
+        if(err){
+            res.render('error_page', {error: err});
+            return console.log(err);
+        }
+        else {
+            logger.info("Log successfully inserted!");
+            res.render('crud_info', {
+                title: "Log insert status",
+                upd: 0,
+                backTo: "logs",
                 crud_type: "Insert"
             });
         }

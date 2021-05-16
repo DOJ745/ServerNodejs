@@ -1,0 +1,15 @@
+extends ../basic_layout
+
+block content
+
+    div.row.row-cols-1.row-cols-md-3.g-4
+        each elem in list
+            div.col
+                .card.text-white.bg-secondary.mb-3
+                    .card-body
+                        h5.card-title Logs params
+                        p.card-text= "ID: " + elem.id
+                        p.card-text= "User login: " + elem.login
+                        p.card-text= "User answer status: " + elem.answerStatus
+                        p.card-text= "User points: " + elem.points
+                        p.card-text= "Date: " + elem.date
