@@ -174,12 +174,7 @@ exports.insertLogs = function(req, res){
         }
         else {
             logger.info("Log successfully inserted!");
-            res.render('crud_info', {
-                title: "Log insert status",
-                upd: 0,
-                backTo: "logs",
-                crud_type: "Insert"
-            });
+            res.send({isInserted: 0});
         }
     });
 }
